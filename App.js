@@ -28,15 +28,24 @@ class App extends Component {
    getModels = async () => {
        if (this.state.query_brand !== 0) {
             this.setState({ loading: "Fetching models..." });
-            let brand = this.state.query_brand.toNumber();
+            let brand = Number(this.state.query_brand);
            await axios.get(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos/`)
                     .then(res => this.setState({ models: res.data }))
+                    .catch(err => console.log(err));
+        }};
+   getYrs = async () => {
+       if (this.state.query_model !== 0) {
+            this.setState({ loading: "Fetching year" });
+            let brand = this.state.query_model;
+           await axios.get(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos/`)
+                    .then(res => this.setState({ years: res.data }))
                     .catch(err => console.log(err));
         }};
   onChangeHandler = async (e) => {
     this.setState({ [e.target.name]: e.target.value, target: e.target.name });
       await 1000;
-      this.getModels();
+    this.state.target === 'query_brand' ? this.getModels() : ( this.state.target === "query_model" ? this.getYrs() : done() );
+      
   };
    
 
