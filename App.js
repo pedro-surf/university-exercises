@@ -28,16 +28,19 @@ class App extends Component {
    getModels = async () => {
        if (this.state.query_brand !== 0) {
             this.setState({ loading: "Fetching models..." });
-            let brand = Number(this.state.query_brand);
-           await axios.get(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos/`)
+            let brand = "?codigo=" + Number(this.state.query_brand);
+            let targetURL = `https://parallelum.com.br/fipe/api/v1/carros/marcas/` + brand + `/modelos/`;  
+           await axios.get(targetURL)
                     .then(res => this.setState({ models: res.data }))
                     .catch(err => console.log(err));
         }};
    getYrs = async () => {
        if (this.state.query_model !== 0) {
             this.setState({ loading: "Fetching year" });
-            let brand = this.state.query_model;
-           await axios.get(`https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}/modelos/`)
+            let brand = "?codigo=" + Number(this.state.query_brand);
+             let model = "?codigo=" + Number(this.state.query_model);
+            let targetURL = `https://parallelum.com.br/fipe/api/v1/carros/marcas/59/` + brand + `/` + model + `/anos`;
+           await axios.get(targetURL)
                     .then(res => this.setState({ years: res.data }))
                     .catch(err => console.log(err));
         }};
