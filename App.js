@@ -1,124 +1,144 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-
-
+import React, { Component } from "react";
+import "ReactDOM" from 'react-dom';
+import axios from "axios";
 
 class App extends Component {
-  
-    state = {
-        loading: false,
-        query_brand: 0,
-        query_model: "",
-        brands: [],
-        models: [],
-        years: []
-      
-    
-    };
- 
-
-    //Functions to handle state when some query is sent
-    // Get all brands first
-    getBrands = () => axios.get('https://parallelum.com.br/fipe/api/v1/carros/marcas')
-                        .then(res => this.setState({ brands: res.data }))
-                        .catch(err => console.log(err));
-
-        
-   getModels = async () => {
-       if (this.state.query_brand !== 0) {
-            this.setState({ loading: "Fetching models..." });
-            let brand = Number(this.state.query_brand);
-            let targetURL = 'https://parallelum.com.br/fipe/api/v1/carros/marcas/${brand}' + '/modelos/';  
-           await axios.get(`${targetURL}`)
-                    .then(res => this.setState({ models: res.data }))
-                    .catch(err => console.log(err));
-        }};
-   getYrs = async () => {
-       if (this.state.query_model !== 0) {
-            this.setState({ loading: "Fetching year" });
-            let brand = Number(this.state.query_brand);
-             let model = Number(this.state.query_model);
-            let targetURL = 'https://parallelum.com.br/fipe/api/v1/carros/marcas/59/${brand}' + '/modelos/${model}' + '/anos';
-           await axios.get(`${targetURL}`)
-                    .then(res => this.setState({ years: res.data }))
-                    .catch(err => console.log(err));
-        }};
-  onChangeHandler = async (e) => {
-    this.setState({ [e.target.name]: e.target.value, target: e.target.name });
-      await 1000;
-    this.state.target === 'query_brand' ? this.getModels() : ( this.state.target === "query_model" ? this.getYrs() : done() );
-      
+  state = {
+    loading: false,
+    queryBrand: 0,
+    queryModel: "",
+    queryYear: "",
+    filled: false,
+    fetchedBrands: [],
+    fetchedModels: [],
+    fetchedYears: []
   };
-   
 
- componentDidMount() {
-     this.getBrands();
- }
+  //Functions to handle state when some query is sent
+  // Get all brands first
+  getBrands = () =>
+    axios
+      .get("https://parallelum.com.br/fipe/api/v1/carros/marcas")
+      .then(res => this.setState({ fetchedBrands: res.data }))
+      .catch(err => console.log(err));
+  // Display options after state is changed
 
+  getModels = async () => {
+    if (this.state.queryBrand !== 0) {
+      this.setState({ loading: "Fetching models..." });
+      let brand = this.state.queryBrand;
+      let targetURL =
+        "https://parallelum.com.br/fipe/api/v1/carros/marcas/" +
+        brand +
+        "/modelos";
+      console.log(targetURL);
+      await axios
+        .get(`${targetURL}`)
+        .then(res =>
+          this.setState({ fetchedModels: res.data.modelos, loading: false })
+        )
+        .catch(err => console.log(err));
+    }
+  };
+  getYrs = async () => {
+    if (this.state.queryModel !== 0) {
+      this.setState({ loading: "Fetching year" });
+      let brand = this.state.queryBrand;
+      let model = this.state.queryModel;
+      let targetURL =
+        "https://parallelum.com.br/fipe/api/v1/carros/marcas/" +
+        brand +
+        "/modelos/" +
+        model +
+        "/anos";
+      console.log(targetURL);
+      await axios
+        .get(`${targetURL}`)
+        .then(res =>
+          this.setState({
+            fetchedYears: res.data,
+            filled: true,
+            loading: false
+          })
+        )
+        .catch(err => console.log(err));
+    }
+  };
+  onChangeHandler = async e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      target: e.target.name
+    });
+    await 800;
+    this.state.target === "queryBrand"
+      ? this.getModels()
+      : this.state.target === "queryModel"
+      ? this.getYrs()
+      : this.setState({ errors: "Target isn't handled!" });
+  };
+
+  componentDidMount() {
+    this.getBrands();
+  }
 
   render() {
-        const selectBrandOptions = this.state.brands.map(brand => (
-    <option key={brand.codigo} value={brand.codigo}>
-      {brand.nome}
-    </option>
-            ));
-     const selectModelOptions = this.state.models.map(model => (
-     <option key={model.codigo} value={model.codigo}>
-          {model.nome}
-    </option>    
-            ));    
-      
-            
-      
+    const { fetchedModels, fetchedYears } = this.state;
+
+    const selectBrandOptions = this.state.fetchedBrands.map(brand => (
+      <option key={brand.codigo} value={brand.codigo}>
+        {brand.nome}
+      </option>
+    ));
+
     return (
-    <div className="App">
+      <div className="App">
         <div className="col-3 p-4 d-inline-block">
-        
-            <select 
-            value={this.state.query_brand} 
-            onChange={this.onChangeHandler} 
-            name="query_brand" 
-            className="form-control"
-             >
-        {selectBrandOptions}
-            </select>
-        Selecione a marca:
-        </div>
-        <div className="col-3 p-4 d-inline-block">
-            <select 
-            value={this.state.query_model} 
+          <select
+            value={this.state.queryBrand}
             onChange={this.onChangeHandler}
-            name="query_model"
-            disabled={this.state.query_brand === 0}
+            name="queryBrand"
             className="form-control"
-            >
-            <option value="placeholder">blablabla</option>
-            <option value="hardcoption">blablabla</option>
-            {selectModelOptions}
-            </select>
-            Selecione o modelo:
+          >
+            {selectBrandOptions}
+          </select>
+          Selecione a marca:
         </div>
-          
+        <div className="col-3 p-4 d-inline-block">
+          <select
+            value={this.state.queryModel}
+            onChange={this.onChangeHandler}
+            name="queryModel"
+            disabled={this.state.queryBrand === 0}
+            className="form-control"
+          >
+            {fetchedModels.map(item => (
+              <option key={item.codigo} value={item.codigo}>
+                {item.nome}
+              </option>
+            ))}
+          </select>
+          Selecione o modelo:
+        </div>
+
         <div className="col-4 d-inline-block">
-         //TODO
-            <select key={this.state.brands} 
-                value={this.state.query_year} 
-                onChange={this.onChangeHandler}
-                name="query_year"
-                disabled={this.state.query_model === ""}
-                className="form-control"
-                >
-             <option value="placeholder option">blablabla</option>
-             <option value="placeholder option">blablabla</option>
-            </select>
+          <select
+            value={this.state.queryYear}
+            onChange={this.onChangeHandler}
+            name="year"
+            disabled={this.state.queryModel === ""}
+            className="form-control"
+          >
+            {fetchedYears.map(item => (
+              <option key={item.codigo} value={item.codigo}>
+                {item.nome}
+              </option>
+            ))}
+          </select>
+          Selecione o ano: ~TO DO~
         </div>
-    </div>
+      </div>
     );
   }
 }
 
 export default App;
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
