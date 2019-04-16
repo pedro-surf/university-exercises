@@ -32,38 +32,35 @@
 int main()
 {
 	int el;
-	int i;
-	int votedcandidate = 0;
-	// Inicializando o vetor c onde cada candidato ocupa uma posiçao
-	int c[4] = {0};
-
-
-	 printf("Digite o número de eleitores");
+	int i, j;
+	int votedcandidate;
+	int votedindex, arrayindex;
+// Inicializando o vetor c onde cada candidato ocupa uma posiçao para até 7 candidatos
+	int c[7] = { 0 };
+	 printf("Digite o número de eleitores ");
 	 scanf("%i", &el);
-
-// Verif se o nro de candidatos é um dos desejados
-	// while (m ==! 5 && m ==! 7) {
-	 //  printf("O número de candidatos deve ser 5 ou 7. Digite novamente");
-	  // scanf("%i", &m);
-	 // }
-
-
 // Conta os votos para cada candidato
 	for (i = 1; i <= el; i++) {
 	   printf("Selecione o numero do candidato  para o eleitor nro: %i ", i);
 	   scanf("%i", &votedcandidate);
-	   while (votedcandidate > 5 || votedcandidate < 1) {
-	        printf("Candidato inválido");
-		printf("Selecione o numero do candidato de 1 até 5 para o eleitor nro: %i ", i);
+	   while (votedcandidate > 7 || votedcandidate < 1) {
+	        printf("Candidato inválido \n");
+		  printf("Selecione o numero do candidato de 1 até 5 para o eleitor nro: %i ", i);
 	        scanf("%i", &votedcandidate);
 	   }
-        votedcandidate = votedcandidate - 1;
-	   c[votedcandidate]++;
+	   votedindex = votedcandidate - 1;
+	   c[votedindex]++;
+	   votedcandidate = 0;
+	   
 
  	}
- 	for (i = 0; i <= 5; i++ ) {
- 	 printf("\n %i", c[i]);
+ 	for ( j = 1; j < 8; j++ ) {
+		arrayindex = j-1;
+ 	 printf("\n Candidato %i :", j);
+ 	 int indexcount = c[arrayindex];
+ 	 printf("Votos: %i \n", indexcount);
+		
  	 }
-
+	return 0;
     }
 
