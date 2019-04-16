@@ -10,7 +10,7 @@
 // criar vetor com 10 elementos do tipo int
 // achar a soma dos elementos pares
 // achar a soma dos elementos que se encontram nas posições com
-índice par ( c[0], c[2], c[4])
+// índice par ( c[0], c[2], c[4])
 
 
 //
