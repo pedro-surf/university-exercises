@@ -10,18 +10,14 @@
 // 	receber a quantidade de votos a ser analisada
 // 	receber os votos para 7 candidatos
 // 	calcular a percentagem de votos de cada candidato e votos nulos
-
-//
 // OVERALL METHOD:
 // 1. Receive votes from {{el}} electors
 // 2. Add votes for matching selected candidate
 // 3. Return count of votes for each candidate
 //
 // FUNCTIONS: inside main func
-//
 //  INCLUDED FILES:
 //  stdio.h
-//
 // DATA FILES: none
 #include <stdio.h>
 
