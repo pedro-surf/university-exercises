@@ -1,55 +1,53 @@
 // FILE: 2.c
 // LIST: first
-// EXERCISE NUMBER: 2
+// EXERCISE: 2
 // AUTHOR: Pedro Silveira
 //       
 // FOR COURSE: Programming I
 // DUE DATE:    April, 2019
 //
 // PURPOSE:
-// criar um vetor com 7 elementos
-// achar o maior valor
-// achar o menor elemento e sua respectiva posição
-
-// OVERALL METHOD:
-// 1. Initialize c array with 7 elements
-// 2. Iterate through it and assign random values to each index
-// 3. Return maximum value, minimum value and index of minimum
+// criar vetor com 10 elementos do tipo float
+// calcular o valor médio dos elementos
+// imprimir os elementos do vetor que estão acima da média com suas
+// respectivas posições.
 //
-// FUNCTIONS: rand -- gets a random value, default interval call set to 70
-// INCLUDED FILES: stdio.h, stdlib.h
+// OVERALL METHOD:
+// 1. Create c array with 10 elements
+// 2. Calculate average
+// 3. Get values above average and display them
+//
+// FUNCTIONS: in algorithm scope
+//
+//  INCLUDED FILES:
+//  stdio.h
+//
 // DATA FILES: none
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int main()
 {
-	int c[7] = { 0 };
-	int i, randomvalue;
-	int minposition, max, min;
-
-	printf("Inicializando... \n");
-   for ( i = 0; i < 7; i++ ) {
-	if (c[i] == 0) {
-		randomvalue = rand() % 70;
-		c[i] = randomvalue;
-		
-	}
-	min = 70;
-   printf("Valor na posicao	%i: %i\n", i, c[i]);
-   }
-   for ( i = 0; i < 7; i++) {
-  	if (c[i] > max) {
-   	max = c[i];
-  	}
-  	if (c[i] < min) {
-		min = c[i];
-       minposition = i;
-	 }
-   }
+	float c[10] = { 0 };
+	float average, total = 0;
+	int i;
 	
-  printf("\n Maior numero: %i \n Menor numero: %i ", max, min);
-  printf("\n Posiçao do menor numero: %i \n \n", minposition);
-  
+	printf("Inicializando vetor com 10 valores aleartorios...\n");
+   for ( i = 0; i < 10; i++ ) {
+   c[i] = rand() % 70;
+   total = total + c[i];
+   }
+   
+   average = total / 10;
+	printf("Média: %f \n", average);
+    printf("\nElementos acima da media: \n");
+  for ( i = 0; i < 10; i++ ) {
+  	   if (c[i] > average) {
+  		printf("Na posicao %i: \n", i);
+		printf("%f \n", c[i]);
+  	   } 
+  }
+	
 return 0;
 }

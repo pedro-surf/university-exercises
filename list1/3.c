@@ -1,21 +1,19 @@
 // FILE: 3.c
 // LIST: first
-// EXERCISE NUM: 3
-// AUTHOR: Pedro Silveira
-//       
+// EXERCISE 3
+// AUTHOR: Pedro Silveira      
 // FOR COURSE: Programming I
 // DUE DATE:    April, 2019
-//
 // PURPOSE:
-// criar vetor com 10 elementos do tipo float
-// calcular o valor médio dos elementos
-// imprimir os elementos do vetor que estão acima da média com suas
-// respectivas posições.
+// 	criar vetor com 10 elementos do tipo int
+// 	achar a soma dos elementos pares
+// 	achar a soma dos elementos que se encontram nas posições com
+// 	índice par ( c[0], c[2], c[4])
 //
 // OVERALL METHOD:
-// 1. Create c array with 10 elements
-// 2. Calculate average
-// 3. Get values above average and display them
+// 1. Give c array random values
+// 2. Get and display pair values sum
+// 3. Get and display sum of values in pair indexes
 //
 // FUNCTIONS: in algorithm scope
 //
@@ -29,25 +27,23 @@
 
 int main()
 {
-	float c[10] = { 0 };
-	float average, total = 0;
-	int i;
-	
-	printf("Inicializando vetor com 10 valores aleartorios...\n");
+	int c[10];
+	int i, getrandomvalue;
+	int pairsum, pairpositionedsum = 0;
+	printf("Inicializando... \n");
    for ( i = 0; i < 10; i++ ) {
-   c[i] = rand() % 70;
-   total = total + c[i];
+	 getrandomvalue =  rand() % 70;
+     c[i] = getrandomvalue;
+     if (c[i] % 2 == 0) {
+	 pairsum = pairsum + c[i];
+	 }
+     if (i % 2 == 0) {
+	 pairpositionedsum = pairpositionedsum + c[i];
+	 }	
    }
-   
-   average = total / 10;
-	printf("Média: %f \n", average);
-    printf("\nElementos acima da media: \n");
-  for ( i = 0; i < 10; i++ ) {
-  	   if (c[i] > average) {
-  		printf("Na posicao %i: \n", i);
-		printf("%f \n", c[i]);
-  	   } 
-  }
+  printf("Soma dos pares = %i \n", pairsum);
+  printf("Soma dos posicionados em indice par = %i \n", pairpositionedsum);
+
 	
 return 0;
 }
