@@ -1,6 +1,6 @@
-// FILE: prog_1_res_15.c
-// EXERCISES LIST: first
-// EXERCISE NUM: 1
+// FILE: 3.c
+// LIST: first
+// EXERCISE NUM: 3
 // AUTHOR: Pedro Silveira
 //       
 // FOR COURSE: Programming I
@@ -10,11 +10,10 @@
 // criar vetor com 10 elementos do tipo float
 // calcular o valor médio dos elementos
 // imprimir os elementos do vetor que estão acima da média com suas
-respectivas posições.
-
+// respectivas posições.
 //
 // OVERALL METHOD:
-// 1. Give c array random values
+// 1. Create c array with 10 elements
 // 2. Calculate average
 // 3. Get values above average and display them
 //
@@ -30,24 +29,25 @@ respectivas posições.
 
 int main()
 {
-	float c[10];
+	float c[10] = { 0 };
 	float average, total = 0;
 	int i;
 	
+	printf("Inicializando vetor com 10 valores aleartorios...\n");
    for ( i = 0; i < 10; i++ ) {
-   c[i] = rand() % 20;
+   c[i] = rand() % 70;
    total = total + c[i];
    }
-
+   
    average = total / 10;
-	
-   printf("Elementos acima da media: \n");
+	printf("Média: %f \n", average);
+    printf("\nElementos acima da media: \n");
   for ( i = 0; i < 10; i++ ) {
   	   if (c[i] > average) {
-  		printf("Elemento nro %i: ", i);
-		printf("%f:", c[i]);
+  		printf("Na posicao %i: \n", i);
+		printf("%f \n", c[i]);
   	   } 
   }
 	
- 
+return 0;
 }

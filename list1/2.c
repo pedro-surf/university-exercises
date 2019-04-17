@@ -1,6 +1,6 @@
-// FILE: prog_1_res_15.c
-// EXERCISES LIST: first
-// EXERCISE NUM: 1
+// FILE: 2.c
+// LIST: first
+// EXERCISE NUMBER: 2
 // AUTHOR: Pedro Silveira
 //       
 // FOR COURSE: Programming I
@@ -8,46 +8,48 @@
 //
 // PURPOSE:
 // criar um vetor com 7 elementos
-// achar o maior e sua respectiva posição
+// achar o maior valor
 // achar o menor elemento e sua respectiva posição
 
-//
 // OVERALL METHOD:
-// 1. Receive votes from {{el}} electors 
-// 2. Calculate votes for each of all {{m}} candidates
-// 3. Return count of approved and disapproved students as well as approved's average.
+// 1. Initialize c array with 7 elements
+// 2. Iterate through it and assign random values to each index
+// 3. Return maximum value, minimum value and index of minimum
 //
-// FUNCTIONS: in algorithm scope
-//
-//  INCLUDED FILES:
-//  stdio.h
-//
+// FUNCTIONS: rand -- gets a random value, default interval call set to 70
+// INCLUDED FILES: stdio.h, stdlib.h
 // DATA FILES: none
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int main()
 {
-	int c[7];
-	int i;
-	int minposition;
-        int max, min;
+	int c[7] = { 0 };
+	int i, randomvalue;
+	int minposition, max, min;
+
+	printf("Inicializando... \n");
    for ( i = 0; i < 7; i++ ) {
-   c[i] = rand() % 20;
+	if (c[i] == 0) {
+		randomvalue = rand() % 70;
+		c[i] = randomvalue;
+		
+	}
+	min = 70;
+   printf("Valor na posicao	%i: %i\n", i, c[i]);
    }
    for ( i = 0; i < 7; i++) {
   	if (c[i] > max) {
    	max = c[i];
   	}
   	if (c[i] < min) {
-   	min = c[i];
-        i = minposition;
-	}
+		min = c[i];
+       minposition = i;
+	 }
    }
 	
-  printf("Maior numero: %i", max);
-  printf("\n Menor numero: %i", min);
-  printf("\n Posiçao do menor numero no vetor: %i", minposition);
- 
+  printf("\n Maior numero: %i \n Menor numero: %i ", max, min);
+  printf("\n Posiçao do menor numero: %i \n \n", minposition);
+  
+return 0;
 }
