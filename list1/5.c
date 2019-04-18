@@ -50,7 +50,7 @@ int main()
 	}
 	printf("\n Vetor C com elementos intercalados: \n");
 	for (j = 0; j < 10; j++ ) {
-	printf("C[%i]: [%i], ", j, c[j]);
+	printf("C[%i]: %i, ", j, c[j]);
 	}
 
 return 0;
