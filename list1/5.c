@@ -1,7 +1,7 @@
 // FILE: 5.c
 // LIST: first
 // EXERCISE 5
-// AUTHOR: Pedro Silveira      
+// AUTHOR: Pedro Silveira
 // FOR COURSE: Programming I
 // DUE DATE:    April, 2019
 // PURPOSE:
@@ -12,9 +12,9 @@
 // O vetor c deve conter os elementos de a e b de forma intercalada.
 //
 // OVERALL METHOD:
-// 1. 
-// 2. 
-// 3. 
+// 1.
+// 2.
+// 3.
 // FUNCTIONS: in algorithm scope
 //
 //  INCLUDED FILES:
@@ -27,25 +27,31 @@
 
 int main()
 {
-	int a[5], b[5];
-	int c[10]; = { 0 };
+	int a[5], b[5] = { 0 };
+	int c[10] = { 0 };
+	int j = 0;
 	int i, getrandomvalue;
-	int pairsum, pairpositionedsum = 0;
-// Inicializando vetores A e B
-	printf("Inicializando... \n");
+
+	printf("Inicializando... \n ");
    for ( i = 0; i < 5; i++ ) {
-	 getrandomvalue =  rand() % (7* i);
-	{ a[i], b[i] } = getrandomvalue;
+	 getrandomvalue =  rand() % 60; // obter número aleartorio
+	 a[i] = getrandomvalue; // assinalar este numero à posição i do vetor a
+	 c[2 * i] = a[i];
 	 getrandomvalue = 0;
+     getrandomvalue =  rand() % 70;
+     b[i] = getrandomvalue;
+     c[(2 * i) + 1] = b[i];
+
 	}
 
-   while (j < 10) {
-	 for ( i = 0; j < 5; i++ ) {
-	c[j] = a[i];
-	c[j+1] = b[i];
-	 j+2;
-	  }
+    	for (i = 0; i < 5; i++ ) {
+	printf("A[%i]: %i ", i, a[i]);
+		printf("B[%i]: %i, \n ", i, b[i]);
 	}
-	
+	printf("\n Vetor C com elementos intercalados: \n");
+	for (j = 0; j < 10; j++ ) {
+	printf("C[%i]: [%i], ", j, c[j]);
+	}
+
 return 0;
 }
