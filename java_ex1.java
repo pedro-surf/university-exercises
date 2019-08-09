@@ -8,8 +8,13 @@ int main(String [], args) {
 	 Scanner x = new Scanner (System.in);
  	Scanner y = new Scanner (System.in);
         System.out.println("Soma: "+ (x + y));
-	System.out.println("Maior: " + (x >= y ? x : y));
-    }
+	int maior = (x >= y ? x : y);
+	System.out.println("Maior: " + maior);
+    while (x < y) {
+	x++; 
+	System.out.println(x);
+	}    
 
+     }
 
 }
