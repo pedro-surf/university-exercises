@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.wave-container {
+  height: 200px;
+  background: lightblue;
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden; /* Ensure the wave animation doesn't overflow the container */
+}
+
+.wave {
+  width: 100%;
+  background: blue;
+  position: absolute;
+  bottom: 0;
+  animation: waveAnimation 2s infinite normal ease-in-out;
+}
+
+@keyframes waveAnimation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
