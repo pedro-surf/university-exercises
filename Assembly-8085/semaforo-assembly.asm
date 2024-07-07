@@ -26,6 +26,7 @@
 ; Pedestre: semáforo aberto quando led ativo
 ; Carros: semáforo fechado quando led ativo
 ; porta - variável
+; 00 - estado atual (7 seg.)
 ; 01 - pedestre 1
 ; 02 - pedestre 2
 ; 03 - pedestre 3
@@ -50,7 +51,7 @@ segundo		01H;
 inicio:	
 		MVI B,segundo
 		MVI C,01H ; semaforo carro 1
-		MVI A,44H ; mostrar 2 no display 7 seg.
+		MVI A,44H ; mostrar 1 no display 7 seg.
 		OUT 00H
 		MVI A,FFH ; auxiliar para acender os LEDs
 		OUT 06H

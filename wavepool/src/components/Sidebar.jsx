@@ -10,6 +10,7 @@ const Sidebar = ({
   setWavepoolLength,
   waveEnergy,
   waveHumanWork,
+  waveSpeed,
 }) => {
   return (
     <Box>
@@ -42,20 +43,23 @@ const Sidebar = ({
       <Typography marginTop={6} variant="h6">
         Wave information
       </Typography>
-      <Typography>(10m length)</Typography>
       <Typography marginTop={2}>
-        Energy: {Number(waveEnergy / 1000).toFixed(2)}kJ
+        Energy: {Number(waveEnergy / 1000).toFixed(2)} kJ
       </Typography>
       <Typography>(E = 1/8*ρgH²)</Typography>
       <Typography marginTop={2}>
-        Power: {Number(waveEnergy / wavePeriod / 1000).toFixed(2)}kW
+        Power: {Number(waveEnergy / wavePeriod / 1000).toFixed(2)} kW
       </Typography>
       <Typography>(P = E / T)</Typography>
       <Typography marginTop={2}>
-        Mechanical Work:
-        {Number(waveHumanWork / 1000).toFixed(2)}kJ
+        Mechanical Work: {Number(waveHumanWork / 1000).toFixed(2)} kJ
       </Typography>
       <Typography>(W = E / n, consider n = 0.25)</Typography>
+      <Typography marginTop={2}>
+        Speed:
+        {Number(waveSpeed).toFixed(2)} m/s
+      </Typography>
+      <Typography>(V = L / T)</Typography>
     </Box>
   );
 };
