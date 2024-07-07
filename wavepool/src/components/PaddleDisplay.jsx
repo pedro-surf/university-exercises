@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Slider } from "@mui/material";
 
 const PaddleDisplay = ({ height }) => {
-  const [width, setWidth] = useState(5);
+  const [width, setWidth] = useState(0.5);
 
   return (
     <Box>
