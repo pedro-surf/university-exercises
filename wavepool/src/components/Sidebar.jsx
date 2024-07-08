@@ -44,10 +44,10 @@ const Sidebar = ({
       <Typography marginTop={6} variant="h6">
         Wave information
       </Typography>
-      <Typography marginTop={2}>
+      <Typography marginTop={2} sx={{ textDecoration: "line-through" }}>
         Energy: {Number(waveEnergy / 1000).toFixed(2)} kJ
       </Typography>
-      <Typography>(E = ρgH²L/8)</Typography>
+      <Typography sx={{ textDecoration: "line-through" }}>(E = ρgH²L/8)</Typography>
       <Typography marginTop={2}>
         Mechanical Work: {Number(waveHumanWork / 1000).toFixed(2)} kJ
       </Typography>
