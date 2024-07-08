@@ -11,6 +11,7 @@ const Sidebar = ({
   waveEnergy,
   waveHumanWork,
   waveSpeed,
+  waveDuration,
 }) => {
   return (
     <Box>
@@ -33,7 +34,7 @@ const Sidebar = ({
         step={0.1}
         valueLabelDisplay="auto"
       />
-      <Typography gutterBottom>Wave pool length (m)</Typography>
+      <Typography gutterBottom>Wave "extension" (m)</Typography>
       <TextField
         type="number"
         value={wavepoolLength}
@@ -46,11 +47,7 @@ const Sidebar = ({
       <Typography marginTop={2}>
         Energy: {Number(waveEnergy / 1000).toFixed(2)} kJ
       </Typography>
-      <Typography>(E = 1/8*ρgH²)</Typography>
-      <Typography marginTop={2}>
-        Power: {Number(waveEnergy / wavePeriod / 1000).toFixed(2)} kW
-      </Typography>
-      <Typography>(P = E / T)</Typography>
+      <Typography>(E = ρgH²L/8)</Typography>
       <Typography marginTop={2}>
         Mechanical Work: {Number(waveHumanWork / 1000).toFixed(2)} kJ
       </Typography>
@@ -59,7 +56,11 @@ const Sidebar = ({
         Speed:
         {Number(waveSpeed).toFixed(2)} m/s
       </Typography>
-      <Typography>(V = L / T)</Typography>
+      <Typography>(V = sqrt(gh); h = 1)</Typography>
+      <Typography marginTop={2}>
+        Duration:
+        {Number(waveDuration).toFixed(2)} s
+      </Typography>
     </Box>
   );
 };

@@ -44,6 +44,9 @@ code {
   height: 200px;
   position: relative;
   background: transparent;
+  border: 1px solid burlywood;
+  border-right: 0;
+  border-top: 0;
 }
 
 .paddle-container-helper {

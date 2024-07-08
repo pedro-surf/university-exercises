@@ -4,22 +4,23 @@ import Sidebar from "./components/Sidebar";
 import WaveDisplay from "./components/WaveDisplay";
 import GymDisplay from "./components/GymDisplay";
 import PaddleDisplay from "./components/PaddleDisplay";
-
-const WATER_DENSITY = 1000;
-const GRAVITY_ACC = 9.81;
-const HUMAN_POWER_OUTPUT = 150; // considerando que cada usuário da academia gera 150W de potência
-const MECHANICAL_WORK_EFFICIENCY = 0.25;
+import {
+  WATER_DENSITY,
+  GRAVITY_ACC,
+  HUMAN_POWER_OUTPUT,
+  MECHANICAL_WORK_EFFICIENCY,
+  SHALLOW_WATER_DEPTH,
+} from "./constants";
 
 const App = () => {
   const [waveHeight, setWaveHeight] = useState(2);
   const [wavePeriod, setWavePeriod] = useState(4);
-  const [wavepoolLength, setWavepoolLength] = useState(15); // considerando que a onda desloca-se por 15m
+  const [waveLength, setWavepoolLength] = useState(15); // considerando que a onda desloca-se por 15m
 
   const [view, setView] = useState("wave");
 
   const waveEnergy =
-    (WATER_DENSITY * GRAVITY_ACC * waveHeight * waveHeight * wavepoolLength) /
-    8;
+    (WATER_DENSITY * GRAVITY_ACC * waveHeight * waveHeight * waveLength) / 8;
 
   const personEnergy = HUMAN_POWER_OUTPUT * wavePeriod;
 
@@ -27,7 +28,9 @@ const App = () => {
 
   const numPeople = waveHumanWork / personEnergy;
 
-  const waveSpeed = wavepoolLength / wavePeriod;
+  const waveSpeed = Math.sqrt(SHALLOW_WATER_DEPTH * GRAVITY_ACC);
+
+  const waveDuration = waveLength / waveSpeed;
 
   return (
     <Container>
@@ -38,11 +41,12 @@ const App = () => {
             setWaveHeight={setWaveHeight}
             wavePeriod={wavePeriod}
             setWavePeriod={setWavePeriod}
-            wavepoolLength={wavepoolLength}
+            wavepoolLength={waveLength}
             setWavepoolLength={setWavepoolLength}
             waveHumanWork={waveHumanWork}
             waveEnergy={waveEnergy}
             waveSpeed={waveSpeed}
+            waveDuration={waveDuration}
           />
         </Grid>
         <Grid item xs={9}>
@@ -67,7 +71,11 @@ const App = () => {
               <GymDisplay numPeople={numPeople} />
             </>
           ) : (
-            <PaddleDisplay height={waveHeight} />
+            <PaddleDisplay
+              height={waveHeight}
+              wavepoolLength={waveLength}
+              waveEnergy={waveEnergy}
+            />
           )}
         </Grid>
       </Grid>
