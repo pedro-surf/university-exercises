@@ -1,51 +1,56 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# **1. Carregar os dados do arquivo .txt**
-# Substitua 'ecg_data.txt' pelo nome do seu arquivo
-data = np.loadtxt('ecg_data.txt')
+# Carregar os dados
+data = np.loadtxt('/content/drive/MyDrive/ECG.txt')
+ecg_signal = data[:, 0]  # Sinal ECG
+time = data[:, 1]  # Tempo
 
-# Separar as colunas: ECG (primeira coluna) e tempo (segunda coluna)
-ecg_signal = data[:, 0]
-time = data[:, 1]
-
-# **2. Informações do sinal**
+# Parâmetros do sinal
 fs = 1000  # Frequência de amostragem (Hz)
-Ts = 1 / fs  # Período de amostragem (segundos/amostra)
-signal_duration = time[-1] - time[0]  # Duração do sinal em segundos
-
-print(f"Período de amostragem: {Ts} segundos")
-print(f"Duração do sinal: {signal_duration} segundos")
-
-# **3. Plotar o sinal de ECG(t) para o intervalo de 0 a 5 segundos**
-plt.figure(figsize=(12, 6))
-plt.plot(time, ecg_signal, label='ECG(t)', color='blue')
-plt.xlim(0, 5)
-plt.xlabel('Tempo (s)')
-plt.ylabel('Amplitude')
-plt.title('Sinal ECG(t)')
-plt.legend()
-plt.grid(True)
-plt.show()
-
-# **4. FFT do ECG(t)**
-# Número de amostras no sinal
+Ts = 1 / fs  # Período de amostragem (s)
 n_samples = len(ecg_signal)
 
-# FFT: Transformada de Fourier
-fft_values = np.fft.fft(ecg_signal)
-fft_magnitude = np.abs(fft_values) / n_samples  # Normalizar pela quantidade de amostras
-frequencies = np.fft.fftfreq(n_samples, Ts)  # Vetor de frequências
+# (a) Verificar offset
+offset = np.mean(ecg_signal)
+print(f"(a) Offset do sinal: {offset:.4f}")
 
-# Apenas a metade positiva do espectro (frequências reais)
+# FFT do sinal
+fft_values = np.fft.fft(ecg_signal) / n_samples
+frequencies = np.fft.fftfreq(n_samples, Ts)
 positive_frequencies = frequencies[:n_samples // 2]
-positive_magnitude = fft_magnitude[:n_samples // 2]
+positive_magnitude = np.abs(fft_values[:n_samples // 2])
 
-# Plotar a FFT
+# (b) Ruídos de baixa frequência (< 0.5 Hz)
+low_freq_mask = positive_frequencies < 0.5
+low_freq_magnitude = positive_magnitude[low_freq_mask]
+low_freq_present = np.any(low_freq_magnitude > 0.01)  # Threshold arbitrário
+low_freq_indices = np.where(low_freq_magnitude > 0.01)[0]
+low_freq_values = positive_frequencies[low_freq_mask][low_freq_indices]
+print(f"(b) Ruídos de baixa frequência presentes: {low_freq_present}")
+if low_freq_present:
+    print(f"    Frequências envolvidas: {low_freq_values} Hz")
+
+# (c) Ruído da rede elétrica (60 Hz)
+network_freq = 60
+network_mask = (positive_frequencies > network_freq - 1) & (positive_frequencies < network_freq + 1)
+network_magnitude = np.sum(positive_magnitude[network_mask])
+print(f"(c) Magnitude do ruído da rede elétrica (60 Hz): {network_magnitude:.4f} (Significativo: {network_magnitude > 0.05})")
+
+# (d) Ruídos acima de 100 Hz
+high_freq_mask = positive_frequencies > 100
+high_freq_magnitude = positive_magnitude[high_freq_mask]
+high_freq_present = np.any(high_freq_magnitude > 0.01)  # Threshold arbitrário
+print(f"(d) Ruídos acima de 100 Hz presentes: {high_freq_present}")
+
+# Plotar o espectro para análise visual
 plt.figure(figsize=(12, 6))
-plt.plot(positive_frequencies, positive_magnitude, color='red')
-plt.xlabel('Frequência (Hz)')
-plt.ylabel('Magnitude')
-plt.title('Espectro de Frequências do ECG(t)')
-plt.grid(True)
+plt.plot(positive_frequencies, positive_magnitude, color='red', label="FFT Magnitude")
+plt.axvline(60, color='blue', linestyle='--', label="60 Hz (Rede elétrica)")
+plt.axvline(100, color='green', linestyle='--', label="100 Hz (Fim da banda do ECG)")
+plt.title("Espectro de Frequência do ECG")
+plt.xlabel("Frequência (Hz)")
+plt.ylabel("Magnitude")
+plt.grid()
+plt.legend()
 plt.show()
