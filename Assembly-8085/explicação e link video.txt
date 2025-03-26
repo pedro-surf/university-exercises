@@ -1,0 +1,16 @@
+Vídeo explicativo
+parte 1 - https://www.loom.com/share/7dff367630b24cefa8d646531149a248?sid=0914a47c-68d7-4708-ae07-835fc9d235d3
+parte 2 - https://www.loom.com/share/69fd07c51f564011a583a5d70b73c273
+O projeto consiste em um sistema de semáforos de trânsito, constituído de 2 semáforos para veículos (X e Y) e 4 de pedestres (1 ao 4).
+O estado atual, representado por 1, 2 ou 3, está diretamente relacionado com os semáforos de veículos:
+E1 - X está fechado
+E2 - Y está fechado
+E3 - ambos estão fechados
+Os semáforos de pedestre são afetados pelo estado dos semáforos de veículos:
+1 - Abre quando X e Y fecham (estado 3)
+2 - Abre quando X e Y fecham (estado 3)
+3 - Abre quando X fecha (estado 1)
+4 - Abre quando Y fecha (estado 2) 
+O programa armazena o estado atual no reg. C, o qual é enviado para a saída através da porta de saída 00.
+O cronômetro hexadecimal é setado para 60 (encontra-se no registrador E)
+Após isso, o loop do timer ocorre até que o cronômetro seja 0, onde o programa avança para o próximo estado, ou volta para o estado 1.
