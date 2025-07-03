@@ -128,6 +128,14 @@ def p_declaracoes(p):
 def p_atribuicao(p):
     '''atribuicao : ID EQUALS ID SEMICOLON
                   | ID EQUALS values SEMICOLON'''
+    if p[1] not in simbolos:
+        print(f"ERRO Semantico: Variável {p[1]} não declarada antes da atribuição.")
+    if p[1] in simbolos and p[3] in simbolos:
+        tipo_destino = simbolos[p[1]]['tipo']
+        tipo_origem = simbolos[p[3]]['tipo']
+        if tipo_destino != tipo_origem:
+            print(f"ERRO Semantico: Tipos incompatíveis na atribuição de {p[3]} para {p[1]}: {tipo_origem} → {tipo_destino}")
+
     print("reconheci atribuicao")
 
 def p_bloco_if(p):
@@ -178,7 +186,7 @@ logging.basicConfig(
 )
 
 # entrada do arquivo
-with open("input.txt", "r") as file:
+with open("input_3.txt", "r") as file:
     data = file.read()
 
 # string de teste como entrada do analisador léxico

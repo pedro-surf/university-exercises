@@ -1,0 +1,7 @@
+int main() { 
+	int x;
+	float y;
+	float x;
+	y = x;
+	z = "Não fui declarada!";
+};
