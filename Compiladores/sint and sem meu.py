@@ -9,39 +9,41 @@ def get_contexto():
     return contexto
 
 # Tabela de simbolos
-# {ID {valor, tipo, contexto}}
+# {ID: {valor, tipo, contexto}}
 simbolos = {}
 
 
 # Palavras reservadas <palavra>:<TOKEN>
 reserved = {
-    'if' : 'IF',
-    'else' : 'ELSE',
-    'int' : 'INT',
-    'float' : 'FLOAT',
-    'main': 'MAIN'
+    'if': 'IF',
+    'else': 'ELSE',
+    'int': 'INT',
+    'float': 'FLOAT',
+    'char': 'CHAR',
+    'main': 'MAIN',
+    'for': 'FOR',
+    'while': 'WHILE'
 }
 
-# Demais TOKENS
+# Lista de tokens
 tokens = [
     'EQUALS', 'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'POWER',
     'LPAREN', 'RPAREN', 'LT', 'LE', 'GT', 'GE', 'NE',
-    'COMMA', 'SEMI', 'INTEGER', 'FLOATN', 'STRING',
-    'ID', 'SEMICOLON', 'RBRACES', 'LBRACES'
+    'COMMA', 'SEMICOLON', 'RBRACES', 'LBRACES',
+    'INTEGER', 'FLOATN', 'STRING', 'ID'
 ] + list(reserved.values())
 
-t_ignore = ' \t\n'
+# Ignorar espaços, tabs e quebras de linha
+t_ignore = ' \t\r'
 
-def t_REM(t):
-    r'REM .*'
-    return t
 
 # Definição de Identificador com expressão regular r'<expressão>'
 def t_ID(t):
-    r'[a-zA-Z][a-zA-Z0-9]*'
-    t.type = reserved.get(t.value,'ID')    # Check for reserved words
+    r'[a-zA-Z_][a-zA-Z0-9_]*'
+    t.type = reserved.get(t.value, 'ID')
     return t
 
+# Regras de tokens
 t_EQUALS = r'='
 t_PLUS = r'\+'
 t_MINUS = r'-'
@@ -52,24 +54,32 @@ t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_RBRACES = r'\}'
 t_LBRACES = r'\{'
-t_SEMICOLON = r'\;'
+t_SEMICOLON = r';'
 t_LT = r'<'
 t_LE = r'<='
 t_GT = r'>'
 t_GE = r'>='
 t_NE = r'!='
-t_COMMA = r'\,'
-t_SEMI = r';'
+t_COMMA = r','
+t_FLOATN = r'((\d*\.\d+)([eE][\+-]?\d+)?|([1-9]\d*[eE][\+-]?\d+))'
 t_INTEGER = r'\d+'
-t_FLOATN = r'((\d*\.\d+)(E[\+-]?\d+)?|([1-9]\d*E[\+-]?\d+))'
 t_STRING = r'\".*?\"'
 
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
 def t_error(t):
-    print("Illegal character %s" % t.value[0])
+    print(f"Illegal character '{t.value[0]}'")
     t.lexer.skip(1)
 
 # Constroi o analisador léxico
 lexer = lex.lex()
+
+# ---------------------
+# Analisador Sintático
+# ---------------------
 
 def p_inicio(p):
     'inicio : INT MAIN LPAREN RPAREN blocoprincipal'
@@ -82,73 +92,84 @@ def p_blocoprincipal(p):
 
 def p_corpo(p):
     '''corpo : comando
-              | corpo comando'''
+             | corpo comando'''
 
 def p_comando(p):
-    '''comando : declaracoes | bloco_if | bloco_while '''
+    '''comando : declaracoes
+               | atribuicao
+               | bloco_if
+               | bloco_while
+               | bloco_for'''
 
 def p_operadores_comparativos(p):
-    'operadores_comparativos : LT | LE | GT | GE | NE | EQUALS'
+    '''operadores_comparativos : LT
+                               | LE
+                               | GT
+                               | GE
+                               | NE
+                               | EQUALS'''
+    p[0] = p[1]
 
 def p_declaracao_linha(p):
-    '''declaracao_linha : TI operadores_comparativos values
-        | tipos ID operadores_comparativos ID'''
+    '''declaracao_linha : tipo operadores_comparativos values
+                        | tipo ID operadores_comparativos ID'''
 
 def p_declaracoes(p):
     '''declaracoes : tipo ID SEMICOLON
-                    | tipo ID EQUALS declaracoes SEMICOLON
-                    | tipo declaracao_linha SEMICOLON
-                    | tipo ID EQUALS values operadores_comparativos values
-                    | tipo ID EQUALS ID operadores_comparativos values
-                    | tipo ID EQUALS ID operadores_comparativos ID'''
+                   | tipo ID EQUALS values SEMICOLON
+                   | tipo ID EQUALS ID SEMICOLON'''
     print("reconheci declaração")
-    ## analise semântica:
-    print(str(p))
-    if(p[2] in simbolos):
-        if(p[1] != simbolos[p[2]].tipo):
-            print("ERRO Semantico: Tipo incompatível para a variável " + p[2] + ": " + simbolos[p[2]].tipo +" esperado, recebeu: " + p[1])
-        else:
-            print("ERRO Semantico: Variável " + p[2] + " já declarada")
+    if p[2] in simbolos:
+        print(f"ERRO Semantico: Variável {p[2]} já declarada")
     else:
-        simbolos[p[2]] = {'valor': None, 'tipo': p[1], 'contexto':get_contexto()}
+        simbolos[p[2]] = {'valor': None, 'tipo': p[1], 'contexto': get_contexto()}
         print(str(simbolos[p[2]]))
 
 def p_atribuicao(p):
-    'atribuicao : ID EQUALS ID | ID EQUALS values | ID PLUS PLUS | ID MINUS MINUS'
+    '''atribuicao : ID EQUALS ID SEMICOLON
+                  | ID EQUALS values SEMICOLON'''
     print("reconheci atribuicao")
 
+def p_bloco_if(p):
+    'bloco_if : IF LPAREN declaracoes RPAREN LBRACES corpo RBRACES SEMICOLON'
+    print("reconheci IF")
+
+def p_bloco_while(p):
+    'bloco_while : WHILE LPAREN declaracoes RPAREN LBRACES corpo RBRACES SEMICOLON'
+    print("reconheci WHILE")
+
 def p_bloco_for(p):
-    'for : FOR LPAREN p_condicao_for RPAREN LBRACES declaracoes RBRACES SEMICOLON'
+    'bloco_for : FOR LPAREN condicao_for RPAREN LBRACES corpo RBRACES SEMICOLON'
     print("reconheci FOR")
 
 def p_condicao_for(p):
-    '''condicao_for : declaracao_linha SEMICOLON ID operadores_comparativos VALUES
-        | declaracao_linha SEMICOLON VALUES operadores_comparativos ID
-    '''
+    '''condicao_for : declaracao_linha SEMICOLON ID operadores_comparativos values
+                    | declaracao_linha SEMICOLON values operadores_comparativos ID'''
 
-def p_if(p):
-    'if : IF LPAREN declaracoes RPAREN LBRACES declaracoes RBRACES SEMICOLON'
-    print("reconheci IF")
-
-def p_while(p):
-    'while : WHILE LPAREN declaracoes RPAREN LBRACES declaracoes RBRACES SEMICOLON'
-    print("reconheci WHILE")
-
-def p_tipos(p):
-    '''tipos : INT
-            | CHAR
-            | FLOAT'''
+def p_tipo(p):
+    '''tipo : INT
+            | FLOAT
+            | CHAR'''
     p[0] = p[1]
 
 def p_values(p):
     '''values : INTEGER
-            | STRING
-            | FLOATN'''
+              | STRING
+              | FLOATN
+              | ID'''
     p[0] = p[1]
 
+def p_error(p):
+    if p:
+        print(f"Erro de sintaxe na linha {p.lineno}, token: {p.type}, valor: {p.value}")
+    else:
+        print("Erro de sintaxe no final do arquivo")
 
-import ply.yacc as yacc
-yacc.yacc()
+parser = yacc.yacc()
+
+# ---------------------
+# Execução
+# ---------------------
 
 import logging
 logging.basicConfig(
@@ -157,14 +178,16 @@ logging.basicConfig(
 )
 
 # entrada do arquivo
-file = open("input.txt",'r')
-data = file.read()
+with open("input.txt", "r") as file:
+    data = file.read()
 
 # string de teste como entrada do analisador léxico
 lexer.input(data)
 
 # Tokenização
+print("Tokens:")
 for tok in lexer:
      print(tok)
 
-yacc.parse(data, debug=logging.getLogger())
+print("\nParsing:")
+parser.parse(data, debug=logging.getLogger())

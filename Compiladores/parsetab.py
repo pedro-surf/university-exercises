@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COMMA DIVIDE ELSE EQUALS FLOAT FLOATN GE GT ID IF INT INTEGER LBRACES LE LPAREN LT MAIN MINUS NE PLUS POWER RBRACES RPAREN SEMI SEMICOLON STRING TIMESinicio : INT MAIN LPAREN RPAREN blocoprincipalblocoprincipal : LBRACES declaracoes RBRACES SEMICOLONdeclaracoes : tipo ID SEMICOLON\n                    | tipo ID SEMICOLON declaracoestipo : INT\n            | FLOAT '
+_lr_signature = 'CHAR COMMA DIVIDE ELSE EQUALS FLOAT FLOATN FOR GE GT ID IF INT INTEGER LBRACES LE LPAREN LT MAIN MINUS NE PLUS POWER RBRACES RPAREN SEMICOLON STRING TIMES WHILEinicio : INT MAIN LPAREN RPAREN blocoprincipalblocoprincipal : LBRACES corpo RBRACES SEMICOLONcorpo : comando\n| corpo comandocomando : declaracoes\n| atribuicao\n| bloco_if\n| bloco_while\n| bloco_foroperadores_comparativos : LT\n| LE\n| GT\n| GE\n| NE\n| EQUALSdeclaracao_linha : tipo operadores_comparativos values\n| tipo ID operadores_comparativos IDdeclaracoes : tipo ID SEMICOLON\n| tipo ID EQUALS values SEMICOLON\n| tipo ID EQUALS ID SEMICOLONatribuicao : ID EQUALS ID SEMICOLON\n| ID EQUALS values SEMICOLONbloco_if : IF LPAREN declaracoes RPAREN LBRACES corpo RBRACES SEMICOLONbloco_while : WHILE LPAREN declaracoes RPAREN LBRACES corpo RBRACES SEMICOLONbloco_for : FOR LPAREN condicao_for RPAREN LBRACES corpo RBRACES SEMICOLONcondicao_for : declaracao_linha SEMICOLON ID operadores_comparativos values\n| declaracao_linha SEMICOLON values operadores_comparativos IDtipo : INT\n| FLOAT\n| CHARvalues : INTEGER\n| STRING\n| FLOATN\n| ID'
     
-_lr_action_items = {'INT':([0,7,15,],[2,10,10,]),'$end':([1,6,14,],[0,-1,-2,]),'MAIN':([2,],[3,]),'LPAREN':([3,],[4,]),'RPAREN':([4,],[5,]),'LBRACES':([5,],[7,]),'FLOAT':([7,15,],[11,11,]),'RBRACES':([8,15,16,],[12,-3,-4,]),'ID':([9,10,11,],[13,-5,-6,]),'SEMICOLON':([12,13,],[14,15,]),}
+_lr_action_items = {'INT':([0,7,8,9,10,11,12,13,14,24,27,28,29,31,45,46,59,60,61,62,63,69,70,71,80,81,82,],[2,20,20,-3,-5,-6,-7,-8,-9,-4,20,20,20,-18,-21,-22,-20,-19,20,20,20,20,20,20,-23,-24,-25,]),'$end':([1,6,30,],[0,-1,-2,]),'MAIN':([2,],[3,]),'LPAREN':([3,17,18,19,],[4,27,28,29,]),'RPAREN':([4,31,35,36,37,38,39,40,59,60,67,78,79,],[5,-18,-31,-32,-33,47,48,49,-20,-19,-34,-26,-27,]),'LBRACES':([5,47,48,49,],[7,61,62,63,]),'ID':([7,8,9,10,11,12,13,14,15,20,21,22,24,26,31,32,42,45,46,50,51,53,54,55,56,57,58,59,60,61,62,63,68,69,70,71,72,73,80,81,82,],[16,16,-3,-5,-6,-7,-8,-9,25,-28,-29,-30,-4,33,-18,43,52,-21,-22,64,67,-10,-11,-12,-13,-14,-15,-20,-19,16,16,16,74,16,16,16,67,79,-23,-24,-25,]),'IF':([7,8,9,10,11,12,13,14,24,31,45,46,59,60,61,62,63,69,70,71,80,81,82,],[17,17,-3,-5,-6,-7,-8,-9,-4,-18,-21,-22,-20,-19,17,17,17,17,17,17,-23,-24,-25,]),'WHILE':([7,8,9,10,11,12,13,14,24,31,45,46,59,60,61,62,63,69,70,71,80,81,82,],[18,18,-3,-5,-6,-7,-8,-9,-4,-18,-21,-22,-20,-19,18,18,18,18,18,18,-23,-24,-25,]),'FOR':([7,8,9,10,11,12,13,14,24,31,45,46,59,60,61,62,63,69,70,71,80,81,82,],[19,19,-3,-5,-6,-7,-8,-9,-4,-18,-21,-22,-20,-19,19,19,19,19,19,19,-23,-24,-25,]),'FLOAT':([7,8,9,10,11,12,13,14,24,27,28,29,31,45,46,59,60,61,62,63,69,70,71,80,81,82,],[21,21,-3,-5,-6,-7,-8,-9,-4,21,21,21,-18,-21,-22,-20,-19,21,21,21,21,21,21,-23,-24,-25,]),'CHAR':([7,8,9,10,11,12,13,14,24,27,28,29,31,45,46,59,60,61,62,63,69,70,71,80,81,82,],[22,22,-3,-5,-6,-7,-8,-9,-4,22,22,22,-18,-21,-22,-20,-19,22,22,22,22,22,22,-23,-24,-25,]),'RBRACES':([8,9,10,11,12,13,14,24,31,45,46,59,60,69,70,71,80,81,82,],[23,-3,-5,-6,-7,-8,-9,-4,-18,-21,-22,-20,-19,75,76,77,-23,-24,-25,]),'EQUALS':([16,20,21,22,25,35,36,37,42,52,64,65,],[26,-28,-29,-30,32,-31,-32,-33,58,58,58,58,]),'LT':([20,21,22,35,36,37,42,52,64,65,],[-28,-29,-30,-31,-32,-33,53,53,53,53,]),'LE':([20,21,22,35,36,37,42,52,64,65,],[-28,-29,-30,-31,-32,-33,54,54,54,54,]),'GT':([20,21,22,35,36,37,42,52,64,65,],[-28,-29,-30,-31,-32,-33,55,55,55,55,]),'GE':([20,21,22,35,36,37,42,52,64,65,],[-28,-29,-30,-31,-32,-33,56,56,56,56,]),'NE':([20,21,22,35,36,37,42,52,64,65,],[-28,-29,-30,-31,-32,-33,57,57,57,57,]),'SEMICOLON':([23,25,33,34,35,36,37,41,43,44,66,67,74,75,76,77,],[30,31,45,46,-31,-32,-33,50,59,60,-16,-34,-17,80,81,82,]),'INTEGER':([26,32,50,51,53,54,55,56,57,58,72,],[35,35,35,35,-10,-11,-12,-13,-14,-15,35,]),'STRING':([26,32,50,51,53,54,55,56,57,58,72,],[36,36,36,36,-10,-11,-12,-13,-14,-15,36,]),'FLOATN':([26,32,50,51,53,54,55,56,57,58,72,],[37,37,37,37,-10,-11,-12,-13,-14,-15,37,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'inicio':([0,],[1,]),'blocoprincipal':([5,],[6,]),'declaracoes':([7,15,],[8,16,]),'tipo':([7,15,],[9,9,]),}
+_lr_goto_items = {'inicio':([0,],[1,]),'blocoprincipal':([5,],[6,]),'corpo':([7,61,62,63,],[8,69,70,71,]),'comando':([7,8,61,62,63,69,70,71,],[9,24,9,9,9,24,24,24,]),'declaracoes':([7,8,27,28,61,62,63,69,70,71,],[10,10,38,39,10,10,10,10,10,10,]),'atribuicao':([7,8,61,62,63,69,70,71,],[11,11,11,11,11,11,11,11,]),'bloco_if':([7,8,61,62,63,69,70,71,],[12,12,12,12,12,12,12,12,]),'bloco_while':([7,8,61,62,63,69,70,71,],[13,13,13,13,13,13,13,13,]),'bloco_for':([7,8,61,62,63,69,70,71,],[14,14,14,14,14,14,14,14,]),'tipo':([7,8,27,28,29,61,62,63,69,70,71,],[15,15,15,15,42,15,15,15,15,15,15,]),'values':([26,32,50,51,72,],[34,44,65,66,78,]),'condicao_for':([29,],[40,]),'declaracao_linha':([29,],[41,]),'operadores_comparativos':([42,52,64,65,],[51,68,72,73,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,10 +27,38 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> inicio","S'",1,None,None,None),
-  ('inicio -> INT MAIN LPAREN RPAREN blocoprincipal','inicio',5,'p_inicio','sint and sem meu.py',74),
-  ('blocoprincipal -> LBRACES declaracoes RBRACES SEMICOLON','blocoprincipal',4,'p_blocoprincipal','sint and sem meu.py',79),
-  ('declaracoes -> tipo ID SEMICOLON','declaracoes',3,'p_declaracoes','sint and sem meu.py',83),
-  ('declaracoes -> tipo ID SEMICOLON declaracoes','declaracoes',4,'p_declaracoes','sint and sem meu.py',84),
-  ('tipo -> INT','tipo',1,'p_tipo','sint and sem meu.py',98),
-  ('tipo -> FLOAT','tipo',1,'p_tipo','sint and sem meu.py',99),
+  ('inicio -> INT MAIN LPAREN RPAREN blocoprincipal','inicio',5,'p_inicio','sint and sem meu.py',85),
+  ('blocoprincipal -> LBRACES corpo RBRACES SEMICOLON','blocoprincipal',4,'p_blocoprincipal','sint and sem meu.py',90),
+  ('corpo -> comando','corpo',1,'p_corpo','sint and sem meu.py',94),
+  ('corpo -> corpo comando','corpo',2,'p_corpo','sint and sem meu.py',95),
+  ('comando -> declaracoes','comando',1,'p_comando','sint and sem meu.py',98),
+  ('comando -> atribuicao','comando',1,'p_comando','sint and sem meu.py',99),
+  ('comando -> bloco_if','comando',1,'p_comando','sint and sem meu.py',100),
+  ('comando -> bloco_while','comando',1,'p_comando','sint and sem meu.py',101),
+  ('comando -> bloco_for','comando',1,'p_comando','sint and sem meu.py',102),
+  ('operadores_comparativos -> LT','operadores_comparativos',1,'p_operadores_comparativos','sint and sem meu.py',105),
+  ('operadores_comparativos -> LE','operadores_comparativos',1,'p_operadores_comparativos','sint and sem meu.py',106),
+  ('operadores_comparativos -> GT','operadores_comparativos',1,'p_operadores_comparativos','sint and sem meu.py',107),
+  ('operadores_comparativos -> GE','operadores_comparativos',1,'p_operadores_comparativos','sint and sem meu.py',108),
+  ('operadores_comparativos -> NE','operadores_comparativos',1,'p_operadores_comparativos','sint and sem meu.py',109),
+  ('operadores_comparativos -> EQUALS','operadores_comparativos',1,'p_operadores_comparativos','sint and sem meu.py',110),
+  ('declaracao_linha -> tipo operadores_comparativos values','declaracao_linha',3,'p_declaracao_linha','sint and sem meu.py',114),
+  ('declaracao_linha -> tipo ID operadores_comparativos ID','declaracao_linha',4,'p_declaracao_linha','sint and sem meu.py',115),
+  ('declaracoes -> tipo ID SEMICOLON','declaracoes',3,'p_declaracoes','sint and sem meu.py',118),
+  ('declaracoes -> tipo ID EQUALS values SEMICOLON','declaracoes',5,'p_declaracoes','sint and sem meu.py',119),
+  ('declaracoes -> tipo ID EQUALS ID SEMICOLON','declaracoes',5,'p_declaracoes','sint and sem meu.py',120),
+  ('atribuicao -> ID EQUALS ID SEMICOLON','atribuicao',4,'p_atribuicao','sint and sem meu.py',129),
+  ('atribuicao -> ID EQUALS values SEMICOLON','atribuicao',4,'p_atribuicao','sint and sem meu.py',130),
+  ('bloco_if -> IF LPAREN declaracoes RPAREN LBRACES corpo RBRACES SEMICOLON','bloco_if',8,'p_bloco_if','sint and sem meu.py',134),
+  ('bloco_while -> WHILE LPAREN declaracoes RPAREN LBRACES corpo RBRACES SEMICOLON','bloco_while',8,'p_bloco_while','sint and sem meu.py',138),
+  ('bloco_for -> FOR LPAREN condicao_for RPAREN LBRACES corpo RBRACES SEMICOLON','bloco_for',8,'p_bloco_for','sint and sem meu.py',142),
+  ('condicao_for -> declaracao_linha SEMICOLON ID operadores_comparativos values','condicao_for',5,'p_condicao_for','sint and sem meu.py',146),
+  ('condicao_for -> declaracao_linha SEMICOLON values operadores_comparativos ID','condicao_for',5,'p_condicao_for','sint and sem meu.py',147),
+  ('tipo -> INT','tipo',1,'p_tipo','sint and sem meu.py',150),
+  ('tipo -> FLOAT','tipo',1,'p_tipo','sint and sem meu.py',151),
+  ('tipo -> CHAR','tipo',1,'p_tipo','sint and sem meu.py',152),
+  ('values -> INTEGER','values',1,'p_values','sint and sem meu.py',156),
+  ('values -> STRING','values',1,'p_values','sint and sem meu.py',157),
+  ('values -> FLOATN','values',1,'p_values','sint and sem meu.py',158),
+  ('values -> ID','values',1,'p_values','sint and sem meu.py',159),
 ]
