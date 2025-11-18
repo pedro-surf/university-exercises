@@ -6,3 +6,6 @@ It includes a variety of languages and contexts, from low-level programming to w
 # Caveat
 Many of these projects are 5+ years old, dating from 2018. The commits dates aren't accurate, as these were private projects that I'm progressively incorporating into this repo.
 Therefore, it's necessary to keep a note that I was beginning my programming journey back then, and a lot of code here might be missing best practices, design patterns, clean code, SOLID, DRY, etc.
+
+# Why is it interesting?
+Since code quality is questionable here, the purpose of this isn't to showcase or demonstrate my skills, but to keep track of my college projects and progress.
