@@ -21,7 +21,7 @@ void generateWaves() {
     waveSquare[i] = (i < NUM_SAMPLES / 2) ? 255 : 0;
   }
 
-  // Seno
+  // Senoide, mapeia [−1,1] para [0,2] e multiplica por 127.5 para obter [0,255]
   for (int i = 0; i < NUM_SAMPLES; i++) {
     waveSine[i] = (uint8_t)((sin(2 * M_PI * i / NUM_SAMPLES) + 1) * 127.5);
   }
@@ -31,7 +31,7 @@ void generateWaves() {
     if (i < NUM_SAMPLES / 2)
       waveTri[i] = (uint8_t)(i * 2);
     else
-      waveTri[i] = (uint8_t)(255 - (i - 128) * 2);
+      waveTri[i] = (uint8_t)(255 - ((i - (NUM_SAMPLES / 2)) * 2));
   }
 
   // Serra
