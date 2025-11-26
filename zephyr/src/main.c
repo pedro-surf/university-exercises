@@ -19,9 +19,8 @@ static struct gpio_callback button_cb_data;
 
 K_SEM_DEFINE(button_sem, 0, 1); // 0 inicial, 1 máximo
 
-// Variável Compartilhada: Tempo de delay do LED (em ms)
 volatile int blink_delay_ms = 500;
-K_MUTEX_DEFINE(delay_mutex); // Protege a variável compartilhada
+K_MUTEX_DEFINE(delay_mutex);
 
 void button_pressed_cb(const struct device *dev, struct gpio_callback *cb, uint32_t pins) 
 {
@@ -44,28 +43,24 @@ void blinker_thread_entry(void)
         // --- Verifica se há um sinal do botão ---
         if (k_sem_take(&button_sem, K_NO_WAIT) == 0)
         {
-            // Se o semáforo foi sinalizado (botão pressionado)
             printk("[CTRL] Botao pressionado! Alterando velocidade.\n");
 
-            // --- Seção Crítica (Acesso a blink_delay_ms) ---
             k_mutex_lock(&delay_mutex, K_FOREVER);
 
-            if (blink_delay_ms == 500)
+            if (blink_delay_ms == 100)
             {
-                blink_delay_ms = 100; // Piscar mais rápido
+                blink_delay_ms = 500;
             }
             else
             {
-                blink_delay_ms = 500; // Piscar mais lento (padrao)
+                blink_delay_ms -= 100;
             }
 
             k_mutex_unlock(&delay_mutex);
-            // --- Fim da Seção Crítica ---
 
             printk("[CTRL] Novo delay: %d ms.\n", blink_delay_ms);
         }
 
-        // --- Pisca o LED com o delay atual ---
         int current_delay;
         k_mutex_lock(&delay_mutex, K_FOREVER);
         current_delay = blink_delay_ms;
@@ -95,12 +90,10 @@ int main(void)
         return 0;
     }
 
-    // Configura o pino como entrada e habilita o Pull-up (padrão do BOOT)
     int ret = gpio_pin_configure_dt(&button, GPIO_INPUT | GPIO_PULL_UP);
     if (ret < 0)
         return 0;
 
-    // Habilita interrupção na borda de queda (pressionado)
     ret = gpio_pin_interrupt_configure_dt(&button, GPIO_INT_EDGE_TO_ACTIVE);
     if (ret < 0)
         return 0;
