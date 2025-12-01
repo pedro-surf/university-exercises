@@ -1,17 +1,31 @@
+// =============================================================
+// Projeto: Contador com 2 Displays de 7 segmentos (catodo comum)
+// Plataforma: ESP32 com ESP-IDF (C puro)
+// =============================================================
+
 #include <stdio.h>
 #include <string.h>
-#include "driver/gpio.h"
-#include "esp_timer.h"
+#include <stdlib.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/portmacro.h"
+#include "driver/gpio.h"
+#include "driver/uart.h"
+#include "esp_timer.h"
+#include <math.h>
 
-// ========================== CONFIGURAÇÕES ==========================
+#define UART_PORT_NUM      UART_NUM_0
+#define BUF_SIZE           1024
+
+// ===========================
+// Mapeamento dos pinos
+// GPIOs do DAC R-2R (8 bits)
+static const int dac_pins[8] = { GPIO_NUM_4, GPIO_NUM_5, GPIO_NUM_18, GPIO_NUM_19, GPIO_NUM_21, GPIO_NUM_22, GPIO_NUM_23, GPIO_NUM_25 };
+
 
 // Quantidade de samples por período da onda
 #define NUM_SAMPLES 64
 
-// GPIOs do DAC R-2R (8 bits)
-static const int dac_pins[8] = { 4, 5, 18, 19, 21, 22, 23, 25 };
 
 // ========================== FORMAS DE ONDA ========================
 
@@ -22,7 +36,6 @@ static const uint8_t wave_square[NUM_SAMPLES] = {
 
 static const uint8_t wave_saw[NUM_SAMPLES] = {
     #define SAW_STEP (256/NUM_SAMPLES)
-    #include <math.h>
 };
  
 static uint8_t wave_tri[NUM_SAMPLES];
