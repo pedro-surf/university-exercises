@@ -1,0 +1,60 @@
+import { CodeSurfer } from "codesurfer"
+import sketch from "./sketch.ino"
+import BigButton from "./src/BigButton.jsx"
+import { useState } from "react"
+
+# Pós-processamento com LEDs
+
+---
+
+# Lógica dos LEDs
+
+- 0 → Verde (Idle)  
+- 1 → Vermelho (Pop)  
+- 2 → Azul (Riding)
+
+export function LedSlide() {
+  const steps = [
+    {
+      focus: [166, 186],
+      label: "Detectando PREDICTION",
+      color: "#999"
+    },
+    {
+      focus: [230, 238],
+      label: "Idle → Verde",
+      color: "green"
+    },
+    {
+      focus: [238, 249],
+      label: "Pop → Vermelho",
+      color: "red"
+    },
+    {
+      focus: [249, 262],
+      label: "Riding → Azul",
+      color: "blue"
+    }
+  ]
+
+  const [step, setStep] = useState(0)
+
+  return (
+    <div>
+      <CodeSurfer
+        code={sketch}
+        lang="cpp"
+        focus={steps[step].focus}
+        onFocusChange={(i) => setStep(i)}
+        steps={steps.length}
+      />
+
+      <BigButton
+        color={steps[step].color}
+        label={steps[step].label}
+      />
+    </div>
+  )
+}
+
+<LedSlide />
