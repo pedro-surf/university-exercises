@@ -1,0 +1,13 @@
+
+[
+    { "id": "airport", "word": "airport" },
+    { "id": "passport", "word": "passport" },
+    { "id": "hotel", "word": "hotel" },
+    { "id": "beach", "word": "beach" },
+    { "id": "ticket", "word": "ticket" },
+    { "id": "backpack", "word": "backpack" },
+    { "id": "map", "word": "map" },
+    { "id": "train", "word": "train" },
+    { "id": "bus", "word": "bus" },
+    { "id": "adventure", "word": "adventure" }
+  ]

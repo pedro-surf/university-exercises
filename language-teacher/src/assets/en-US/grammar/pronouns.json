@@ -1,0 +1,13 @@
+
+[
+    { "id": "i", "word": "I" },
+    { "id": "you", "word": "you" },
+    { "id": "he", "word": "he" },
+    { "id": "she", "word": "she" },
+    { "id": "we", "word": "we" },
+    { "id": "they", "word": "they" },
+    { "id": "me", "word": "me" },
+    { "id": "my", "word": "my" },
+    { "id": "your", "word": "your" },
+    { "id": "our", "word": "our" }
+  ]

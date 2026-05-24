@@ -1,0 +1,46 @@
+[
+    {
+        "id": "wave",
+        "word": "vlna"
+    },
+    {
+        "id": "board",
+        "word": "prkno"
+    },
+    {
+        "id": "ocean",
+        "word": "oceán"
+    },
+    {
+        "id": "beach",
+        "word": "pláž"
+    },
+    {
+        "id": "reef",
+        "word": "útes"
+    },
+    {
+        "id": "rock",
+        "word": "skála"
+    },
+    {
+        "id": "barrel",
+        "word": "tubus"
+    },
+    {
+        "id": "duck-dive",
+        "word": "duck dive"
+    },
+    {
+        "id": "lineup",
+        "word": "lineup"
+    },
+    {
+        "id": "tide",
+        "word": "příliv"
+    },
+    {
+        "id": "swell",
+        "word": "vlnění"
+    }
+]

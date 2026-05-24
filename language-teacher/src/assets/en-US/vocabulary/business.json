@@ -1,0 +1,13 @@
+
+[
+    { "id": "meeting", "word": "meeting" },
+    { "id": "office", "word": "office" },
+    { "id": "company", "word": "company" },
+    { "id": "salary", "word": "salary" },
+    { "id": "manager", "word": "manager" },
+    { "id": "project", "word": "project" },
+    { "id": "contract", "word": "contract" },
+    { "id": "client", "word": "client" },
+    { "id": "startup", "word": "startup" },
+    { "id": "interview", "word": "interview" }
+  ]

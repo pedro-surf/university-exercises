@@ -1,0 +1,42 @@
+[
+    {
+        "id": "wave",
+        "word": "vague"
+    },
+    {
+        "id": "board",
+        "word": "planche"
+    },
+    {
+        "id": "ocean",
+        "word": "océan"
+    },
+    {
+        "id": "beach",
+        "word": "plage"
+    },
+    {
+        "id": "reef",
+        "word": "récif"
+    },
+    {
+        "id": "barrel",
+        "word": "tube"
+    },
+    {
+        "id": "duck-dive",
+        "word": "duck dive"
+    },
+    {
+        "id": "lineup",
+        "word": "lineup"
+    },
+    {
+        "id": "tide",
+        "word": "marée"
+    },
+    {
+        "id": "swell",
+        "word": "houle"
+    }
+]

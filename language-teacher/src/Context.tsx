@@ -53,17 +53,49 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const loadTranslations = async () => {
       try {
-        const vocabulary = await loadTranslation(targetLanguage, "grammar/pronouns");
-        const verbs = await loadTranslation(targetLanguage, "grammar/pronouns");
-
-        setTranslations({ vocabulary, verbs });
+        const [
+          verbs,
+          pronouns,
+          possessives,
+          adjectives,
+          articles,
+          prepositions,
+          food,
+          travel,
+          business,
+          surfing,
+        ] = await Promise.all([
+          loadTranslation(targetLanguage, "grammar/verbs"),
+          loadTranslation(targetLanguage, "grammar/pronouns"),
+          loadTranslation(targetLanguage, "grammar/possessives"),
+          loadTranslation(targetLanguage, "grammar/adjectives"),
+          loadTranslation(targetLanguage, "grammar/articles"),
+          loadTranslation(targetLanguage, "grammar/prepositions"),
+          loadTranslation(targetLanguage, "vocabulary/food"),
+          loadTranslation(targetLanguage, "vocabulary/travel"),
+          loadTranslation(targetLanguage, "vocabulary/business"),
+          loadTranslation(targetLanguage, "vocabulary/surfing"),
+        ])
+        setTranslations({
+          possessives,
+          verbs,
+          pronouns,
+          adjectives,
+          articles,
+          prepositions,
+          food,
+          travel,
+          business,
+          surfing,
+        });
       } catch (error) {
         console.error("Error loading translations:", error);
         setTranslations({ vocabulary: null, verbs: null });
       }
     };
-
-    loadTranslations();
+    if (targetLanguage) {
+      loadTranslations();
+    }
   }, [targetLanguage]);
 
   return (

@@ -1,0 +1,82 @@
+[
+    {
+        "id": "to-be",
+        "word": "ser"
+    },
+    {
+        "id": "to-have",
+        "word": "ter"
+    },
+    {
+        "id": "to-go",
+        "word": "ir"
+    },
+    {
+        "id": "to-eat",
+        "word": "comer"
+    },
+    {
+        "id": "to-drink",
+        "word": "beber"
+    },
+    {
+        "id": "to-sleep",
+        "word": "dormir"
+    },
+    {
+        "id": "to-study",
+        "word": "estudar"
+    },
+    {
+        "id": "to-work",
+        "word": "trabalhar"
+    },
+    {
+        "id": "to-speak",
+        "word": "falar"
+    },
+    {
+        "id": "to-listen",
+        "word": "escutar"
+    },
+    {
+        "id": "to-see",
+        "word": "ver"
+    },
+    {
+        "id": "to-think",
+        "word": "pensar"
+    },
+    {
+        "id": "to-learn",
+        "word": "aprender"
+    },
+    {
+        "id": "to-write",
+        "word": "escrever"
+    },
+    {
+        "id": "to-read",
+        "word": "ler"
+    },
+    {
+        "id": "to-open",
+        "word": "abrir"
+    },
+    {
+        "id": "to-close",
+        "word": "fechar"
+    },
+    {
+        "id": "to-love",
+        "word": "amar"
+    },
+    {
+        "id": "to-like",
+        "word": "gostar"
+    },
+    {
+        "id": "to-live",
+        "word": "morar"
+    }
+]

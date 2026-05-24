@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useAppContext } from "../Context";
+import { languages } from "../constants/languages";
 
 type Props = {
   value: string;
@@ -12,23 +13,7 @@ const LanguageInput = ({ value, onChange }: Props) => {
     voices,
   } = useAppContext();
 
-  const languages = [
-    { code: "en-US", label: "English (US)" },
-    { code: "pt-BR", label: "Portuguese (Brazil)" },
-    { code: "es-ES", label: "Spanish (Spain)" },
-    { code: "fr-FR", label: "French" },
-    { code: "id-ID", label: "Indonesian" },
-    { code: "cs-CZ", label: "Czech" },
-    { code: "de-DE", label: "German" },
-    { code: "it-IT", label: "Italian" },
-    { code: "ja-JP", label: "Japanese" },
-    { code: "zh-CN", label: "Chinese (Mandarin)" },
-  ];
-
-
-
   const availableLanguages = useMemo(() => {
-
     return Array.from(
       new Set(voices.map((voice) => voice.lang))
     ).map((lang) => {
@@ -46,9 +31,9 @@ const LanguageInput = ({ value, onChange }: Props) => {
         onChange={(e) => onChange(e.target.value)}
         className="border rounded-xl px-3 py-2 bg-gray-100 w-full"
       >
-        {(languages || availableLanguages).map((lang) => (
+        {(availableLanguages).map((lang) => (
           <option key={lang.code} value={lang.code}>
-            {lang.label}
+            {languages[lang.label] ?? lang.label}
           </option>
         ))}
       </select>

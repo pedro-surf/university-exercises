@@ -1,0 +1,12 @@
+[
+    { "id": "happiness", "word": "happiness" },
+    { "id": "sadness", "word": "sadness" },
+    { "id": "anger", "word": "anger" },
+    { "id": "fear", "word": "fear" },
+    { "id": "love", "word": "love" },
+    { "id": "anxiety", "word": "anxiety" },
+    { "id": "peace", "word": "peace" },
+    { "id": "hope", "word": "hope" },
+    { "id": "motivation", "word": "motivation" },
+    { "id": "confidence", "word": "confidence" }
+  ]

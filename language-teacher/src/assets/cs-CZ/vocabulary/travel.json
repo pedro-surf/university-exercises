@@ -1,0 +1,42 @@
+[
+    {
+        "id": "airport",
+        "word": "letiště"
+    },
+    {
+        "id": "passport",
+        "word": "pas"
+    },
+    {
+        "id": "hotel",
+        "word": "hotel"
+    },
+    {
+        "id": "beach",
+        "word": "pláž"
+    },
+    {
+        "id": "ticket",
+        "word": "jízdenka"
+    },
+    {
+        "id": "backpack",
+        "word": "batoh"
+    },
+    {
+        "id": "map",
+        "word": "mapa"
+    },
+    {
+        "id": "train",
+        "word": "vlak"
+    },
+    {
+        "id": "bus",
+        "word": "autobus"
+    },
+    {
+        "id": "adventure",
+        "word": "dobrodružství"
+    }
+]

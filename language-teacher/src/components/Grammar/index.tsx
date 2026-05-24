@@ -1,42 +1,14 @@
 import React from "react";
-import PronounsTable from "./Pronouns";
+import GrammarTable from "./Table";
 import { useAppContext } from "../../Context";
 
 type GrammarCategory =
     | "pronouns"
     | "adjectives"
     | "articles"
-    | "prepositions";
-
-// type WordItem = {
-//     id: string;
-//     word: string;
-// };
-
-// type GrammarScreenProps = {
-//     originLanguageLabel: string;
-//     targetLanguageLabel: string;
-
-//     pronouns: {
-//         origin: WordItem[];
-//         target: WordItem[];
-//     };
-
-//     adjectives: {
-//         origin: WordItem[];
-//         target: WordItem[];
-//     };
-
-//     articles: {
-//         origin: WordItem[];
-//         target: WordItem[];
-//     };
-
-//     prepositions: {
-//         origin: WordItem[];
-//         target: WordItem[];
-//     };
-// };
+    | "prepositions"
+    | "possessives"
+    | "verbs";
 
 const MENU_ITEMS: {
     id: GrammarCategory;
@@ -69,12 +41,24 @@ const MENU_ITEMS: {
     ];
 
 export default function GrammarScreen() {
-    const { userLanguage: originLanguage, targetLanguage, translations: {
+    const { userLanguage: originLanguage, targetLanguage, english, translations: {
         pronouns,
         adjectives,
         articles,
         prepositions,
+        possessives,
+        verbs,
     } } = useAppContext();
+
+    const {
+        pronouns: englishPronouns,
+        adjectives: englishAdjectives,
+        articles: englishArticles,
+        prepositions: englishPrepositions,
+        possessives: englishPossessives,
+        verbs: englishVerbs,
+    } = english;
+
 
     const [selectedCategory, setSelectedCategory] =
         React.useState<GrammarCategory>(
@@ -107,6 +91,17 @@ export default function GrammarScreen() {
                     data: prepositions,
                 };
 
+            case "possessives":
+                return {
+                    title: "Possessives",
+                    data: possessives,
+                }
+            case "verbs":
+                return {
+                    title: "Verbs",
+                    data: verbs,
+                }
+
             default:
                 return {
                     title: "Pronouns",
@@ -115,7 +110,55 @@ export default function GrammarScreen() {
         }
     };
 
+    const getEnglishData = () => {
+        switch (selectedCategory) {
+            case "pronouns":
+                return {
+                    title: "Pronouns",
+                    data: englishPronouns,
+                };
+            case "adjectives":
+                return {
+                    title: "Adjectives",
+                    data: englishAdjectives,
+                };
+
+            case "articles":
+                return {
+                    title: "Articles",
+                    data: englishArticles,
+                };
+
+            case "prepositions":
+                return {
+                    title: "Prepositions",
+                    data: englishPrepositions,
+                };
+
+            case "possessives":
+                return {
+                    title: "Possessives",
+                    data: englishPossessives,
+                }
+            case "verbs":
+                return {
+                    title: "Verbs",
+                    data: verbs,
+                }
+
+            default:
+                return {
+                    title: "Pronouns",
+                    data: pronouns,
+                };
+
+        }
+    }
+
     const current = getCurrentData();
+
+    const en = getEnglishData();
+
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200">
@@ -157,7 +200,7 @@ export default function GrammarScreen() {
                     })}
                 </div>
 
-                <PronounsTable
+                <GrammarTable
                     title={current.title}
                     originLanguageLabel={
                         originLanguage
@@ -165,8 +208,8 @@ export default function GrammarScreen() {
                     targetLanguageLabel={
                         targetLanguage
                     }
-                    originPronouns={[{ id: "i", word: "I" }, { id: "you", word: "You" }, { id: "he", word: "He" }, { id: "she", word: "She" },]} 
-                    targetPronouns={[{ id: "i", word: "Eu" }, { id: "you", word: "Você" }, { id: "he", word: "Ele" }, { id: "she", word: "Ela" },]}
+                    originPronouns={current.data}
+                    targetPronouns={en.data}
                 />
             </div>
         </div>

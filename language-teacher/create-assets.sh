@@ -6,23 +6,19 @@ BASE_DIR="./src/assets"
 
 LANGUAGES=(
   "pt-BR"
-  "de-DE"
-  "en-US"
-  "en-GB"
-  "es-ES"
-  "es-US"
+  # "de-DE"
+  # "en-US"
+  # "es-ES"
   "fr-FR"
-  "hi-IN"
-  "id-ID"
-  "it-IT"
-  "ja-JP"
-  "ko-KR"
-  "nl-NL"
-  "pl-PL"
-  "ru-RU"
-  "zh-CN"
-  "zh-HK"
-  "zh-TW"
+  # "hi-IN"
+  # "id-ID"
+  # "it-IT"
+  # "ja-JP"
+  # "ko-KR"
+  # "nl-NL"
+  # "pl-PL"
+  # "ru-RU"
+  # "zh-TW"
   "cs-CZ"
 )
 
@@ -43,7 +39,6 @@ do
   mkdir -p "$BASE_DIR/$LANG/exercises/matching"
   mkdir -p "$BASE_DIR/$LANG/audio/words"
   mkdir -p "$BASE_DIR/$LANG/audio/sentences"
-  mkdir -p "$BASE_DIR/$LANG/translations"
 
   cat > "$BASE_DIR/$LANG/metadata.json" <<EOF
 {
@@ -52,7 +47,8 @@ do
   "nativeName": "$LANG",
   "direction": "ltr",
   "voice": "$LANG",
-  "flag": ""
+  "flag": "",
+  "createdAt": "$(date -Iseconds)"
 }
 EOF
 
@@ -69,6 +65,10 @@ EOF
 EOF
 
   cat > "$BASE_DIR/$LANG/grammar/prepositions.json" <<EOF
+[]
+EOF
+
+cat > "$BASE_DIR/$LANG/grammar/possessives.json" <<EOF
 []
 EOF
 
@@ -110,17 +110,6 @@ EOF
 }
 EOF
 
-  cat > "$BASE_DIR/$LANG/translations/en-US.json" <<EOF
-{}
-EOF
-
-  cat > "$BASE_DIR/$LANG/translations/fr-FR.json" <<EOF
-{}
-EOF
-
-  cat > "$BASE_DIR/$LANG/translations/cs-CZ.json" <<EOF
-{}
-EOF
 
 done
 

@@ -1,0 +1,42 @@
+[
+    {
+        "id": "happiness",
+        "word": "bonheur"
+    },
+    {
+        "id": "sadness",
+        "word": "tristesse"
+    },
+    {
+        "id": "anger",
+        "word": "colère"
+    },
+    {
+        "id": "fear",
+        "word": "peur"
+    },
+    {
+        "id": "love",
+        "word": "amour"
+    },
+    {
+        "id": "anxiety",
+        "word": "anxiété"
+    },
+    {
+        "id": "peace",
+        "word": "paix"
+    },
+    {
+        "id": "hope",
+        "word": "espoir"
+    },
+    {
+        "id": "motivation",
+        "word": "motivation"
+    },
+    {
+        "id": "confidence",
+        "word": "confiance"
+    }
+]

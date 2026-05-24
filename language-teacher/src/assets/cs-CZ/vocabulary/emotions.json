@@ -1,0 +1,42 @@
+[
+    {
+        "id": "happiness",
+        "word": "štěstí"
+    },
+    {
+        "id": "sadness",
+        "word": "smutek"
+    },
+    {
+        "id": "anger",
+        "word": "hněv"
+    },
+    {
+        "id": "fear",
+        "word": "strach"
+    },
+    {
+        "id": "love",
+        "word": "láska"
+    },
+    {
+        "id": "anxiety",
+        "word": "úzkost"
+    },
+    {
+        "id": "peace",
+        "word": "mír"
+    },
+    {
+        "id": "hope",
+        "word": "naděje"
+    },
+    {
+        "id": "motivation",
+        "word": "motivace"
+    },
+    {
+        "id": "confidence",
+        "word": "sebevědomí"
+    }
+]

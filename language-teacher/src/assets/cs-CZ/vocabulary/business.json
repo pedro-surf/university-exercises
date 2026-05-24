@@ -1,0 +1,42 @@
+[
+    {
+        "id": "meeting",
+        "word": "schůzka"
+    },
+    {
+        "id": "office",
+        "word": "kancelář"
+    },
+    {
+        "id": "company",
+        "word": "společnost"
+    },
+    {
+        "id": "salary",
+        "word": "plat"
+    },
+    {
+        "id": "manager",
+        "word": "manažer"
+    },
+    {
+        "id": "project",
+        "word": "projekt"
+    },
+    {
+        "id": "contract",
+        "word": "smlouva"
+    },
+    {
+        "id": "client",
+        "word": "klient"
+    },
+    {
+        "id": "startup",
+        "word": "startup"
+    },
+    {
+        "id": "interview",
+        "word": "pohovor"
+    }
+]

@@ -1,0 +1,82 @@
+[
+    {
+        "id": "to-be",
+        "word": "být"
+    },
+    {
+        "id": "to-have",
+        "word": "mít"
+    },
+    {
+        "id": "to-go",
+        "word": "jít"
+    },
+    {
+        "id": "to-eat",
+        "word": "jíst"
+    },
+    {
+        "id": "to-drink",
+        "word": "pít"
+    },
+    {
+        "id": "to-sleep",
+        "word": "spát"
+    },
+    {
+        "id": "to-study",
+        "word": "studovat"
+    },
+    {
+        "id": "to-work",
+        "word": "pracovat"
+    },
+    {
+        "id": "to-speak",
+        "word": "mluvit"
+    },
+    {
+        "id": "to-listen",
+        "word": "poslouchat"
+    },
+    {
+        "id": "to-see",
+        "word": "vidět"
+    },
+    {
+        "id": "to-think",
+        "word": "myslet"
+    },
+    {
+        "id": "to-learn",
+        "word": "učit se"
+    },
+    {
+        "id": "to-write",
+        "word": "psát"
+    },
+    {
+        "id": "to-read",
+        "word": "číst"
+    },
+    {
+        "id": "to-open",
+        "word": "otevřít"
+    },
+    {
+        "id": "to-close",
+        "word": "zavřít"
+    },
+    {
+        "id": "to-love",
+        "word": "milovat"
+    },
+    {
+        "id": "to-like",
+        "word": "mít rád"
+    },
+    {
+        "id": "to-live",
+        "word": "bydlet"
+    }
+]

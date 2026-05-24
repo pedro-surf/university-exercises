@@ -1,0 +1,22 @@
+[
+    { "id": "to-be", "word": "be" },
+    { "id": "to-have", "word": "have" },
+    { "id": "to-go", "word": "go" },
+    { "id": "to-eat", "word": "eat" },
+    { "id": "to-drink", "word": "drink" },
+    { "id": "to-sleep", "word": "sleep" },
+    { "id": "to-study", "word": "study" },
+    { "id": "to-work", "word": "work" },
+    { "id": "to-speak", "word": "speak" },
+    { "id": "to-listen", "word": "listen" },
+    { "id": "to-see", "word": "see" },
+    { "id": "to-think", "word": "think" },
+    { "id": "to-learn", "word": "learn" },
+    { "id": "to-write", "word": "write" },
+    { "id": "to-read", "word": "read" },
+    { "id": "to-open", "word": "open" },
+    { "id": "to-close", "word": "close" },
+    { "id": "to-love", "word": "love" },
+    { "id": "to-like", "word": "like" },
+    { "id": "to-live", "word": "live" }
+  ]

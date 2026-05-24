@@ -1,10 +1,36 @@
-export const loadTranslation = async (language: string, file: string) => {
-    try {
-        console.log(`Loading translation file: ${file} for language: ${language}`);
-        const module = await import(`../../assets/${language}/${file}.json`);
-        return module.default;
-    } catch (error) {
-        console.error(`Error loading translation file: ${file} for language: ${language}`, error);
-        return null;
-    }
-};
+const translationModules =
+    import.meta.glob(
+        "../assets/**/*.json"
+    );
+
+export const loadTranslation =
+    async (
+        language: string,
+        file: string
+    ) => {
+        try {
+            const path = `../assets/${language}/${file}.json`;
+
+            const importer =
+                translationModules[path];
+
+            if (!importer) {
+                throw new Error(
+                    `Translation file not found: ${path}`
+                );
+            }
+
+// @ts-expected-error
+            const module: any =
+                await importer();
+
+            return module.default;
+        } catch (error) {
+            console.error(
+                `Error loading translation file: ${file} for language: ${language}`,
+                error
+            );
+
+            return [];
+        }
+    };

@@ -13,7 +13,7 @@ type PronounsTableProps = {
     targetPronouns: PronounItem[];
 };
 
-export default function PronounsTable({
+export default function GrammarTable({
     title = "Pronouns",
     originLanguageLabel = "English",
     targetLanguageLabel = "Français",
