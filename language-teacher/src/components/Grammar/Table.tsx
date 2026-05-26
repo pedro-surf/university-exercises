@@ -1,11 +1,13 @@
+import { capitalize } from "../../utils/capitalize";
+
 type PronounItem = {
     id: string;
     word: string;
 };
 
 type PronounsTableProps = {
-    title?: string;
-
+    originTitle?: string;
+    targetTitle?: string;
     originLanguageLabel?: string;
     targetLanguageLabel?: string;
 
@@ -14,7 +16,8 @@ type PronounsTableProps = {
 };
 
 export default function GrammarTable({
-    title = "Pronouns",
+    originTitle = "Pronouns",
+    targetTitle = "Pronouns",
     originLanguageLabel = "English",
     targetLanguageLabel = "Français",
     originPronouns,
@@ -30,9 +33,9 @@ export default function GrammarTable({
     return (
         <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 p-6 md:p-10">
             <div className="max-w-5xl mx-auto">
-                    <h1 className="text-5xl font-black mb-5">
-                        {title}
-                    </h1>
+                <h1 className="text-5xl font-black mb-5">
+                    {capitalize(targetTitle)} ({capitalize(originTitle)})
+                </h1>
                 <div className="overflow-hidden rounded-[32px] border border-gray-200 bg-white shadow-2xl">
                     <div className="grid grid-cols-2 bg-black text-white">
                         <div className="p-6 text-2xl font-bold border-r border-white/10">

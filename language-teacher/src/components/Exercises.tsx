@@ -1,10 +1,18 @@
 import LanguagePronunciationReader from './LanguagePronunciationReader'
 import { TextCorrectionHighlighter } from './TextCorrectionHighlighter'
 import { FillTheBlank } from './FillTheBlank'
+import { useNavigate } from 'react-router-dom';
 
 const Exercises = () => {
+    const navigate = useNavigate();
+
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 flex items-center justify-center p-6">
+        <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 flex flex-col items-center justify-center p-6">
+            <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => navigate('/')}
+            >
+                Go back
+            </button>
             <div className="w-full max-w-6xl">
 
 

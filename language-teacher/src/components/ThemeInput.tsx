@@ -18,9 +18,9 @@ const ThemeInput: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center gap-3">
-      <label className="font-medium text-gray-700 dark:text-gray-300">
-        Theme:
+    <div className="flex flex-col items-center">
+      <label className="font-medium">
+        Theme
       </label>
       <button
         onClick={toggleTheme}

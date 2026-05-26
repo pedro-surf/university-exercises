@@ -9,6 +9,7 @@ type AppContextType = {
   targetLanguage: string;
   setTargetLanguage: (language: string) => void;
   voices: SpeechSynthesisVoice[];
+  origin: Translation;
   translations: Translation;
   setUserName: (username: string) => void;
   userName?: string;
@@ -31,6 +32,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [targetLanguage, setTargetLanguage] = useState<string>("");
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [translations, setTranslations] = useState<Translation>({});
+  const [origin, setOrigin] = useState<Translation>({});
   const [userName, setUserName] = useState<string>("");
   const [userEmail, setUserEmail] = useState<string>("");
   const [userLocation, setUserLocation] = useState<string>("");
@@ -51,47 +53,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   useEffect(() => {
+    const loadOrigins = async () => {
+      const payload = await loadTranslation(userLanguage);
+      setOrigin(payload);
+    };
+    if (userLanguage) {
+      loadOrigins();
+    }
+  }, [userLanguage]);
+
+  useEffect(() => {
     const loadTranslations = async () => {
-      try {
-        const [
-          verbs,
-          pronouns,
-          possessives,
-          adjectives,
-          articles,
-          prepositions,
-          food,
-          travel,
-          business,
-          surfing,
-        ] = await Promise.all([
-          loadTranslation(targetLanguage, "grammar/verbs"),
-          loadTranslation(targetLanguage, "grammar/pronouns"),
-          loadTranslation(targetLanguage, "grammar/possessives"),
-          loadTranslation(targetLanguage, "grammar/adjectives"),
-          loadTranslation(targetLanguage, "grammar/articles"),
-          loadTranslation(targetLanguage, "grammar/prepositions"),
-          loadTranslation(targetLanguage, "vocabulary/food"),
-          loadTranslation(targetLanguage, "vocabulary/travel"),
-          loadTranslation(targetLanguage, "vocabulary/business"),
-          loadTranslation(targetLanguage, "vocabulary/surfing"),
-        ])
-        setTranslations({
-          possessives,
-          verbs,
-          pronouns,
-          adjectives,
-          articles,
-          prepositions,
-          food,
-          travel,
-          business,
-          surfing,
-        });
-      } catch (error) {
-        console.error("Error loading translations:", error);
-        setTranslations({ vocabulary: null, verbs: null });
-      }
+      const payload = await loadTranslation(targetLanguage);
+      setTranslations(payload);
     };
     if (targetLanguage) {
       loadTranslations();
@@ -108,6 +82,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         targetLanguage,
         setTargetLanguage,
         voices,
+        origin,
         translations,
         userName,
         setUserName,

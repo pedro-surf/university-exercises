@@ -57,7 +57,7 @@ const OPTIONS = [
 
 
 
-export default function StudyModeSelection() {
+export default function Menu() {
     const { userName } = useAppContext();
     const navigate = useNavigate();
 
