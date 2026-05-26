@@ -5,11 +5,11 @@ set -e
 BASE_DIR="./src/assets"
 
 LANGUAGES=(
-  "pt-BR"
+  # "pt-BR"
   # "de-DE"
   # "en-US"
   # "es-ES"
-  "fr-FR"
+  # "fr-FR"
   # "hi-IN"
   # "id-ID"
   # "it-IT"
@@ -19,7 +19,7 @@ LANGUAGES=(
   # "pl-PL"
   # "ru-RU"
   # "zh-TW"
-  "cs-CZ"
+  # "cs-CZ"
 )
 
 echo "Creating language assets structure..."
@@ -33,10 +33,6 @@ do
   mkdir -p "$BASE_DIR/$LANG/lessons"
   mkdir -p "$BASE_DIR/$LANG/grammar"
   mkdir -p "$BASE_DIR/$LANG/vocabulary"
-  mkdir -p "$BASE_DIR/$LANG/exercises/fill-in-the-blank"
-  mkdir -p "$BASE_DIR/$LANG/exercises/listening"
-  mkdir -p "$BASE_DIR/$LANG/exercises/pronunciation"
-  mkdir -p "$BASE_DIR/$LANG/exercises/matching"
   mkdir -p "$BASE_DIR/$LANG/audio/words"
   mkdir -p "$BASE_DIR/$LANG/audio/sentences"
 
@@ -96,20 +92,6 @@ EOF
 []
 EOF
 
-  cat > "$BASE_DIR/$LANG/lessons/beginner-001.json" <<EOF
-{
-  "id": "beginner-001",
-  "title": {
-    "en-US": "Basic Greetings"
-  },
-  "difficulty": "beginner",
-  "topics": [
-    "greetings"
-  ],
-  "items": []
-}
-EOF
-
 
 done
 
@@ -122,7 +104,4 @@ echo "Created:"
 echo "- language metadata"
 echo "- grammar files"
 echo "- vocabulary files"
-echo "- exercises structure"
-echo "- audio folders"
-echo "- translations"
-echo "- starter lesson"
+echo "- audio folders""

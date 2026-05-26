@@ -1,0 +1,25 @@
+[
+    {
+        "id": "exercise-001",
+        "type": "fill-in-the-blank",
+        "topic": "food",
+        "difficulty": "beginner",
+        "translations": {
+            "en-US": {
+                "sentence": "I eat bread every morning.",
+                "solution": "bread",
+                "hint": "A common baked food."
+            },
+            "pt-BR": {
+                "sentence": "Eu como pão toda manhã.",
+                "solution": "pão",
+                "hint": "Um alimento assado comum."
+            },
+            "fr-FR": {
+                "sentence": "Je mange du pain tous les matins.",
+                "solution": "pain",
+                "hint": "Un aliment cuit au four."
+            }
+        }
+    }
+]

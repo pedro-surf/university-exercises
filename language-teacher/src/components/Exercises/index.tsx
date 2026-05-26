@@ -1,6 +1,6 @@
-import LanguagePronunciationReader from './LanguagePronunciationReader'
-import { TextCorrectionHighlighter } from './TextCorrectionHighlighter'
-import { FillTheBlank } from './FillTheBlank'
+import LanguagePronunciationReader from '../LanguagePronunciationReader'
+import { TextCorrectionHighlighter } from '../TextCorrectionHighlighter'
+import { FillTheBlank } from '../FillTheBlank'
 import { useNavigate } from 'react-router-dom';
 
 const Exercises = () => {

@@ -1,0 +1,69 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               String           @id @default(uuid())
+  email            String           @unique
+  name             String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  
+  moduleProgresses ModuleProgress[]
+  exerciseResults  ExerciseResult[]
+
+  @@map("users") // Mapeia o nome da tabela no banco para snake_case (opcional, mas recomendado)
+}
+
+model ModuleProgress {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  language   String   // ex: "en-US", "fr-FR" (o target language do aluno)
+  category   String   // ex: "grammar", "vocabulary"
+  moduleName String   @map("module_name") // ex: "verb-to-be", "greetings"
+  progress   Float    // Percentual de conclusão (0.0 a 100.0)
+  updatedAt  DateTime @updatedAt
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, language, category, moduleName]) // Garante um registro único de progresso por módulo para o usuário
+  @@map("module_progresses")
+}
+
+model Exercise {
+  id         String   @id @default(uuid())
+  identifier String   // Seu identificador customizado, ex: "EX-001"
+  language   String   // O idioma do exercício (Target Language, ex: "en-US")
+  category   String   // ex: "grammar", "vocabulary"
+  difficulty String?  // ex: "beginner", "intermediate"
+  sentence   String   // O enunciado ou frase com a lacuna (___)
+  solution   String   // A resposta esperada para validação automática
+  hint       String?  // Dica ou tradução contextual gerada pela IA na Native Language
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  results    ExerciseResult[]
+
+  @@index([language, category, difficulty]) // Índice composto para o GET buscar exercícios reutilizáveis voando baixo ⚡
+  @@map("exercises")
+}
+
+model ExerciseResult {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  exerciseId String   @map("exercise_id")
+  userAnswer String   @map("user_answer") // A resposta que o aluno digitou
+  isCorrect  Boolean  @map("is_correct")  // Se o aluno acertou ou não
+  score      Float    // Nota ou peso da resposta
+  duration   Int?     // Tempo em segundos que o aluno levou para responder
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+
+  @@map("exercise_results")
+}
