@@ -1,11 +1,19 @@
 import { Router, Request, Response } from 'express';
 import prisma from '../lib/prisma';
 import { generateExercisesFromAI } from '../services/OpenAIService';
+import { auth } from '../middleware/auth';
+
+// --- IN-MEMORY QUOTA CONFIGURATION ---
+// This lives in the RAM of your running Node process. 
+// When the server restarts, these reset back to their initial values.
+const MAX_GENERATIONS_PER_SERVER_LIFETIME = 3;
+let totalGenerationsExecuted = 0;
+// -------------------------------------
 
 const router = Router();
 
 // GET: Fetch or reuse existing exercises from the database
-router.get('/exercises', async (req: Request, res: Response): Promise<any> => {
+router.get('/exercises', auth, async (req: Request, res: Response): Promise<any> => {
   try {
     const { language, category, difficulty } = req.query;
 
@@ -28,21 +36,15 @@ router.get('/exercises', async (req: Request, res: Response): Promise<any> => {
   }
 });
 
-// --- IN-MEMORY QUOTA CONFIGURATION ---
-// This lives in the RAM of your running Node process. 
-// When the server restarts, these reset back to their initial values.
-const MAX_GENERATIONS_PER_SERVER_LIFETIME = 3; 
-let totalGenerationsExecuted = 0;
-// -------------------------------------
 
 // POST: Trigger AI generation for new exercises and persist
-router.post('/exercises/generate', async (req: Request, res: Response): Promise<any> => {
+router.post('/exercises/generate', auth, async (req: Request, res: Response): Promise<any> => {
   try {
     // 1. Check if the server-lifetime quota has been exceeded
     if (totalGenerationsExecuted >= MAX_GENERATIONS_PER_SERVER_LIFETIME) {
-      return res.status(429).json({ 
+      return res.status(429).json({
         error: "Server quota exceeded.",
-        message: `Security Lock: This endpoint can only be called ${MAX_GENERATIONS_PER_SERVER_LIFETIME} times per server instance to prevent API wallet drain. Please restart the backend server manually to reset this quota.` 
+        message: `Security Lock: This endpoint can only be called ${MAX_GENERATIONS_PER_SERVER_LIFETIME} times per server instance to prevent API wallet drain. Please restart the backend server manually to reset this quota.`
       });
     }
 
@@ -57,19 +59,16 @@ router.post('/exercises/generate', async (req: Request, res: Response): Promise<
     console.log(`[QUOTA ALERT] Generation triggered. Usage: ${totalGenerationsExecuted}/${MAX_GENERATIONS_PER_SERVER_LIFETIME}`);
 
     const aiExercises = await generateExercisesFromAI(
-      nativeLanguage, 
-      targetLanguage, 
-      category, 
-      difficulty, 
-      quantity
+      [nativeLanguage, targetLanguage],
+      category,
     );
 
     const savedExercises = await prisma.$transaction(
-      aiExercises.map((ex) => 
+      aiExercises.map((ex) =>
         prisma.exercise.create({
           data: {
             identifier: ex.identifier,
-            language: targetLanguage, 
+            language: targetLanguage,
             category: category,
             difficulty: difficulty,
             sentence: ex.sentence,

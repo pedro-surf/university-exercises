@@ -12,22 +12,26 @@ interface GeneratedExercise {
 }
 
 export async function generateExercisesFromAI(
-    nativeLanguage: string, // The student's language (e.g., "pt-BR", "es-ES")
-    targetLanguage: string, // The language being learned (e.g., "en-US", "fr-FR")
-    category: string,       // e.g., "grammar", "vocabulary"
-    difficulty: string,     // e.g., "beginner", "intermediate"
+    languages: string[], // The desired languages (e.g., "pt-BR", "es-ES")
+    difficulty: string,     // e.g., "beginner", "intermediate", "expert"
     quantity: number = 3
 ): Promise<GeneratedExercise[]> {
+    if (!languages || languages.length < 2) {
+        throw new Error("At least one two languages must be specified.");
+    }
 
     // Fully parameterized English prompt supporting any combination of source/target languages
     const prompt = `
-    You are an expert language teacher specializing in instruction for the "${targetLanguage}" language.
-    Generate a list of ${quantity} exercises at a "${difficulty}" level for the category "${category}".
+    You are an expert polyglot language teacher.
+    Generate a list of ${quantity} exercises at a "${difficulty}" level, translating each the following languages: ${languages.join(",")}.
+    The final list length, or total will be ${quantity} exercises * ${languages.length} languages = ${quantity * languages.length}.
     
-    The exercises must be fill-in-the-blank style.
-    - In the 'sentence' property, write the sentence in "${targetLanguage}" and use three underscores (___) to indicate where the student needs to fill in the blank.
+    The exercises must be fill-in-the-blank style. For each language:
+    - In the 'identifier' property, create an identifier for this exercise, which will be repeated for all languages.
+    - In the 'language' property, write the current language.
+    - In the 'sentence' property, write the sentence and use three underscores (___) to indicate where the student needs to fill in the blank.
     - In the 'solution' property, provide the exact word or phrase that correctly fills the blank.
-    - In the 'hint' property, provide a short contextual tip, grammatical explanation, or supporting translation written entirely in "${nativeLanguage}" to assist the student.
+    - In the 'hint' property, provide a short contextual tip, grammatical explanation, or supporting translation written to assist the student.
   `;
 
     const response = await openai.chat.completions.create({
@@ -49,6 +53,7 @@ export async function generateExercisesFromAI(
                             items: {
                                 type: "object",
                                 properties: {
+                                    language: { type: "string", description: "The language being used, e.g. pt-BR" },
                                     identifier: { type: "string", description: "A short, unique identifier, e.g., EX-001" },
                                     sentence: { type: "string", description: "The sentence with the blank placeholder (___)" },
                                     solution: { type: "string", description: "The correct answer to fill the blank" },

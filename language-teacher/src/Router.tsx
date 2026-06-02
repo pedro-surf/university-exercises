@@ -5,15 +5,14 @@ import {
 import App from "./App";
 import GrammarPage from "./components/Grammar";
 import VocabularyPage from "./components/Vocabulary";
-import ExercisesPage from "./components/Exercises/Exercises";
+import ExercisesPage from "./components/Exercises";
 
 export const router =
   createBrowserRouter([
     {
       path: "/",
       element: <App />,
-    },
-
+    }, 
     {
       path: "/grammar",
       element: <GrammarPage />,
