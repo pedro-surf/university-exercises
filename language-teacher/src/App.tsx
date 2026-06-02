@@ -1,5 +1,5 @@
 import './App.css'
-import Onboarding from './components/Onboarding/Onboarding'
+import Onboarding from './components/Onboarding'
 import { useAppContext } from './Context'
 import Menu from './components/Menu'
 import { useEffect } from 'react'

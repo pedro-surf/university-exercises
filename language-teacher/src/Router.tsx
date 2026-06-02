@@ -6,13 +6,14 @@ import App from "./App";
 import GrammarPage from "./components/Grammar";
 import VocabularyPage from "./components/Vocabulary";
 import ExercisesPage from "./components/Exercises";
+import UserMetrics from "./components/UserMetrics";
 
 export const router =
   createBrowserRouter([
     {
       path: "/",
       element: <App />,
-    }, 
+    },
     {
       path: "/grammar",
       element: <GrammarPage />,
@@ -26,5 +27,9 @@ export const router =
     {
       path: "/exercises",
       element: <ExercisesPage />,
+    },
+    {
+      path: "/metrics",
+      element: <UserMetrics />,
     },
   ]);

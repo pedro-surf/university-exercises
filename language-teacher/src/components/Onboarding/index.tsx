@@ -19,7 +19,7 @@ type Step = {
   title: string;
   placeholder?: string;
   component?: React.ComponentType;
-}
+};
 
 const STEPS: Step[] = [
   {
@@ -39,25 +39,20 @@ const STEPS: Step[] = [
   },
   {
     key: "spokenLanguage",
-    title: "What's your spoken language?",
+    title: "What is your first language?",
     component: UserLanguage,
   },
   {
     key: "targetLanguage",
-    title: "Which language do you want to learn?",
+    title: "What language do you want to learn?",
     component: LanguageInput,
   },
 ] as const;
 
 export default function Onboarding() {
-  const {
-    setTargetLanguage,
-    setTheme,
-    setUserLanguage,
-  } = useAppContext();
+  const { setTargetLanguage, setTheme, setUserLanguage } = useAppContext();
 
   const [step, setStep] = React.useState(0);
-
 
   const [data, setData] = React.useState<OnboardingData>({
     name: "",
@@ -79,11 +74,31 @@ export default function Onboarding() {
     }));
   };
 
+  // Validation function
+  const validateField = (key: keyof OnboardingData, value: string): boolean => {
+    if (key === "name") {
+      return /^[a-zA-Z\s]{2,}$/.test(value); // Name must be at least 2 characters long
+    }
+    if (key === "email") {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); // Basic email validation
+    }
+    return true; // No validation for other fields
+  };
+
   const next = useCallback(() => {
+    if (currentStep?.key && !validateField(currentStep.key, data[currentStep.key])) {
+      alert(
+        currentStep.key === "name"
+          ? "Name must be at least 2 characters long."
+          : "Please enter a valid email address."
+      );
+      return;
+    }
+
     if (step < STEPS.length) {
       setStep((prev) => prev + 1);
     }
-  }, [step]);
+  }, [step, currentStep, data]);
 
   const back = () => {
     if (step > 0) {
@@ -92,9 +107,11 @@ export default function Onboarding() {
   };
 
   const handleComplete = () => {
-    const payload: OnboardingData = { ...data }
+    const payload: OnboardingData = { ...data };
     if (!payload.targetLanguage) {
       alert("Select a target language!");
+      setStep(4);
+      return;
     }
     Object.keys(payload).forEach((key) => {
       const value = payload[key as keyof OnboardingData];
@@ -194,8 +211,8 @@ export default function Onboarding() {
                 <button
                   onClick={() => updateField("themeMode", "light")}
                   className={`rounded-3xl border-2 p-8 text-left transition-all ${data.themeMode === "light"
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 bg-white hover:border-gray-400"
+                      ? "border-black bg-black text-white"
+                      : "border-gray-200 bg-white hover:border-gray-400"
                     }`}
                 >
                   <div className="text-3xl mb-3">☀️</div>
@@ -208,8 +225,8 @@ export default function Onboarding() {
                 <button
                   onClick={() => updateField("themeMode", "dark")}
                   className={`rounded-3xl border-2 p-8 text-left transition-all ${data.themeMode === "dark"
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 bg-white hover:border-gray-400"
+                      ? "border-black bg-black text-white"
+                      : "border-gray-200 bg-white hover:border-gray-400"
                     }`}
                 >
                   <div className="text-3xl mb-3">🌙</div>

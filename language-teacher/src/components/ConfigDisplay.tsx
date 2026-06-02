@@ -1,16 +1,12 @@
 import { useMemo, useState } from 'react';
 import { useAppContext } from '../Context';
-import ThemeInput from './ThemeInput'
+import ThemeInput from './ThemeInput';
+import LanguageInput from './LanguageInput';
 import { languages } from '../constants/languages';
-// import { MissingLanguageWarning } from './components/MissingLanguageWarning'
 
 export default function ConfigDisplay() {
-  const { userLanguage, targetLanguage, voices } = useAppContext();
+  const { userLanguage, targetLanguage, voices, setUserLanguage, setTargetLanguage } = useAppContext();
   const [showConfig, setShowConfig] = useState(false);
-
-  const renderUserLanguage = useMemo(() => {
-    return languages.find(lang => lang.code === userLanguage)?.label || userLanguage;
-  }, [userLanguage]);
 
   const renderTargetLanguage = useMemo(() => {
     return languages.find(lang => lang.code === targetLanguage)?.label || targetLanguage;
@@ -42,15 +38,31 @@ export default function ConfigDisplay() {
         ⚙ Hide Config
       </button>
       <ThemeInput />
-      <p className="font-bold">User language: {renderUserLanguage}</p>
-      <p>Target learning language: {renderTargetLanguage}</p>
-      {!isTargetLanguageSupported &&
-        <div className="p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700"
-          role="alert">
+      <div className="my-4">
+        <p className="font-bold mb-2">User Language:</p>
+        <LanguageInput
+          value={userLanguage}
+          onChange={(newLanguage) => setUserLanguage(newLanguage)}
+          hideHelpText
+        />
+      </div>
+      <div className="my-4">
+        <p className="font-bold mb-2">Target Learning Language:</p>
+        <LanguageInput
+          value={targetLanguage}
+          onChange={(newLanguage) => setTargetLanguage(newLanguage)}
+        />
+      </div>
+      {!isTargetLanguageSupported && (
+        <div
+          className="p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700"
+          role="alert"
+        >
           <p>
-            Some features may not work properly as {targetLanguage} is not supported.
+            Some features may not work properly as {renderTargetLanguage} is not supported.
           </p>
-        </div>}
+        </div>
+      )}
     </div>
   );
 }

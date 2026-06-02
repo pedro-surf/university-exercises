@@ -6,9 +6,10 @@ type Props = {
   value: string;
   onChange: (value: string) => void;
   label?: string;
+  hideHelpText?: boolean;
 };
 
-const LanguageInput = ({ value, onChange }: Props) => {
+const LanguageInput = ({ value, onChange, hideHelpText }: Props) => {
   const {
     voices,
   } = useAppContext();
@@ -25,7 +26,7 @@ const LanguageInput = ({ value, onChange }: Props) => {
   }, [voices]);
 
   return (
-    <div className="flex justify-center items-center w-full">
+    <div className="flex flex-col justify-center items-center w-full">
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -37,7 +38,8 @@ const LanguageInput = ({ value, onChange }: Props) => {
           </option>
         ))}
       </select>
-    </div>
+      {!hideHelpText && <p>Note: The language options are based on the voices available in your browser.</p>
+      }    </div>
 
   );
 };
