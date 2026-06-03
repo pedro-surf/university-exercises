@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import prisma from '../lib/prisma';
 import { generateExercisesFromAI } from '../services/OpenAIService';
+import { getUserScore } from '../services/ExerciseService';
 import { auth } from '../middleware/auth';
 
 // --- IN-MEMORY QUOTA CONFIGURATION ---
@@ -8,12 +9,10 @@ import { auth } from '../middleware/auth';
 // When the server restarts, these reset back to their initial values.
 const MAX_GENERATIONS_PER_SERVER_LIFETIME = 3;
 let totalGenerationsExecuted = 0;
-// -------------------------------------
 
 const router = Router();
 
-// GET: Fetch or reuse existing exercises from the database
-router.get('/exercises', auth, async (req: Request, res: Response): Promise<any> => {
+router.get('/', auth, async (req: Request, res: Response): Promise<any> => {
   try {
     const { language, category, difficulty } = req.query;
 
@@ -36,9 +35,20 @@ router.get('/exercises', auth, async (req: Request, res: Response): Promise<any>
   }
 });
 
+router.get('/scores/:userId', auth, async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { userId } = req.params;
+    const score = await getUserScore(userId as string);
+    return res.json({ userId, score });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error while fetching user score." });
+  }
+});
+
 
 // POST: Trigger AI generation for new exercises and persist
-router.post('/exercises/generate', auth, async (req: Request, res: Response): Promise<any> => {
+router.post('/generate', auth, async (req: Request, res: Response): Promise<any> => {
   try {
     // 1. Check if the server-lifetime quota has been exceeded
     if (totalGenerationsExecuted >= MAX_GENERATIONS_PER_SERVER_LIFETIME) {

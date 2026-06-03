@@ -7,6 +7,8 @@ import GrammarPage from "./components/Grammar";
 import VocabularyPage from "./components/Vocabulary";
 import ExercisesPage from "./components/Exercises";
 import UserMetrics from "./components/UserMetrics";
+import UserMetricsV2 from "./components/UserMetricsV2";
+import { AssetsInspector } from "./components/AssetsInspector";
 
 export const router =
   createBrowserRouter([
@@ -29,7 +31,15 @@ export const router =
       element: <ExercisesPage />,
     },
     {
+      path: "/assets",
+      element: <AssetsInspector />,
+    },
+    {
       path: "/metrics",
       element: <UserMetrics />,
+    },
+    {
+      path: "/dashboard",
+      element: <UserMetricsV2 />,
     },
   ]);
