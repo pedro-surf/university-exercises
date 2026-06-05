@@ -5,6 +5,7 @@ type FillInTheBlankProps = {
   questionIndexes: number[];
   questionOptions?: { [index: number]: string[] };
   placeholder?: string;
+  onSubmit?: (payload: { answer: string | unknown, durationSec?: number }) => Promise<void> | void;
 };
 
 export function FillTheBlank({
@@ -12,6 +13,7 @@ export function FillTheBlank({
   questionIndexes,
   questionOptions,
   placeholder = "Type your answer...",
+  onSubmit,
 }: FillInTheBlankProps) {
   const [answers, setAnswers] = useState<{ [index: number]: string }>({});
   const [checked, setChecked] = useState(false);
@@ -38,8 +40,9 @@ export function FillTheBlank({
       correctAnswers[index]?.trim().toLowerCase()
   );
 
-  const handleCheck = () => {
+  const handleSubmit = () => {
     setChecked(true);
+    onSubmit({ answer: answers , durationSec: 999 }); // You can replace 999 with actual duration if needed
   };
 
   return (
@@ -98,7 +101,7 @@ export function FillTheBlank({
 
         <div className="space-y-4">
           <button
-            onClick={handleCheck}
+            onClick={handleSubmit}
             className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-2xl py-4 text-xl font-semibold shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5"
             >
             Check Answer

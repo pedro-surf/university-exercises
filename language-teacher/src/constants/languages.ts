@@ -10,3 +10,8 @@ export const languages = [
     { code: "ja-JP", label: "Japanese" },
     { code: "zh-CN", label: "Chinese (Mandarin)" },
   ];
+
+export const languagesMap = languages.reduce((acc, lang) => {
+    acc[lang.code] = lang.label;
+    return acc;
+}, {} as Record<string, string>);

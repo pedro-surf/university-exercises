@@ -18,7 +18,7 @@ type Step = {
   key: keyof OnboardingData;
   title: string;
   placeholder?: string;
-  component?: React.ComponentType;
+  component?: React.ComponentType<{ value: string; onChange: (val: string) => void }>;
 };
 
 const STEPS: Step[] = [
@@ -50,17 +50,17 @@ const STEPS: Step[] = [
 ] as const;
 
 export default function Onboarding() {
-  const { setTargetLanguage, setTheme, setUserLanguage } = useAppContext();
+  const { theme, userName, setUserEmail, setUserLocation, setUserName, userLocation, userEmail, setTargetLanguage, setTheme, setUserLanguage, targetLanguage, userLanguage } = useAppContext();
 
   const [step, setStep] = React.useState(0);
 
   const [data, setData] = React.useState<OnboardingData>({
-    name: "",
-    email: "",
-    location: "",
-    spokenLanguage: "",
-    targetLanguage: "",
-    themeMode: "light",
+    name: userName || "",
+    email: userEmail || "",
+    location: userLocation || "",
+    spokenLanguage: userLanguage || "",
+    targetLanguage: targetLanguage || "",
+    themeMode: theme || "light",
   });
 
   const currentStep = STEPS[step];
@@ -107,23 +107,28 @@ export default function Onboarding() {
   };
 
   const handleComplete = () => {
-    const payload: OnboardingData = { ...data };
-    if (!payload.targetLanguage) {
+    if (!data.targetLanguage) {
       alert("Select a target language!");
       setStep(4);
       return;
     }
-    Object.keys(payload).forEach((key) => {
-      const value = payload[key as keyof OnboardingData];
-      if (value) {
-        localStorage.setItem(key, value);
-      } else {
-        payload[key as keyof OnboardingData] = localStorage.getItem(key) || "";
-      }
-      setTargetLanguage(payload.targetLanguage);
-      setUserLanguage(payload.spokenLanguage);
-      setTheme(payload.themeMode);
-    });
+
+    if (!data.spokenLanguage) {
+      alert("Select a spoken language!");
+      setStep(3);
+      return;
+    }
+
+    setTargetLanguage(data.targetLanguage);
+    setUserLanguage(data.spokenLanguage);
+    setTheme(data.themeMode);
+    setUserName(data.name);
+    setUserEmail(data.email);
+    setUserLocation(data.location);
+    const hasConfigured = !!userLanguage && !!userName && !!targetLanguage;
+    if (!hasConfigured) {
+      setStep(0);
+    }
   };
 
   return (
@@ -153,8 +158,10 @@ export default function Onboarding() {
                 </div>
 
                 {currentStep.component ? (
-                  // @ts-expect-error todo
-                  <currentStep.component onChange={val => updateField(currentStep.key, val)} />
+                  <currentStep.component
+                    value={data[currentStep.key] as string}
+                    onChange={(val) => updateField(currentStep.key, val)}
+                  />
                 ) : (
                   <input
                     autoFocus
@@ -211,8 +218,8 @@ export default function Onboarding() {
                 <button
                   onClick={() => updateField("themeMode", "light")}
                   className={`rounded-3xl border-2 p-8 text-left transition-all ${data.themeMode === "light"
-                      ? "border-black bg-black text-white"
-                      : "border-gray-200 bg-white hover:border-gray-400"
+                    ? "border-black bg-black text-white"
+                    : "border-gray-200 bg-white hover:border-gray-400"
                     }`}
                 >
                   <div className="text-3xl mb-3">☀️</div>
@@ -225,8 +232,8 @@ export default function Onboarding() {
                 <button
                   onClick={() => updateField("themeMode", "dark")}
                   className={`rounded-3xl border-2 p-8 text-left transition-all ${data.themeMode === "dark"
-                      ? "border-black bg-black text-white"
-                      : "border-gray-200 bg-white hover:border-gray-400"
+                    ? "border-black bg-black text-white"
+                    : "border-gray-200 bg-white hover:border-gray-400"
                     }`}
                 >
                   <div className="text-3xl mb-3">🌙</div>

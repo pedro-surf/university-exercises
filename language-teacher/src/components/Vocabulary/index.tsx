@@ -3,6 +3,7 @@ import { useAppContext } from "../../Context";
 import Table from "../Grammar/Table";
 import { useNavigate } from "react-router-dom";
 import { type VocabularyCategory, menuItems } from "../../constants/vocabulary";
+import { languagesMap } from "../../constants/languages";
 
 
 export default function VocabularyScreen() {
@@ -192,8 +193,8 @@ export default function VocabularyScreen() {
         <Table
           targetTitle={translations.title}
           originTitle={translations.title}
-          originLanguageLabel={originLanguage}
-          targetLanguageLabel={targetLanguage}
+          originLanguageLabel={languagesMap[originLanguage]}
+          targetLanguageLabel={languagesMap[targetLanguage]}
           originPronouns={natives.data}
           targetPronouns={translations.data}
         />

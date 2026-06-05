@@ -7,7 +7,7 @@ type AssetItem = {
 };
 
 export function AssetsInspector() {
-  const { userLanguage, targetLanguage, origin, translations, setTargetLanguage } = useAppContext();
+  const { userLanguage, targetLanguage, origin, translations } = useAppContext();
 
   // Convert origin and translations into arrays of AssetItem
   const originAssets: AssetItem[] = Object.entries(origin).map(([id, word]) => ({
@@ -45,8 +45,6 @@ export function AssetsInspector() {
     // Simulate saving the updated translations (you can replace this with an API call or other logic)
     console.log("Updated Translations JSON:", updatedTranslations);
 
-    // Optionally, update the context with the new translations
-    setTargetLanguage(targetLanguage); // Trigger any necessary updates in the app
     alert("Translations saved successfully!");
   };
 

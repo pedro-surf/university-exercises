@@ -27,6 +27,14 @@ enum Difficulty {
   ADVANCED
 }
 
+
+enum Topic {
+  FOOD
+  TRAVEL
+  FAMILY
+  SURFING
+}
+
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
@@ -44,9 +52,11 @@ model Exercise {
   identifier String
   language   Language
   category   Category
+  topic      Topic
   difficulty Difficulty
   sentence   String
   solution   String
+  hint       String
 
   createdAt  DateTime @default(now())
 

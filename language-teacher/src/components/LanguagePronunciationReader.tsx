@@ -1,5 +1,6 @@
-import { useCallback } from "react";
+import { useMemo } from "react";
 import { useAppContext } from "../Context";
+import { speakWord } from "../utils/speakWord";
 
 export default function LanguagePronunciationReader() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -17,119 +18,64 @@ export default function LanguagePronunciationReader() {
   };
 
   const {
-     // userLanguage,
-      targetLanguage: selectedLanguage,
-    } = useAppContext();
-    const speakWord = useCallback((word: string) => {
-      if (!("speechSynthesis" in window)) {
-        alert("Your browser does not support speech synthesis.");
-        return;
-      }
+    // userLanguage,
+    targetLanguage: selectedLanguage,
+  } = useAppContext();
+  const copySentence = () => {
+    navigator.clipboard.writeText(translations[selectedLanguage])
+  };
 
-      // Stop any currently playing speech
-      window.speechSynthesis.cancel();
+  const words = useMemo(() => translations[selectedLanguage]?.split(/(\s+)/) ?? [], [translations, selectedLanguage]);
+  console.log({ words, translations })
+  return (
+    <div className="min-h-screen bg-gray-50 p-6 flex items-center justify-center">
+      <div className="max-w-3xl w-full bg-white rounded-3xl shadow-xl p-8 space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">
+            Interactive Pronunciation Reader
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Click any word to hear its pronunciation.
+          </p>
+        </div>
 
-      const utterance = new SpeechSynthesisUtterance(word);
-      utterance.lang = selectedLanguage;
-      utterance.rate = 0.9;
-      utterance.pitch = 1;
+        <div className="text-xl leading-10 border rounded-2xl p-6 bg-gray-50">
+          {words.map((token, index) => {
+            const isWhitespace = /^\s+$/.test(token);
 
-      // Optional: try selecting a matching voice
-      const voices = window.speechSynthesis.getVoices();
-      const matchingVoice = voices.find((voice) =>
-        voice.lang.toLowerCase().startsWith(selectedLanguage.toLowerCase().split("-")[0])
-      );
+            if (isWhitespace) {
+              return <span key={index}>{token}</span>;
+            }
 
-      if (matchingVoice) {
-        utterance.voice = matchingVoice;
-      }
+            const cleanWord = token.replace(/[.,!?;:]/g, "");
 
-      window.speechSynthesis.speak(utterance);
-    }, [selectedLanguage]);
+            return (
+              <button
+                key={index}
+                onClick={() => speakWord(cleanWord, selectedLanguage)}
+                className="inline hover:bg-gray-200 rounded-lg px-1 transition-colors cursor-pointer"
+              >
+                {token}
+              </button>
+            );
+          })}
+        </div>
 
-    const speakSentence = useCallback(() => {
-      if (!("speechSynthesis" in window)) {
-        alert("Your browser does not support speech synthesis.");
-        return;
-      }
-      console.log({ selectedLanguage })
-
-      // Stop any currently playing speech
-      window.speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(translations[selectedLanguage]);
-      utterance.lang = selectedLanguage;
-      utterance.rate = 0.9;
-      utterance.pitch = 1;
-
-      // Optional: try selecting a matching voice
-      const voices = window.speechSynthesis.getVoices();
-      const matchingVoice = voices.find((voice) =>
-        voice.lang.toLowerCase().startsWith(selectedLanguage.toLowerCase().split("-")[0])
-      );
-
-      if (matchingVoice) {
-        utterance.voice = matchingVoice;
-      }
-
-      window.speechSynthesis.speak(utterance);
-    }, [selectedLanguage, translations]);
-
-    const copySentence = () => {
-      navigator.clipboard.writeText(translations[selectedLanguage])
-    };
-
-    const words = translations[selectedLanguage]?.split(/(\s+)/) ?? [];
-
-    return (
-      <div className="min-h-screen bg-gray-50 p-6 flex items-center justify-center">
-        <div className="max-w-3xl w-full bg-white rounded-3xl shadow-xl p-8 space-y-6">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">
-              Interactive Pronunciation Reader
-            </h1>
-            <p className="text-gray-600 mt-2">
-              Click any word to hear its pronunciation.
-            </p>
-          </div>
-
-          <div className="text-xl leading-10 border rounded-2xl p-6 bg-gray-50">
-            {words.map((token, index) => {
-              const isWhitespace = /^\s+$/.test(token);
-
-              if (isWhitespace) {
-                return <span key={index}>{token}</span>;
-              }
-
-              const cleanWord = token.replace(/[.,!?;:]/g, "");
-
-              return (
-                <button
-                  key={index}
-                  onClick={() => speakWord(cleanWord)}
-                  className="inline hover:bg-gray-200 rounded-lg px-1 transition-colors cursor-pointer"
-                >
-                  {token}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="text-center">
-            <button
-              onClick={speakSentence}
-              className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors"
-            >
-              Hear Whole Sentence
-            </button>
-            <button
-              onClick={copySentence}
-              className="ml-2 mt-4 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors"
-            >
-              Copy Sentence
-            </button>
-          </div>
+        <div className="text-center">
+          <button
+            onClick={() => speakWord(translations[selectedLanguage], selectedLanguage)}
+            className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors"
+          >
+            Hear Whole Sentence
+          </button>
+          <button
+            onClick={copySentence}
+            className="ml-2 mt-4 bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors"
+          >
+            Copy Sentence
+          </button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}

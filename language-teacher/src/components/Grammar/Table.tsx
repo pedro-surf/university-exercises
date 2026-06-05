@@ -1,4 +1,6 @@
+import { useAppContext } from "../../Context";
 import { capitalize } from "../../utils/capitalize";
+import { speakWord } from "../../utils/speakWord";
 
 type PronounItem = {
     id: string;
@@ -23,6 +25,7 @@ export default function GrammarTable({
     originPronouns,
     targetPronouns,
 }: PronounsTableProps) {
+    const { targetLanguage } = useAppContext();
     const targetMap = new Map(
         targetPronouns.map((item) => [
             item.id,
@@ -68,7 +71,7 @@ export default function GrammarTable({
                                             {originPronoun.word}
                                         </div>
 
-                                        <div className="p-6 text-3xl font-semibold text-gray-700">
+                                        <div onClick={() => speakWord(targetWord, targetLanguage)} className="p-6 text-3xl cursor-pointer font-semibold text-gray-700">
                                             {targetWord}
                                         </div>
                                     </div>

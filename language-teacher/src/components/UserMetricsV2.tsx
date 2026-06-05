@@ -16,6 +16,37 @@ import {
 } from "recharts";
 import { format } from "date-fns";
 
+export const mockExerciseResults = [
+  {
+    id: "1",
+    language: "English",
+    isCorrect: true,
+    durationSec: 45,
+    createdAt: "2026-06-01T10:00:00Z",
+  },
+  {
+    id: "2",
+    language: "Spanish",
+    isCorrect: false,
+    durationSec: 30,
+    createdAt: "2026-06-02T12:00:00Z",
+  },
+  {
+    id: "3",
+    language: "French",
+    isCorrect: true,
+    durationSec: 60,
+    createdAt: "2026-06-03T14:00:00Z",
+  },
+  {
+    id: "4",
+    language: "English",
+    isCorrect: false,
+    durationSec: 50,
+    createdAt: "2026-06-04T16:00:00Z",
+  },
+];
+
 type ExerciseResult = {
   id: string;
   language: string;
@@ -25,10 +56,10 @@ type ExerciseResult = {
 };
 
 type Props = {
-  results: ExerciseResult[];
+  results?: ExerciseResult[];
 };
 
-export default function UserMetrics({ results }: Props) {
+export default function UserMetrics({ results = mockExerciseResults }: Props) {
   const navigate = useNavigate();
 
   const [languageFilter, setLanguageFilter] = useState("all");
@@ -39,7 +70,7 @@ export default function UserMetrics({ results }: Props) {
   const [endDate, setEndDate] = useState("");
 
   const filteredResults = useMemo(() => {
-    return results.filter((result) => {
+    return (results).filter((result) => {
       if (
         languageFilter !== "all" &&
         result.language !== languageFilter
@@ -95,15 +126,15 @@ export default function UserMetrics({ results }: Props) {
   const avgDuration =
     filteredResults.length > 0
       ? (
-          filteredResults.reduce(
-            (acc, curr) => acc + (curr.durationSec ?? 0),
-            0
-          ) / filteredResults.length
-        ).toFixed(1)
+        filteredResults.reduce(
+          (acc, curr) => acc + (curr.durationSec ?? 0),
+          0
+        ) / filteredResults.length
+      ).toFixed(1)
       : "0";
 
   const languages = [
-    ...new Set(results.map((r) => r.language)),
+    ...new Set((results).map((r) => r.language)),
   ];
 
   const languageChartData = languages.map((language) => {
@@ -120,8 +151,8 @@ export default function UserMetrics({ results }: Props) {
       accuracy:
         langResults.length > 0
           ? Math.round(
-              (correct / langResults.length) * 100
-            )
+            (correct / langResults.length) * 100
+          )
           : 0,
     };
   });
@@ -221,9 +252,9 @@ export default function UserMetrics({ results }: Props) {
             onChange={(e) =>
               setResultFilter(
                 e.target.value as
-                  | "all"
-                  | "correct"
-                  | "incorrect"
+                | "all"
+                | "correct"
+                | "incorrect"
               )
             }
             className="rounded-lg border p-3"

@@ -3,6 +3,7 @@ import Table from "./Table";
 import { useAppContext } from "../../Context";
 import { grammar, menuItems, type GrammarCategory } from "../../constants/grammar";
 import { useNavigate } from "react-router-dom";
+import { languagesMap } from "../../constants/languages";
 
 export default function GrammarScreen() {
     const navigate = useNavigate();
@@ -166,8 +167,8 @@ export default function GrammarScreen() {
                 <Table
                     targetTitle={translations.title}
                     originTitle={natives.title}
-                    originLanguageLabel={originLanguage}
-                    targetLanguageLabel={targetLanguage}
+                    originLanguageLabel={languagesMap[originLanguage]}
+                    targetLanguageLabel={languagesMap[targetLanguage]}
                     originPronouns={natives.data}
                     targetPronouns={translations.data}
                 />

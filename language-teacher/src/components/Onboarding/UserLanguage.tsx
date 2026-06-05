@@ -54,11 +54,11 @@ const LANGUAGES = [
 ];
 
 type Props = {
-  onSelect?: (language: string) => void;
+  onChange?: (language: string) => void;
 };
 
 export default function LanguageSelectionScreen({
-  onSelect,
+  onChange,
 }: Props) {
   const [selectedIndex, setSelectedIndex] =
     React.useState(0);
@@ -87,7 +87,7 @@ export default function LanguageSelectionScreen({
       }
 
       if (event.key === "Enter") {
-        onSelect?.(selectedLanguage.code);
+        onChange?.(selectedLanguage.code);
       }
     };
 
@@ -102,7 +102,7 @@ export default function LanguageSelectionScreen({
         handleKeyDown
       );
     };
-  }, [selectedLanguage, onSelect]);
+  }, [selectedLanguage, onChange]);
 
   return (
     <div className="bg-black text-white px-8 py-16">
@@ -124,7 +124,7 @@ export default function LanguageSelectionScreen({
                 onClick={() => {
                   setSelectedIndex(index);
 
-                  onSelect?.(
+                  onChange?.(
                     language.code
                   );
                 }}
@@ -135,11 +135,11 @@ export default function LanguageSelectionScreen({
                 ref={
                   isSelected
                     ? (el) => {
-                        el?.scrollIntoView({
-                          behavior: "smooth",
-                          block: "center",
-                        });
-                      }
+                      el?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                      });
+                    }
                     : null
                 }
               >
