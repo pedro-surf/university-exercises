@@ -47,4 +47,4 @@ export const router =
       path: "/dashboard",
       element: <UserMetricsV2 />,
     },
-  ]);
+  ], { basename: '/university-exercises' });
