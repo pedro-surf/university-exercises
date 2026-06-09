@@ -1,25 +1,260 @@
 [
     {
-        "id": "exercise-001",
-        "type": "fill-in-the-blank",
-        "topic": "food",
-        "difficulty": "beginner",
-        "translations": {
-            "en-US": {
-                "sentence": "I eat bread every morning.",
-                "solution": "bread",
-                "hint": "A common baked food."
-            },
-            "pt-BR": {
-                "sentence": "Eu como pão toda manhã.",
-                "solution": "pão",
-                "hint": "Um alimento assado comum."
-            },
-            "fr-FR": {
-                "sentence": "Je mange du pain tous les matins.",
-                "solution": "pain",
-                "hint": "Un aliment cuit au four."
-            }
-        }
+        "id": "1",
+        "identifier": "pt-fr-001",
+        "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "maçã",
+        "solution": null,
+        "hint": "É uma fruta vermelha ou verde."
+    },
+    {
+        "id": "2",
+        "identifier": "pt-fr-001",
+        "language": "fr-FR",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "pomme",
+        "solution": null,
+        "hint": "C'est un fruit rouge ou vert."
+    },
+    {
+        "id": "3",
+        "identifier": "pt-fr-002",
+        "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "aeroporto",
+        "solution": null,
+        "hint": "É um lugar onde aviões pousam e decolam."
+    },
+    {
+        "id": "4",
+        "identifier": "pt-fr-002",
+        "language": "fr-FR",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "aéroport",
+        "solution": null,
+        "hint": "C'est un endroit où les avions atterrissent et décollent."
+    },
+    {
+        "id": "5",
+        "identifier": "pt-fr-003",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Meu irmão gosta de ____.",
+        "solution": "viajar",
+        "hint": "É algo que as pessoas fazem para explorar novos lugares."
+    },
+    {
+        "id": "6",
+        "identifier": "pt-fr-003",
+        "language": "fr-FR",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Mon frère aime ____.",
+        "solution": "voyager",
+        "hint": "C'est quelque chose que les gens font pour explorer de nouveaux endroits."
+    },
+    {
+        "id": "7",
+        "identifier": "pt-fr-004",
+        "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "cachorro",
+        "solution": null,
+        "hint": "É um animal conhecido como o melhor amigo do homem."
+    },
+    {
+        "id": "8",
+        "identifier": "pt-fr-004",
+        "language": "fr-FR",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "chien",
+        "solution": null,
+        "hint": "C'est un animal connu comme le meilleur ami de l'homme."
+    },
+    {
+        "id": "9",
+        "identifier": "pt-fr-005",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Eu gosto de ____ todos os dias.",
+        "solution": "correr",
+        "hint": "É uma atividade física que muitas pessoas fazem para se exercitar."
+    },
+    {
+        "id": "10",
+        "identifier": "pt-fr-005",
+        "language": "fr-FR",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "J'aime ____ tous les jours.",
+        "solution": "courir",
+        "hint": "C'est une activité physique que beaucoup de gens font pour s'exercer."
+    },
+    {
+        "id": "11",
+        "identifier": "pt-fr-006",
+        "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "azul",
+        "solution": null,
+        "hint": "É a cor do céu em um dia claro."
+    },
+    {
+        "id": "12",
+        "identifier": "pt-fr-006",
+        "language": "fr-FR",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "bleu",
+        "solution": null,
+        "hint": "C'est la couleur du ciel par une journée claire."
+    },
+    {
+        "id": "13",
+        "identifier": "pt-fr-007",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Eu ____ no escritório todos os dias.",
+        "solution": "trabalho",
+        "hint": "É uma ação que você faz para ganhar dinheiro."
+    },
+    {
+        "id": "14",
+        "identifier": "pt-fr-007",
+        "language": "fr-FR",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Je ____ au bureau tous les jours.",
+        "solution": "travaille",
+        "hint": "C'est une action que vous faites pour gagner de l'argent."
+    },
+    {
+        "id": "15",
+        "identifier": "pt-fr-008",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Eu vou para o ____ de ____ amanhã.",
+        "solution": "aeroporto;Paris",
+        "hint": "Primeiro é um local de transporte aéreo, segundo é uma capital europeia."
+    },
+    {
+        "id": "16",
+        "identifier": "pt-fr-008",
+        "language": "fr-FR",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Je vais à l'____ de ____ demain.",
+        "solution": "aéroport;Paris",
+        "hint": "Le premier est un lieu de transport aérien, le second est une capitale européenne."
+    },
+    {
+        "id": "17",
+        "identifier": "pt-fr-009",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Eu gosto de ____ café pela ____.",
+        "solution": "beber;manhã",
+        "hint": "Primeiro é uma ação, segundo é um período do dia."
+    },
+    {
+        "id": "18",
+        "identifier": "pt-fr-009",
+        "language": "fr-FR",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "J'aime ____ du café le ____.",
+        "solution": "boire;matin",
+        "hint": "Le premier est une action, le second est une période de la journée."
+    },
+    {
+        "id": "19",
+        "identifier": "pt-fr-010",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Meu ____ trabalha em uma ____ internacional.",
+        "solution": "gerente;empresa",
+        "hint": "Primeiro é um cargo, segundo é uma organização."
+    },
+    {
+        "id": "20",
+        "identifier": "pt-fr-010",
+        "language": "fr-FR",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Mon ____ travaille dans une ____ internationale.",
+        "solution": "manager;entreprise",
+        "hint": "Le premier est un poste, le second est une organisation."
+    },
+    {
+        "id": "21",
+        "identifier": "pt-fr-011",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Eu como ____ e bebo ____ no café da manhã.",
+        "solution": "pão;café",
+        "options": [
+            "pão",
+            "café",
+            "peixe",
+            "ônibus",
+            "empresa",
+            "hotel"
+        ],
+        "hint": "Ambos são comuns no café da manhã."
+    },
+    {
+        "id": "22",
+        "identifier": "pt-fr-011",
+        "language": "fr-FR",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Je mange du ____ et je bois du ____ au petit-déjeuner.",
+        "solution": "pain;café",
+        "options": [
+            "pain",
+            "café",
+            "poisson",
+            "bus",
+            "entreprise",
+            "hôtel"
+        ],
+        "hint": "Les deux sont courants au petit-déjeuner."
     }
 ]

@@ -3,6 +3,7 @@ import { useAppContext } from '../Context';
 import ThemeInput from './ThemeInput';
 import LanguageInput from './LanguageInput';
 import { languages } from '../constants/languages';
+import { originLanguageMap, targetLanguageMap } from '../constants/app';
 
 export default function ConfigDisplay() {
   const { userLanguage, targetLanguage, voices, setUserLanguage, setTargetLanguage } = useAppContext();
@@ -39,7 +40,7 @@ export default function ConfigDisplay() {
       </button>
       <ThemeInput />
       <div className="my-4">
-        <p className="font-bold mb-2">User Language:</p>
+        <p className="font-bold mb-2">{originLanguageMap[userLanguage]}</p>
         <LanguageInput
           value={userLanguage}
           onChange={(newLanguage) => setUserLanguage(newLanguage)}
@@ -47,7 +48,7 @@ export default function ConfigDisplay() {
         />
       </div>
       <div className="my-4">
-        <p className="font-bold mb-2">Target Learning Language:</p>
+        <p className="font-bold mb-2">{targetLanguageMap[userLanguage]}</p>
         <LanguageInput
           value={targetLanguage}
           onChange={(newLanguage) => setTargetLanguage(newLanguage)}

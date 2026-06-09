@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { groupByLanguage } from "../utils/groupByLanguage";
+import { goBackMap } from "../constants/app";
+import { useAppContext } from "../Context";
 
 const exerciseResults = [
   {
@@ -70,6 +72,7 @@ type Props = {
 
 export default function UserMetrics({ metrics = defaultMetrics }: Props) {
   const navigate = useNavigate();
+  const { userLanguage } = useAppContext();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 flex flex-col items-center justify-center p-6">
@@ -77,7 +80,7 @@ export default function UserMetrics({ metrics = defaultMetrics }: Props) {
         className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick={() => navigate("/")}
       >
-        Go back
+        {goBackMap[userLanguage]}
       </button>
       <div className="w-full max-w-6xl">
         <div className="p-6 bg-white rounded-3xl shadow-lg border border-gray-200">

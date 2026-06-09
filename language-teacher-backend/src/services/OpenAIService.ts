@@ -6,6 +6,7 @@ const openai = new OpenAI({
 
 interface GeneratedExercise {
     identifier: string;
+    language: string;
     sentence: string;
     solution: string;
     hint: string;
@@ -13,29 +14,32 @@ interface GeneratedExercise {
 
 export async function generateExercisesFromAI(
     languages: string[], // The desired languages (e.g., "pt-BR", "es-ES")
-    difficulty: string,     // e.g., "beginner", "intermediate", "expert"
+    difficulty: string,  // e.g., "beginner", "intermediate", "expert"
     quantity: number = 3
 ): Promise<GeneratedExercise[]> {
     if (!languages || languages.length < 2) {
-        throw new Error("At least one two languages must be specified.");
+        throw new Error("At least two languages must be specified.");
     }
 
-    // Fully parameterized English prompt supporting any combination of source/target languages
+    const isValidLanguageCode = (lang: string) => /^[a-z]{2}-[A-Z]{2}$/.test(lang);
+
+    if (!languages.every(isValidLanguageCode)) {
+        throw new Error("All languages must be in the format 'xx-XX' (e.g., 'pt-BR').");
+    }
+
     const prompt = `
     You are an expert polyglot language teacher.
-    Generate a list of ${quantity} exercises at a "${difficulty}" level, translating each the following languages: ${languages.join(",")}.
-    The final list length, or total will be ${quantity} exercises * ${languages.length} languages = ${quantity * languages.length}.
-    
+    Generate ${quantity} exercises for each of the following languages: ${languages.join(",")}.
     The exercises must be fill-in-the-blank style. For each language:
-    - In the 'identifier' property, create an identifier for this exercise, which will be repeated for all languages.
+    - In the 'identifier' property, create a unique identifier for the exercise. This identifier must be the same for all languages for a given exercise.
     - In the 'language' property, write the current language.
-    - In the 'sentence' property, write the sentence and use three underscores (___) to indicate where the student needs to fill in the blank.
-    - In the 'solution' property, provide the exact word or phrase that correctly fills the blank.
-    - In the 'hint' property, provide a short contextual tip, grammatical explanation, or supporting translation written to assist the student.
-  `;
+    - In the 'sentence' property, either write a single word to be translated, or a sentence with one or more words replaced in underscores (____) to indicate fill in the blank.
+    - In the 'solution' property, write "null" if 'sentence' is a single word to be translated, or the word(s) replaced in underscores in 'sentence', separated by commas.
+    - In the 'hint' property, provide a hint, short contextual tip, grammatical explanation to assist the student.
+    `;
 
     const response = await openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+        model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
         messages: [
             { role: 'system', content: 'You are a strict educational data generator that only responds in valid JSON matching the provided schema.' },
             { role: 'user', content: prompt }
@@ -59,7 +63,7 @@ export async function generateExercisesFromAI(
                                     solution: { type: "string", description: "The correct answer to fill the blank" },
                                     hint: { type: "string", description: "Instructional tip or translation in the student's native language" }
                                 },
-                                required: ["identifier", "sentence", "solution", "hint"],
+                                required: ["identifier", "language", "sentence", "solution", "hint"],
                                 additionalProperties: false
                             }
                         }

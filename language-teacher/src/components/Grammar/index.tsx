@@ -4,6 +4,7 @@ import { useAppContext } from "../../Context";
 import { grammar, menuItems, type GrammarCategory } from "../../constants/grammar";
 import { useNavigate } from "react-router-dom";
 import { languagesMap } from "../../constants/languages";
+import { goBackMap } from "../../constants/app";
 
 export default function GrammarScreen() {
     const navigate = useNavigate();
@@ -130,7 +131,7 @@ export default function GrammarScreen() {
             <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 onClick={() => navigate('/')}
             >
-                Go back
+                {goBackMap[originLanguage]}
             </button>
             <div className="max-w-7xl mx-auto p-6 md:p-10">
                 <div className="mb-10">

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import LanguageInput from "../LanguageInput";
 import UserLanguage from "./UserLanguage";
 import { useAppContext } from "../../Context";
@@ -62,6 +62,21 @@ export default function Onboarding() {
     targetLanguage: targetLanguage || "",
     themeMode: theme || "light",
   });
+
+  useEffect(() => {
+    if (userName || userEmail || userLocation || userLanguage || targetLanguage) {
+      setData((prev) => ({
+        ...prev,
+        name: userName || prev.name,
+        email: userEmail || prev.email,
+        location: userLocation || prev.location,
+        spokenLanguage: userLanguage || prev.spokenLanguage,
+        targetLanguage: targetLanguage || prev.targetLanguage,
+      }));
+    }
+  }, [userName, userEmail, userLocation, userLanguage, targetLanguage]);
+
+  
 
   const currentStep = STEPS[step];
 

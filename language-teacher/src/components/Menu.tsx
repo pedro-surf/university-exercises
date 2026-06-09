@@ -1,3 +1,4 @@
+import { whatWouldYouLikeToStudyTodayMap } from "../constants/app";
 import { useAppContext } from "../Context";
 import ConfigDisplay from "./ConfigDisplay";
 import { useNavigate } from "react-router-dom";
@@ -58,7 +59,7 @@ const OPTIONS = [
 
 
 export default function Menu() {
-    const { userName } = useAppContext();
+    const { userName, userLanguage } = useAppContext();
     const navigate = useNavigate();
 
     const handleSelect = (
@@ -77,9 +78,7 @@ export default function Menu() {
                     </div>
 
                     <h1 className="text-6xl font-black tracking-tight leading-tight">
-                        What would you like
-                        <br />
-                        to study today,
+                        {whatWouldYouLikeToStudyTodayMap[userLanguage]},
                         <br />
                         {userName}?
                     </h1>
