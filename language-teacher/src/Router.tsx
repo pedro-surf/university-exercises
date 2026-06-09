@@ -6,6 +6,7 @@ import App from "./App";
 import GrammarPage from "./components/Grammar";
 import VocabularyPage from "./components/Vocabulary";
 import ExercisesPage from "./components/Exercises";
+import AboutPage from "./components/About";
 import UserMetrics from "./components/UserMetrics";
 import UserMetricsV2 from "./components/UserMetricsV2";
 import { AssetsInspector } from "./components/AssetsInspector";
@@ -29,6 +30,10 @@ export const router =
     {
       path: "/exercises",
       element: <ExercisesPage />,
+    },
+    {
+      path: "/about",
+      element: <AboutPage />,
     },
     {
       path: "/assets",

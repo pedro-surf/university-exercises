@@ -1,10 +1,12 @@
 import React from "react";
 import { useAppContext } from "../../Context";
-import Table from "../Grammar/Table";
+import TranslationTable from "../TranslationTable";
 import { useNavigate } from "react-router-dom";
-import { type VocabularyCategory, menuItems } from "../../constants/vocabulary";
-import { languagesMap } from "../../constants/languages";
-import { goBackMap } from "../../constants/app";
+import { type MenuItem, menuItems } from "../../constants/vocabulary";
+import { goBackMap } from "../../constants/appTranslations";
+import { vocabularyDescriptionMap, vocabularyTitleMap } from "../../constants/menu";
+import { speakWord } from "../../utils/speakWord";
+import { capitalize } from "../../utils/capitalize";
 
 
 export default function VocabularyScreen() {
@@ -19,111 +21,51 @@ export default function VocabularyScreen() {
   const [
     selectedCategory,
     setSelectedCategory,
-  ] = React.useState<VocabularyCategory>(
-    "food"
+  ] = React.useState<MenuItem>(
+    menuItems[0]
   );
 
   const getTranslationData = () => {
-    switch (selectedCategory) {
+    switch (selectedCategory.id) {
       case "food":
-        return {
-          title: "Food",
-          description:
-            "Learn food and restaurant vocabulary.",
-          data: food,
-        };
+        return food;
 
       case "travel":
-        return {
-          title: "Travel",
-          description:
-            "Useful words for trips and transportation.",
-          data: travel,
-        };
+        return travel;
 
       case "emotions":
-        return {
-          title: "Emotions",
-          description:
-            "Express feelings and emotional states.",
-          data: emotions,
-        };
+        return emotions;
 
       case "business":
-        return {
-          title: "Business",
-          description:
-            "Professional and workplace vocabulary.",
-          data: business,
-        };
+        return business;
 
       case "surfing":
-        return {
-          title: "Surfing",
-          description:
-            "Ocean, surfing, and beach culture words.",
-          data: surfing,
-        };
+        return surfing;
 
       default:
-        return {
-          title: "Food",
-          description:
-            "Learn food vocabulary.",
-          data: food,
-        };
+        return food;
     }
   };
 
   const getOriginData = () => {
-    switch (selectedCategory) {
+    switch (selectedCategory.id) {
       case "food":
-        return {
-          title: "Food",
-          description:
-            "Learn food and restaurant vocabulary.",
-          data: origin?.food,
-        };
+        return origin?.food;
 
       case "travel":
-        return {
-          title: "Travel",
-          description:
-            "Useful words for trips and transportation.",
-          data: origin?.travel,
-        };
+        return origin?.travel;
 
       case "emotions":
-        return {
-          title: "Emotions",
-          description:
-            "Express feelings and emotional states.",
-          data: origin?.emotions,
-        };
+        return origin?.emotions;
 
       case "business":
-        return {
-          title: "Business",
-          description:
-            "Professional and workplace vocabulary.",
-          data: origin?.business,
-        };
+        return origin?.business;
 
       case "surfing":
-        return {
-          title: "Surfing",
-          description:
-            "Ocean, surfing, and beach culture words.",
-          data: origin?.surfing,
-        };
+        return origin?.surfing;
 
       default:
-        return {
-          title: "Food",
-          description:
-            "Learn food vocabulary.",
-          data: origin?.food,
-        };
+        return origin?.food;
     }
   };
 
@@ -141,30 +83,28 @@ export default function VocabularyScreen() {
       <div className="max-w-7xl mx-auto p-6 md:p-10">
         <div className="mb-10">
           <div className="text-sm uppercase tracking-[0.25em] text-gray-500 font-semibold mb-4">
-            Vocabulary
+            {vocabularyTitleMap[originLanguage]}
           </div>
 
           <h1 className="text-6xl font-black tracking-tight">
-            Expand Vocabulary
+            {vocabularyTitleMap[targetLanguage]}
           </h1>
 
-          <p className="text-xl w-full text-center text-gray-600 mt-5">
-            Explore useful words and expressions
-            grouped by real-world topics and
-            situations.
+          <p onClick={() => speakWord(vocabularyDescriptionMap[targetLanguage], targetLanguage)} className="text-xl w-full text-center text-gray-600 mt-5">
+            {vocabularyDescriptionMap[targetLanguage]}
           </p>
         </div>
 
         <div className="flex justify-center flex-wrap gap-4 mb-10">
           {menuItems.map((item) => {
             const isSelected =
-              selectedCategory === item.id;
+              selectedCategory.id === item.id;
 
             return (
               <button
                 key={item.id}
-                onClick={() =>
-                  setSelectedCategory(item.id)
+                onClick={() => isSelected ? speakWord(item.label, targetLanguage) :
+                  setSelectedCategory(item)
                 }
                 className={`rounded-2xl px-6 py-4 text-lg font-semibold transition-all ${isSelected
                   ? "bg-black text-white shadow-xl"
@@ -175,7 +115,7 @@ export default function VocabularyScreen() {
                   {item.emoji}
                 </span>
 
-                {item.label}
+                {capitalize(item.title[originLanguage])}
               </button>
             );
           })}
@@ -187,17 +127,15 @@ export default function VocabularyScreen() {
           </h2>
 
           <p className="text-gray-600 text-lg mt-3">
-            {translations.description}
+            {selectedCategory.description[originLanguage]}
           </p>
         </div>
 
-        <Table
-          targetTitle={translations.title}
-          originTitle={translations.title}
-          originLanguageLabel={languagesMap[originLanguage]}
-          targetLanguageLabel={languagesMap[targetLanguage]}
-          originPronouns={natives.data}
-          targetPronouns={translations.data}
+        <TranslationTable
+          targetTitle={selectedCategory.title[targetLanguage]}
+          originTitle={selectedCategory.title[originLanguage]}
+           originPronouns={natives}
+          targetPronouns={translations}
         />
       </div>
     </div>

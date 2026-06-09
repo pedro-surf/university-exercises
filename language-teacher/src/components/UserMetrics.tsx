@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { groupByLanguage } from "../utils/groupByLanguage";
-import { goBackMap } from "../constants/app";
+import { goBackMap } from "../constants/appTranslations";
 import { useAppContext } from "../Context";
 
 const exerciseResults = [
@@ -42,7 +42,7 @@ const exerciseResults = [
 // Calculate metrics from the mock data
 const groupedResults = groupByLanguage(exerciseResults);
 
-const calculateMetrics = (groupedResults: Record<string, typeof exerciseResults>) => {
+const calculateMetrics = (groupedResults: unknown) => {
   return Object.entries(groupedResults).map(([language, results]) => {
     const exercisesCompleted = results.length;
     const correctAnswers = results.filter((result) => result.isCorrect).length;

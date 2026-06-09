@@ -1,17 +1,60 @@
-export const languages = [
-    { code: "en-US", label: "English (US)" },
-    { code: "pt-BR", label: "Portuguese (Brazil)" },
-    { code: "es-ES", label: "Spanish (Spain)" },
-    { code: "fr-FR", label: "French" },
-    { code: "id-ID", label: "Indonesian" },
-    { code: "cs-CZ", label: "Czech" },
-    { code: "de-DE", label: "German" },
-    { code: "it-IT", label: "Italian" },
-    { code: "ja-JP", label: "Japanese" },
-    { code: "zh-CN", label: "Chinese (Mandarin)" },
-  ];
+export const APP_SUPPORTED_LANGUAGES = {
+  "en-US": "English",
+  "es-ES": "Spanish",
+  "fr-FR": "French",
+  "cs-CZ": "Czech",
+  "pt-BR": "Portuguese",
+}
 
-export const languagesMap = languages.reduce((acc, lang) => {
-    acc[lang.code] = lang.label;
-    return acc;
-}, {} as Record<string, string>);
+export const LANGUAGES = [
+  {
+    code: "en-US",
+    name: "English",
+    flag: "🇺🇸",
+  },
+  {
+    code: "pt-BR",
+    name: "Português",
+    flag: "🇧🇷",
+  },
+  {
+    code: "es-ES",
+    name: "Español",
+    flag: "🇪🇸",
+  },
+  {
+    code: "fr-FR",
+    name: "Français",
+    flag: "🇫🇷",
+  },
+  {
+    code: "de-DE",
+    name: "Deutsch",
+    flag: "🇩🇪",
+  },
+  {
+    code: "it-IT",
+    name: "Italiano",
+    flag: "🇮🇹",
+  },
+  {
+    code: "cs-CZ",
+    name: "Čeština",
+    flag: "🇨🇿",
+  },
+  {
+    code: "ja-JP",
+    name: "日本語",
+    flag: "🇯🇵",
+  },
+  {
+    code: "ko-KR",
+    name: "한국어",
+    flag: "🇰🇷",
+  },
+  {
+    code: "zh-CN",
+    name: "中文",
+    flag: "🇨🇳",
+  },
+];

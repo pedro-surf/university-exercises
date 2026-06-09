@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../Context";
 import mockExercises from "../../assets/shared/exercises/index.json";
 import type { Exercise } from "../../constants/exercises";
-import { goBackMap, nextMap } from "../../constants/app";
+import { goBackMap, nextMap } from "../../constants/appTranslations";
 
 type ExerciseResult = {
   exerciseId: string;

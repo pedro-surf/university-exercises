@@ -1,31 +1,28 @@
-import { useAppContext } from "../../Context";
-import { capitalize } from "../../utils/capitalize";
-import { speakWord } from "../../utils/speakWord";
+import { LANGUAGES } from "../constants/languages";
+import { useAppContext } from "../Context";
+import { capitalize } from "../utils/capitalize";
+import { speakWord } from "../utils/speakWord";
 
 type PronounItem = {
     id: string;
     word: string;
 };
 
-type PronounsTableProps = {
+type TranslationTableProps = {
     originTitle?: string;
     targetTitle?: string;
-    originLanguageLabel?: string;
-    targetLanguageLabel?: string;
 
     originPronouns: PronounItem[];
     targetPronouns: PronounItem[];
 };
 
-export default function GrammarTable({
+export default function TranslationTable({
     originTitle = "Pronouns",
     targetTitle = "Pronouns",
-    originLanguageLabel = "English",
-    targetLanguageLabel = "Français",
     originPronouns,
     targetPronouns,
-}: PronounsTableProps) {
-    const { targetLanguage } = useAppContext();
+}: TranslationTableProps) {
+    const { targetLanguage, userLanguage: originLanguage } = useAppContext();
     const targetMap = new Map(
         targetPronouns.map((item) => [
             item.id,
@@ -33,11 +30,15 @@ export default function GrammarTable({
         ])
     );
 
+    const originLanguageLabel = LANGUAGES.find(l => l.code === originLanguage).name;
+    const targetLanguageLabel = LANGUAGES.find(l => l.code === targetLanguage).name;
+
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 p-6 md:p-10">
             <div className="max-w-5xl mx-auto">
                 <h1 className="text-5xl font-black mb-5">
-                    {capitalize(targetTitle)} ({capitalize(originTitle)})
+                    <span className="cursor-pointer" onClick={() => speakWord(targetTitle, targetLanguage)}>{capitalize(targetTitle)}</span> ({capitalize(originTitle)})
                 </h1>
                 <div className="overflow-hidden rounded-[32px] border border-gray-200 bg-white shadow-2xl">
                     <div className="grid grid-cols-2 bg-black text-white">

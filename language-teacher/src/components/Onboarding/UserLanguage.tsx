@@ -1,57 +1,6 @@
 import React from "react";
+import { LANGUAGES } from "../../constants/languages";
 
-const LANGUAGES = [
-  {
-    code: "en-US",
-    name: "English",
-    flag: "🇺🇸",
-  },
-  {
-    code: "pt-BR",
-    name: "Português",
-    flag: "🇧🇷",
-  },
-  {
-    code: "es-ES",
-    name: "Español",
-    flag: "🇪🇸",
-  },
-  {
-    code: "fr-FR",
-    name: "Français",
-    flag: "🇫🇷",
-  },
-  {
-    code: "de-DE",
-    name: "Deutsch",
-    flag: "🇩🇪",
-  },
-  {
-    code: "it-IT",
-    name: "Italiano",
-    flag: "🇮🇹",
-  },
-  {
-    code: "cs-CZ",
-    name: "Čeština",
-    flag: "🇨🇿",
-  },
-  {
-    code: "ja-JP",
-    name: "日本語",
-    flag: "🇯🇵",
-  },
-  {
-    code: "ko-KR",
-    name: "한국어",
-    flag: "🇰🇷",
-  },
-  {
-    code: "zh-CN",
-    name: "中文",
-    flag: "🇨🇳",
-  },
-];
 
 type Props = {
   onChange?: (language: string) => void;

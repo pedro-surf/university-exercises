@@ -1,80 +1,23 @@
-import { whatWouldYouLikeToStudyTodayMap } from "../constants/app";
+import { welcomeMap, whatWouldYouLikeToStudyTodayMap } from "../constants/appTranslations";
+import { APP_MENU_OPTIONS } from "../constants/menu";
 import { useAppContext } from "../Context";
-import ConfigDisplay from "./ConfigDisplay";
+import ConfigDisplay from "./Config";
 import { useNavigate } from "react-router-dom";
-
-
-type StudyMode =
-    | "grammar"
-    | "vocabulary"
-    | "exercises";
-
-const OPTIONS = [
-    {
-        id: "grammar",
-        title: "Grammar",
-        emoji: "📚",
-
-        description:
-            "Learn sentence structure, verb conjugation, pronouns, and the foundations of the language.",
-
-        examples: [
-            "Verb tenses",
-            "Pronouns",
-            "Sentence structure",
-        ],
-    },
-
-    {
-        id: "vocabulary",
-        title: "Vocabulary",
-        emoji: "🧠",
-
-        description:
-            "Expand your vocabulary with useful words and real-world categories.",
-
-        examples: [
-            "Travel",
-            "Food",
-            "Daily conversation",
-        ],
-    },
-
-    {
-        id: "exercises",
-        title: "Exercises",
-        emoji: "✍️",
-
-        description:
-            "Practice actively with fill-in-the-blank, listening, pronunciation, and matching exercises.",
-
-        examples: [
-            "Listening",
-            "Pronunciation",
-            "Typing challenges",
-        ],
-    },
-] as const;
-
-
 
 export default function Menu() {
     const { userName, userLanguage } = useAppContext();
     const navigate = useNavigate();
 
-    const handleSelect = (
-        mode: string
-    ) => {
-        navigate(`/${mode}`);
-    };
-
     return (
         <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 flex items-center justify-center p-6">
             <div className="w-full max-w-6xl">
                 <ConfigDisplay />
+                <button onClick={() => navigate('/about')} className="absolute top-4 right-4 text-sm text-gray-500 hover:text-gray-700 transition-colors">
+                    About
+                </button>
                 <div className="mb-14 text-center space-y-4">
                     <div className="text-sm uppercase tracking-[0.25em] text-gray-500 font-semibold">
-                        Welcome
+                        {welcomeMap[userLanguage]}
                     </div>
 
                     <h1 className="text-6xl font-black tracking-tight leading-tight">
@@ -85,13 +28,11 @@ export default function Menu() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6">
-                    {OPTIONS.map((option) => (
+                    {APP_MENU_OPTIONS.map((option) => (
                         <button
                             key={option.id}
                             onClick={() =>
-                                handleSelect?.(
-                                    option.id as StudyMode
-                                )
+                                navigate(option.id)
                             }
                             className="group rounded-[36px] bg-white border border-gray-100 shadow-xl p-8 text-left hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
                         >
@@ -101,11 +42,11 @@ export default function Menu() {
 
                             <div className="space-y-4">
                                 <h2 className="text-3xl font-black">
-                                    {option.title}
+                                    {option.title[userLanguage]}
                                 </h2>
 
                                 <p className="text-gray-600 leading-relaxed">
-                                    {option.description}
+                                    {option.description[userLanguage]}
                                 </p>
 
                                 <div className="pt-3 flex flex-wrap gap-2">

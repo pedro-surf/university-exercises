@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { speakWord } from "../../utils/speakWord";
 import { useAppContext } from "../../Context";
-import { checkAnswerMap, correctAnswerMap, hintMap, type Exercise } from "../../constants/exercises";
+import { type Exercise } from "../../constants/exercises";
+import { checkAnswerMap, correctAnswerMap, hintMap } from "../../constants/appTranslations";
 import { TextCorrectionHighlighter } from "../TextCorrectionHighlighter";
-import { correctMap, incorrectMap, translateMap } from "../../constants/app";
+import { correctMap, incorrectMap, translateMap } from "../../constants/appTranslations";
 
 
 export type ExercisePair = {

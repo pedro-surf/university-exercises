@@ -1,15 +1,14 @@
 import { useMemo } from "react";
 import { useAppContext } from "../Context";
-import { languages } from "../constants/languages";
+import { APP_SUPPORTED_LANGUAGES } from "../constants/languages";
 
 type Props = {
   value: string;
   onChange: (value: string) => void;
   label?: string;
-  hideHelpText?: boolean;
 };
 
-const LanguageInput = ({ value, onChange, hideHelpText }: Props) => {
+const LanguageInput = ({ value, onChange }: Props) => {
   const {
     voices,
   } = useAppContext();
@@ -25,6 +24,8 @@ const LanguageInput = ({ value, onChange, hideHelpText }: Props) => {
     });
   }, [voices]);
 
+  console.log("Available browser languages:", availableLanguages);
+
   return (
     <div className="flex flex-col justify-center items-center w-full">
       <select
@@ -32,14 +33,13 @@ const LanguageInput = ({ value, onChange, hideHelpText }: Props) => {
         onChange={(e) => onChange(e.target.value)}
         className="border rounded-xl px-3 py-2 bg-gray-100 w-full"
       >
-        {(availableLanguages).map((lang) => (
-          <option key={lang.code} value={lang.code}>
-            {languages[lang.label] ?? lang.label}
+        {Object.keys(APP_SUPPORTED_LANGUAGES).map((lang) => (
+          <option key={lang} value={lang}>
+            {APP_SUPPORTED_LANGUAGES[lang]}
           </option>
         ))}
       </select>
-      {!hideHelpText && <p>Note: The language options are based on the voices available in your browser.</p>
-      }    </div>
+    </div>
 
   );
 };
