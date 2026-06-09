@@ -1,0 +1,1 @@
+var e=`cs-CZ`,t=`cs-CZ`,n=`cs-CZ`,r=`ltr`,i=`cs-CZ`,a=``,o=`2026-05-23T23:50:13-03:00`,s={code:e,name:t,nativeName:n,direction:`ltr`,voice:i,flag:``,createdAt:o};export{e as code,o as createdAt,s as default,r as direction,a as flag,t as name,n as nativeName,i as voice};

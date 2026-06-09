@@ -1,0 +1,1 @@
+var e=[{id:`airport`,word:`aeroporto`},{id:`passport`,word:`passaporte`},{id:`hotel`,word:`hotel`},{id:`beach`,word:`praia`},{id:`ticket`,word:`passagem`},{id:`backpack`,word:`mochila`},{id:`map`,word:`mapa`},{id:`train`,word:`trem`},{id:`bus`,word:`ônibus`},{id:`adventure`,word:`aventura`}];export{e as default};

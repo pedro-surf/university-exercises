@@ -1,0 +1,1 @@
+var e=[{id:`big`,word:`big`},{id:`small`,word:`small`},{id:`beautiful`,word:`beautiful`},{id:`ugly`,word:`ugly`},{id:`fast`,word:`fast`},{id:`slow`,word:`slow`},{id:`happy`,word:`happy`},{id:`sad`,word:`sad`},{id:`hot`,word:`hot`},{id:`cold`,word:`cold`}];export{e as default};

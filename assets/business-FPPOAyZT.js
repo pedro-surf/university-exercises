@@ -1,0 +1,1 @@
+var e=[{id:`meeting`,word:`réunion`},{id:`office`,word:`bureau`},{id:`company`,word:`entreprise`},{id:`salary`,word:`salaire`},{id:`manager`,word:`manager`},{id:`project`,word:`projet`},{id:`contract`,word:`contrat`},{id:`client`,word:`client`},{id:`startup`,word:`startup`},{id:`interview`,word:`entretien`}];export{e as default};

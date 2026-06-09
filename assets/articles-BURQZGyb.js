@@ -1,0 +1,1 @@
+var e=[{id:`no-articles`,word:`Čeština nepoužívá členy`}];export{e as default};

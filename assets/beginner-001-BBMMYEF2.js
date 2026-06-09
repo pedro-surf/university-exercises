@@ -1,0 +1,1 @@
+var e=`beginner-001`,t={"en-US":`Basic Greetings`},n=`beginner`,r=[`greetings`],i=[],a={id:e,title:t,difficulty:n,topics:r,items:i};export{a as default,n as difficulty,e as id,i as items,t as title,r as topics};

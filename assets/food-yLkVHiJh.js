@@ -1,0 +1,1 @@
+var e=[{id:`bread`,word:`chléb`},{id:`water`,word:`voda`},{id:`coffee`,word:`káva`},{id:`rice`,word:`rýže`},{id:`beans`,word:`fazole`},{id:`cheese`,word:`sýr`},{id:`fish`,word:`ryba`},{id:`fruit`,word:`ovoce`},{id:`milk`,word:`mléko`},{id:`beer`,word:`pivo`}];export{e as default};

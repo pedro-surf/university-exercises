@@ -1,0 +1,1 @@
+var e=[{id:`in`,word:`v`},{id:`on`,word:`na`},{id:`under`,word:`pod`},{id:`with`,word:`s`},{id:`without`,word:`bez`},{id:`before`,word:`před`},{id:`after`,word:`po`},{id:`between`,word:`mezi`},{id:`near`,word:`blízko`},{id:`inside`,word:`uvnitř`}];export{e as default};

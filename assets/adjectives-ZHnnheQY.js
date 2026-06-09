@@ -1,0 +1,1 @@
+var e=[{id:`big`,word:`velký`},{id:`small`,word:`malý`},{id:`beautiful`,word:`krásný`},{id:`ugly`,word:`ošklivý`},{id:`fast`,word:`rychlý`},{id:`slow`,word:`pomalý`},{id:`happy`,word:`šťastný`},{id:`sad`,word:`smutný`},{id:`hot`,word:`horký`},{id:`cold`,word:`studený`}];export{e as default};
