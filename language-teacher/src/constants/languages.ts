@@ -5,12 +5,17 @@ export const APP_SUPPORTED_LANGUAGES = {
   "cs-CZ": "Czech",
   "pt-BR": "Portuguese",
   "id-ID": "Indonesian",
+  "de-DE": "German",
+  "nl-NL": "Dutch",
+  "it-IT": "Italian",
+  "ja-JP": "Japanese",
 }
 
 export type SupportedLanguages =
   'en-US' |
   'pt-BR' | 'es-ES' | 'fr-FR' | 'cs-CZ' |
-  'de-DE' | 'it-IT' | 'id-ID';
+  'de-DE' | 'nl-NL' | 'it-IT' | 'id-ID' |
+  'ja-JP';
 
 export const LANGUAGES = [
   {
@@ -37,6 +42,11 @@ export const LANGUAGES = [
     code: "de-DE",
     name: "Deutsch",
     flag: "🇩🇪",
+  },
+  {
+    code: "nl-NL",
+    name: "Dutch",
+    flag: "🇳🇱",
   },
   {
     code: "it-IT",

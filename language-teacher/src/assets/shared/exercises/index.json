@@ -2,16 +2,27 @@
     {
         "id": "1",
         "identifier": "pt-fr-001",
-        "language": "pt-BR",
+        "language": "en-US",
         "category": "VOCABULARY",
         "topic": "FOOD",
         "difficulty": "BEGINNER",
-        "sentence": "maçã",
+        "sentence": "apple",
         "solution": null,
-        "hint": "É uma fruta vermelha ou verde."
+        "hint": "It's a red or green fruit."
     },
     {
         "id": "2",
+        "identifier": "pt-fr-001",
+        "language": "es-ES",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "manzana",
+        "solution": null,
+        "hint": "Es una fruta roja o verde."
+    },
+    {
+        "id": "3",
         "identifier": "pt-fr-001",
         "language": "fr-FR",
         "category": "VOCABULARY",
@@ -22,18 +33,106 @@
         "hint": "C'est un fruit rouge ou vert."
     },
     {
-        "id": "3",
-        "identifier": "pt-fr-002",
+        "id": "4",
+        "identifier": "pt-fr-001",
+        "language": "cs-CZ",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "jablko",
+        "solution": null,
+        "hint": "Je to červené nebo zelené ovoce."
+    },
+    {
+        "id": "5",
+        "identifier": "pt-fr-001",
         "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "maçã",
+        "solution": null,
+        "hint": "É uma fruta vermelha ou verde."
+    },
+    {
+        "id": "6",
+        "identifier": "pt-fr-001",
+        "language": "id-ID",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "apel",
+        "solution": null,
+        "hint": "Ini adalah buah merah atau hijau."
+    },
+    {
+        "id": "7",
+        "identifier": "pt-fr-001",
+        "language": "de-DE",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Apfel",
+        "solution": null,
+        "hint": "Es ist eine rote oder grüne Frucht."
+    },
+    {
+        "id": "8",
+        "identifier": "pt-fr-001",
+        "language": "nl-NL",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "appel",
+        "solution": null,
+        "hint": "Het is een rode of groene vrucht."
+    },
+    {
+        "id": "9",
+        "identifier": "pt-fr-001",
+        "language": "it-IT",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "mela",
+        "solution": null,
+        "hint": "È un frutto rosso o verde."
+    },
+    {
+        "id": "10",
+        "identifier": "pt-fr-001",
+        "language": "ja-JP",
+        "category": "VOCABULARY",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "りんご",
+        "solution": null,
+        "hint": "赤または緑の果物です。"
+    },
+    {
+        "id": "11",
+        "identifier": "pt-fr-002",
+        "language": "en-US",
         "category": "VOCABULARY",
         "topic": "TRAVEL",
         "difficulty": "BEGINNER",
-        "sentence": "aeroporto",
+        "sentence": "airport",
         "solution": null,
-        "hint": "É um lugar onde aviões pousam e decolam."
+        "hint": "It's a place where planes land and take off."
     },
     {
-        "id": "4",
+        "id": "12",
+        "identifier": "pt-fr-002",
+        "language": "es-ES",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "aeropuerto",
+        "solution": null,
+        "hint": "Es un lugar donde los aviones aterrizan y despegan."
+    },
+    {
+        "id": "13",
         "identifier": "pt-fr-002",
         "language": "fr-FR",
         "category": "VOCABULARY",
@@ -44,18 +143,106 @@
         "hint": "C'est un endroit où les avions atterrissent et décollent."
     },
     {
-        "id": "5",
-        "identifier": "pt-fr-003",
+        "id": "14",
+        "identifier": "pt-fr-002",
+        "language": "cs-CZ",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "letiště",
+        "solution": null,
+        "hint": "Je to místo, kde letadla přistávají a startují."
+    },
+    {
+        "id": "15",
+        "identifier": "pt-fr-002",
         "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "aeroporto",
+        "solution": null,
+        "hint": "É um lugar onde aviões pousam e decolam."
+    },
+    {
+        "id": "16",
+        "identifier": "pt-fr-002",
+        "language": "id-ID",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "bandara",
+        "solution": null,
+        "hint": "Tempat pesawat mendarat dan lepas landas."
+    },
+    {
+        "id": "17",
+        "identifier": "pt-fr-002",
+        "language": "de-DE",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "Flughafen",
+        "solution": null,
+        "hint": "Es ist ein Ort, an dem Flugzeuge landen und starten."
+    },
+    {
+        "id": "18",
+        "identifier": "pt-fr-002",
+        "language": "nl-NL",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "luchthaven",
+        "solution": null,
+        "hint": "Het is een plek waar vliegtuigen landen en opstijgen."
+    },
+    {
+        "id": "19",
+        "identifier": "pt-fr-002",
+        "language": "it-IT",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "aeroporto",
+        "solution": null,
+        "hint": "È un luogo dove gli aerei atterrano e decollano."
+    },
+    {
+        "id": "20",
+        "identifier": "pt-fr-002",
+        "language": "ja-JP",
+        "category": "VOCABULARY",
+        "topic": "TRAVEL",
+        "difficulty": "BEGINNER",
+        "sentence": "空港",
+        "solution": null,
+        "hint": "飛行機が着陸したり離陸したりする場所です。"
+    },
+    {
+        "id": "21",
+        "identifier": "pt-fr-003",
+        "language": "en-US",
         "category": "GRAMMAR",
         "topic": "FAMILY",
         "difficulty": "INTERMEDIATE",
-        "sentence": "Meu irmão gosta de ____.",
-        "solution": "viajar",
-        "hint": "É algo que as pessoas fazem para explorar novos lugares."
+        "sentence": "My brother likes to ____.",
+        "solution": "travel",
+        "hint": "It's something people do to explore new places."
     },
     {
-        "id": "6",
+        "id": "22",
+        "identifier": "pt-fr-003",
+        "language": "es-ES",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "A mi hermano le gusta ____.",
+        "solution": "viajar",
+        "hint": "Es algo que la gente hace para explorar nuevos lugares."
+    },
+    {
+        "id": "23",
         "identifier": "pt-fr-003",
         "language": "fr-FR",
         "category": "GRAMMAR",
@@ -66,18 +253,106 @@
         "hint": "C'est quelque chose que les gens font pour explorer de nouveaux endroits."
     },
     {
-        "id": "7",
-        "identifier": "pt-fr-004",
+        "id": "24",
+        "identifier": "pt-fr-003",
+        "language": "cs-CZ",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Můj bratr rád ____.",
+        "solution": "cestovat",
+        "hint": "Je to něco, co lidé dělají, aby objevovali nová místa."
+    },
+    {
+        "id": "25",
+        "identifier": "pt-fr-003",
         "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Meu irmão gosta de ____.",
+        "solution": "viajar",
+        "hint": "É algo que as pessoas fazem para explorar novos lugares."
+    },
+    {
+        "id": "26",
+        "identifier": "pt-fr-003",
+        "language": "id-ID",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Saudara laki-laki saya suka ____.",
+        "solution": "bepergian",
+        "hint": "Itu sesuatu yang dilakukan orang untuk menjelajahi tempat baru."
+    },
+    {
+        "id": "27",
+        "identifier": "pt-fr-003",
+        "language": "de-DE",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Mein Bruder mag es zu ____.",
+        "solution": "reisen",
+        "hint": "Es ist etwas, das Menschen tun, um neue Orte zu entdecken."
+    },
+    {
+        "id": "28",
+        "identifier": "pt-fr-003",
+        "language": "nl-NL",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Mijn broer houdt van ____.",
+        "solution": "reizen",
+        "hint": "Het is iets wat mensen doen om nieuwe plekken te verkennen."
+    },
+    {
+        "id": "29",
+        "identifier": "pt-fr-003",
+        "language": "it-IT",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "A mio fratello piace ____.",
+        "solution": "viaggiare",
+        "hint": "È qualcosa che le persone fanno per esplorare nuovi posti."
+    },
+    {
+        "id": "30",
+        "identifier": "pt-fr-003",
+        "language": "ja-JP",
+        "category": "GRAMMAR",
+        "topic": "FAMILY",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "兄は____のが好きです。",
+        "solution": "旅行",
+        "hint": "人々が新しい場所を探索するためにすることです。"
+    },
+    {
+        "id": "31",
+        "identifier": "pt-fr-004",
+        "language": "en-US",
         "category": "VOCABULARY",
         "topic": "ANIMALS",
         "difficulty": "BEGINNER",
-        "sentence": "cachorro",
+        "sentence": "dog",
         "solution": null,
-        "hint": "É um animal conhecido como o melhor amigo do homem."
+        "hint": "It's an animal known as man's best friend."
     },
     {
-        "id": "8",
+        "id": "32",
+        "identifier": "pt-fr-004",
+        "language": "es-ES",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "perro",
+        "solution": null,
+        "hint": "Es un animal conocido como el mejor amigo del hombre."
+    },
+    {
+        "id": "33",
         "identifier": "pt-fr-004",
         "language": "fr-FR",
         "category": "VOCABULARY",
@@ -88,18 +363,106 @@
         "hint": "C'est un animal connu comme le meilleur ami de l'homme."
     },
     {
-        "id": "9",
-        "identifier": "pt-fr-005",
+        "id": "34",
+        "identifier": "pt-fr-004",
+        "language": "cs-CZ",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "pes",
+        "solution": null,
+        "hint": "Je to zvíře známé jako nejlepší přítel člověka."
+    },
+    {
+        "id": "35",
+        "identifier": "pt-fr-004",
         "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "cachorro",
+        "solution": null,
+        "hint": "É um animal conhecido como o melhor amigo do homem."
+    },
+    {
+        "id": "36",
+        "identifier": "pt-fr-004",
+        "language": "id-ID",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "anjing",
+        "solution": null,
+        "hint": "Hewan yang dikenal sebagai sahabat manusia."
+    },
+    {
+        "id": "37",
+        "identifier": "pt-fr-004",
+        "language": "de-DE",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "Hund",
+        "solution": null,
+        "hint": "Es ist ein Tier, das als bester Freund des Menschen bekannt ist."
+    },
+    {
+        "id": "38",
+        "identifier": "pt-fr-004",
+        "language": "nl-NL",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "hond",
+        "solution": null,
+        "hint": "Het is een dier dat bekend staat als de beste vriend van de mens."
+    },
+    {
+        "id": "39",
+        "identifier": "pt-fr-004",
+        "language": "it-IT",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "cane",
+        "solution": null,
+        "hint": "È un animale conosciuto come il migliore amico dell'uomo."
+    },
+    {
+        "id": "40",
+        "identifier": "pt-fr-004",
+        "language": "ja-JP",
+        "category": "VOCABULARY",
+        "topic": "ANIMALS",
+        "difficulty": "BEGINNER",
+        "sentence": "犬",
+        "solution": null,
+        "hint": "人類最良の友として知られる動物です。"
+    },
+    {
+        "id": "41",
+        "identifier": "pt-fr-005",
+        "language": "en-US",
         "category": "GRAMMAR",
         "topic": "DAILY LIFE",
         "difficulty": "INTERMEDIATE",
-        "sentence": "Eu gosto de ____ todos os dias.",
-        "solution": "correr",
-        "hint": "É uma atividade física que muitas pessoas fazem para se exercitar."
+        "sentence": "I like to ____ every day.",
+        "solution": "run",
+        "hint": "It's a physical activity many people do to exercise."
     },
     {
-        "id": "10",
+        "id": "42",
+        "identifier": "pt-fr-005",
+        "language": "es-ES",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Me gusta ____ todos los días.",
+        "solution": "correr",
+        "hint": "Es una actividad física que mucha gente hace para hacer ejercicio."
+    },
+    {
+        "id": "43",
         "identifier": "pt-fr-005",
         "language": "fr-FR",
         "category": "GRAMMAR",
@@ -110,18 +473,106 @@
         "hint": "C'est une activité physique que beaucoup de gens font pour s'exercer."
     },
     {
-        "id": "11",
-        "identifier": "pt-fr-006",
+        "id": "44",
+        "identifier": "pt-fr-005",
+        "language": "cs-CZ",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Rád ____ každý den.",
+        "solution": "běhat",
+        "hint": "Je to fyzická aktivita, kterou mnoho lidí dělá pro cvičení."
+    },
+    {
+        "id": "45",
+        "identifier": "pt-fr-005",
         "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Eu gosto de ____ todos os dias.",
+        "solution": "correr",
+        "hint": "É uma atividade física que muitas pessoas fazem para se exercitar."
+    },
+    {
+        "id": "46",
+        "identifier": "pt-fr-005",
+        "language": "id-ID",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Saya suka ____ setiap hari.",
+        "solution": "berlari",
+        "hint": "Aktivitas fisik yang dilakukan banyak orang untuk berolahraga."
+    },
+    {
+        "id": "47",
+        "identifier": "pt-fr-005",
+        "language": "de-DE",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Ich gehe gern jeden Tag ____.",
+        "solution": "laufen",
+        "hint": "Es ist eine körperliche Aktivität, die viele Menschen zum Trainieren machen."
+    },
+    {
+        "id": "48",
+        "identifier": "pt-fr-005",
+        "language": "nl-NL",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Ik hou ervan om elke dag te ____.",
+        "solution": "rennen",
+        "hint": "Het is een fysieke activiteit die veel mensen doen om te sporten."
+    },
+    {
+        "id": "49",
+        "identifier": "pt-fr-005",
+        "language": "it-IT",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Mi piace ____ ogni giorno.",
+        "solution": "correre",
+        "hint": "È un'attività fisica che molte persone fanno per fare esercizio."
+    },
+    {
+        "id": "50",
+        "identifier": "pt-fr-005",
+        "language": "ja-JP",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "私は毎日____のが好きです。",
+        "solution": "走る",
+        "hint": "多くの人が運動のために行う身体活動です。"
+    },
+    {
+        "id": "51",
+        "identifier": "pt-fr-006",
+        "language": "en-US",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "blue",
+        "solution": null,
+        "hint": "It's the color of the sky on a clear day."
+    },
+    {
+        "id": "52",
+        "identifier": "pt-fr-006",
+        "language": "es-ES",
         "category": "VOCABULARY",
         "topic": "COLORS",
         "difficulty": "BEGINNER",
         "sentence": "azul",
         "solution": null,
-        "hint": "É a cor do céu em um dia claro."
+        "hint": "Es el color del cielo en un día despejado."
     },
     {
-        "id": "12",
+        "id": "53",
         "identifier": "pt-fr-006",
         "language": "fr-FR",
         "category": "VOCABULARY",
@@ -132,18 +583,106 @@
         "hint": "C'est la couleur du ciel par une journée claire."
     },
     {
-        "id": "13",
-        "identifier": "pt-fr-007",
+        "id": "54",
+        "identifier": "pt-fr-006",
+        "language": "cs-CZ",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "modrá",
+        "solution": null,
+        "hint": "Je to barva oblohy za jasného dne."
+    },
+    {
+        "id": "55",
+        "identifier": "pt-fr-006",
         "language": "pt-BR",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "azul",
+        "solution": null,
+        "hint": "É a cor do céu em um dia claro."
+    },
+    {
+        "id": "56",
+        "identifier": "pt-fr-006",
+        "language": "id-ID",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "biru",
+        "solution": null,
+        "hint": "Warna langit pada hari cerah."
+    },
+    {
+        "id": "57",
+        "identifier": "pt-fr-006",
+        "language": "de-DE",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "blau",
+        "solution": null,
+        "hint": "Es ist die Farbe des Himmels an einem klaren Tag."
+    },
+    {
+        "id": "58",
+        "identifier": "pt-fr-006",
+        "language": "nl-NL",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "blauw",
+        "solution": null,
+        "hint": "Het is de kleur van de lucht op een heldere dag."
+    },
+    {
+        "id": "59",
+        "identifier": "pt-fr-006",
+        "language": "it-IT",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "blu",
+        "solution": null,
+        "hint": "È il colore del cielo in una giornata limpida."
+    },
+    {
+        "id": "60",
+        "identifier": "pt-fr-006",
+        "language": "ja-JP",
+        "category": "VOCABULARY",
+        "topic": "COLORS",
+        "difficulty": "BEGINNER",
+        "sentence": "青",
+        "solution": null,
+        "hint": "晴れた日の空の色です。"
+    },
+    {
+        "id": "61",
+        "identifier": "pt-fr-007",
+        "language": "en-US",
         "category": "GRAMMAR",
         "topic": "WORK",
         "difficulty": "ADVANCED",
-        "sentence": "Eu ____ no escritório todos os dias.",
-        "solution": "trabalho",
-        "hint": "É uma ação que você faz para ganhar dinheiro."
+        "sentence": "I ____ at the office every day.",
+        "solution": "work",
+        "hint": "It's an action you do to earn money."
     },
     {
-        "id": "14",
+        "id": "62",
+        "identifier": "pt-fr-007",
+        "language": "es-ES",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Yo ____ en la oficina todos los días.",
+        "solution": "trabajo",
+        "hint": "Es una acción que haces para ganar dinero."
+    },
+    {
+        "id": "63",
         "identifier": "pt-fr-007",
         "language": "fr-FR",
         "category": "GRAMMAR",
@@ -154,18 +693,106 @@
         "hint": "C'est une action que vous faites pour gagner de l'argent."
     },
     {
-        "id": "15",
-        "identifier": "pt-fr-008",
+        "id": "64",
+        "identifier": "pt-fr-007",
+        "language": "cs-CZ",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Každý den ____ v kanceláři.",
+        "solution": "pracuji",
+        "hint": "Je to činnost, kterou děláte, abyste vydělali peníze."
+    },
+    {
+        "id": "65",
+        "identifier": "pt-fr-007",
         "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Eu ____ no escritório todos os dias.",
+        "solution": "trabalho",
+        "hint": "É uma ação que você faz para ganhar dinheiro."
+    },
+    {
+        "id": "66",
+        "identifier": "pt-fr-007",
+        "language": "id-ID",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Saya ____ di kantor setiap hari.",
+        "solution": "bekerja",
+        "hint": "Tindakan yang Anda lakukan untuk mendapatkan uang."
+    },
+    {
+        "id": "67",
+        "identifier": "pt-fr-007",
+        "language": "de-DE",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Ich ____ jeden Tag im Büro.",
+        "solution": "arbeite",
+        "hint": "Es ist eine Handlung, die Sie ausführen, um Geld zu verdienen."
+    },
+    {
+        "id": "68",
+        "identifier": "pt-fr-007",
+        "language": "nl-NL",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Ik ____ elke dag op kantoor.",
+        "solution": "werk",
+        "hint": "Het is een handeling die je doet om geld te verdienen."
+    },
+    {
+        "id": "69",
+        "identifier": "pt-fr-007",
+        "language": "it-IT",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Io ____ in ufficio ogni giorno.",
+        "solution": "lavoro",
+        "hint": "È un'azione che fai per guadagnare denaro."
+    },
+    {
+        "id": "70",
+        "identifier": "pt-fr-007",
+        "language": "ja-JP",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "私は毎日オフィスで____。",
+        "solution": "働きます",
+        "hint": "お金を稼ぐために行う行動です。"
+    },
+    {
+        "id": "71",
+        "identifier": "pt-fr-008",
+        "language": "en-US",
         "category": "GRAMMAR",
         "topic": "TRAVEL",
         "difficulty": "INTERMEDIATE",
-        "sentence": "Eu vou para o ____ de ____ amanhã.",
-        "solution": "aeroporto;Paris",
-        "hint": "Primeiro é um local de transporte aéreo, segundo é uma capital europeia."
+        "sentence": "I'm going to the ____ in ____ tomorrow.",
+        "solution": "airport;Paris",
+        "hint": "First is an air transport location, second is a European capital."
     },
     {
-        "id": "16",
+        "id": "72",
+        "identifier": "pt-fr-008",
+        "language": "es-ES",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Voy al ____ de ____ mañana.",
+        "solution": "aeropuerto;París",
+        "hint": "Primero es un lugar de transporte aéreo, segundo es una capital europea."
+    },
+    {
+        "id": "73",
         "identifier": "pt-fr-008",
         "language": "fr-FR",
         "category": "GRAMMAR",
@@ -176,18 +803,106 @@
         "hint": "Le premier est un lieu de transport aérien, le second est une capitale européenne."
     },
     {
-        "id": "17",
-        "identifier": "pt-fr-009",
+        "id": "74",
+        "identifier": "pt-fr-008",
+        "language": "cs-CZ",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Zítra jedu na ____ v ____.",
+        "solution": "letiště;Paříži",
+        "hint": "První je místo letecké dopravy, druhé je evropské hlavní město."
+    },
+    {
+        "id": "75",
+        "identifier": "pt-fr-008",
         "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Eu vou para o ____ de ____ amanhã.",
+        "solution": "aeroporto;Paris",
+        "hint": "Primeiro é um local de transporte aéreo, segundo é uma capital europeia."
+    },
+    {
+        "id": "76",
+        "identifier": "pt-fr-008",
+        "language": "id-ID",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Saya pergi ke ____ di ____ besok.",
+        "solution": "bandara;Paris",
+        "hint": "Pertama adalah lokasi transportasi udara, kedua adalah ibu kota Eropa."
+    },
+    {
+        "id": "77",
+        "identifier": "pt-fr-008",
+        "language": "de-DE",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Morgen fahre ich zum ____ in ____.",
+        "solution": "Flughafen;Paris",
+        "hint": "Erstens ist ein Ort für Lufttransport, zweitens eine europäische Hauptstadt."
+    },
+    {
+        "id": "78",
+        "identifier": "pt-fr-008",
+        "language": "nl-NL",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Morgen ga ik naar de ____ in ____.",
+        "solution": "luchthaven;Parijs",
+        "hint": "Eerst is een luchtvervoerslocatie, tweede is een Europese hoofdstad."
+    },
+    {
+        "id": "79",
+        "identifier": "pt-fr-008",
+        "language": "it-IT",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Domani vado all'____ di ____.",
+        "solution": "aeroporto;Parigi",
+        "hint": "Il primo è un luogo di trasporto aereo, il secondo è una capitale europea."
+    },
+    {
+        "id": "80",
+        "identifier": "pt-fr-008",
+        "language": "ja-JP",
+        "category": "GRAMMAR",
+        "topic": "TRAVEL",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "私は明日____の____に行きます。",
+        "solution": "パリ;空港",
+        "hint": "最初は航空輸送の場所、2番目はヨーロッパの首都です。"
+    },
+    {
+        "id": "81",
+        "identifier": "pt-fr-009",
+        "language": "en-US",
         "category": "GRAMMAR",
         "topic": "DAILY LIFE",
         "difficulty": "INTERMEDIATE",
-        "sentence": "Eu gosto de ____ café pela ____.",
-        "solution": "beber;manhã",
-        "hint": "Primeiro é uma ação, segundo é um período do dia."
+        "sentence": "I like to ____ coffee in the ____.",
+        "solution": "drink;morning",
+        "hint": "First is an action, second is a time of day."
     },
     {
-        "id": "18",
+        "id": "82",
+        "identifier": "pt-fr-009",
+        "language": "es-ES",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Me gusta ____ café por la ____.",
+        "solution": "beber;mañana",
+        "hint": "Primero es una acción, segundo es un período del día."
+    },
+    {
+        "id": "83",
         "identifier": "pt-fr-009",
         "language": "fr-FR",
         "category": "GRAMMAR",
@@ -198,18 +913,106 @@
         "hint": "Le premier est une action, le second est une période de la journée."
     },
     {
-        "id": "19",
-        "identifier": "pt-fr-010",
+        "id": "84",
+        "identifier": "pt-fr-009",
+        "language": "cs-CZ",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Rád ____ kávu ____.",
+        "solution": "piju;ráno",
+        "hint": "První je činnost, druhé je část dne."
+    },
+    {
+        "id": "85",
+        "identifier": "pt-fr-009",
         "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Eu gosto de ____ café pela ____.",
+        "solution": "beber;manhã",
+        "hint": "Primeiro é uma ação, segundo é um período do dia."
+    },
+    {
+        "id": "86",
+        "identifier": "pt-fr-009",
+        "language": "id-ID",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Saya suka ____ kopi di ____.",
+        "solution": "minum;pagi",
+        "hint": "Pertama adalah tindakan, kedua adalah waktu dalam sehari."
+    },
+    {
+        "id": "87",
+        "identifier": "pt-fr-009",
+        "language": "de-DE",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Ich ____ gern Kaffee am ____.",
+        "solution": "trinke;Morgen",
+        "hint": "Erstens ist eine Handlung, zweitens eine Tageszeit."
+    },
+    {
+        "id": "88",
+        "identifier": "pt-fr-009",
+        "language": "nl-NL",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Ik ____ graag koffie in de ____.",
+        "solution": "drink;ochtend",
+        "hint": "Eerst is een handeling, tweede is een tijd van de dag."
+    },
+    {
+        "id": "89",
+        "identifier": "pt-fr-009",
+        "language": "it-IT",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "Mi piace ____ caffè la ____.",
+        "solution": "bere;mattina",
+        "hint": "Il primo è un'azione, il secondo è un periodo della giornata."
+    },
+    {
+        "id": "90",
+        "identifier": "pt-fr-009",
+        "language": "ja-JP",
+        "category": "GRAMMAR",
+        "topic": "DAILY LIFE",
+        "difficulty": "INTERMEDIATE",
+        "sentence": "私は____にコーヒーを____。",
+        "solution": "朝;飲みます",
+        "hint": "最初は行動、2番目は1日の時間帯です。"
+    },
+    {
+        "id": "91",
+        "identifier": "pt-fr-010",
+        "language": "en-US",
         "category": "GRAMMAR",
         "topic": "WORK",
         "difficulty": "ADVANCED",
-        "sentence": "Meu ____ trabalha em uma ____ internacional.",
-        "solution": "gerente;empresa",
-        "hint": "Primeiro é um cargo, segundo é uma organização."
+        "sentence": "My ____ works at an international ____.",
+        "solution": "manager;company",
+        "hint": "First is a job title, second is an organization."
     },
     {
-        "id": "20",
+        "id": "92",
+        "identifier": "pt-fr-010",
+        "language": "es-ES",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Mi ____ trabaja en una ____ internacional.",
+        "solution": "gerente;empresa",
+        "hint": "Primero es un cargo, segundo es una organización."
+    },
+    {
+        "id": "93",
         "identifier": "pt-fr-010",
         "language": "fr-FR",
         "category": "GRAMMAR",
@@ -220,26 +1023,122 @@
         "hint": "Le premier est un poste, le second est une organisation."
     },
     {
-        "id": "21",
-        "identifier": "pt-fr-011",
+        "id": "94",
+        "identifier": "pt-fr-010",
+        "language": "cs-CZ",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Můj ____ pracuje v mezinárodní ____.",
+        "solution": "manažer;společnosti",
+        "hint": "První je pracovní pozice, druhé je organizace."
+    },
+    {
+        "id": "95",
+        "identifier": "pt-fr-010",
         "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Meu ____ trabalha em uma ____ internacional.",
+        "solution": "gerente;empresa",
+        "hint": "Primeiro é um cargo, segundo é uma organização."
+    },
+    {
+        "id": "96",
+        "identifier": "pt-fr-010",
+        "language": "id-ID",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "____ saya bekerja di ____ internasional.",
+        "solution": "Manajer;perusahaan",
+        "hint": "Pertama adalah jabatan, kedua adalah organisasi."
+    },
+    {
+        "id": "97",
+        "identifier": "pt-fr-010",
+        "language": "de-DE",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Mein ____ arbeitet in einer internationalen ____.",
+        "solution": "Manager;Firma",
+        "hint": "Erstens ist eine Berufsbezeichnung, zweitens eine Organisation."
+    },
+    {
+        "id": "98",
+        "identifier": "pt-fr-010",
+        "language": "nl-NL",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Mijn ____ werkt bij een internationaal ____.",
+        "solution": "manager;bedrijf",
+        "hint": "Eerst is een functie, tweede is een organisatie."
+    },
+    {
+        "id": "99",
+        "identifier": "pt-fr-010",
+        "language": "it-IT",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "Il mio ____ lavora in una ____ internazionale.",
+        "solution": "manager;azienda",
+        "hint": "Il primo è un ruolo, il secondo è un'organizzazione."
+    },
+    {
+        "id": "100",
+        "identifier": "pt-fr-010",
+        "language": "ja-JP",
+        "category": "GRAMMAR",
+        "topic": "WORK",
+        "difficulty": "ADVANCED",
+        "sentence": "私の____は国際的な____で働いています。",
+        "solution": "上司;会社",
+        "hint": "最初は職位、2番目は組織です。"
+    },
+    {
+        "id": "101",
+        "identifier": "pt-fr-011",
+        "language": "en-US",
         "category": "GRAMMAR",
         "topic": "FOOD",
         "difficulty": "BEGINNER",
-        "sentence": "Eu como ____ e bebo ____ no café da manhã.",
-        "solution": "pão;café",
+        "sentence": "I eat ____ and drink ____ for breakfast.",
+        "solution": "bread;coffee",
+        "hint": "Both are common at breakfast.",
         "options": [
-            "pão",
-            "café",
-            "peixe",
-            "ônibus",
-            "empresa",
+            "bread",
+            "coffee",
+            "fish",
+            "bus",
+            "company",
             "hotel"
-        ],
-        "hint": "Ambos são comuns no café da manhã."
+        ]
     },
     {
-        "id": "22",
+        "id": "102",
+        "identifier": "pt-fr-011",
+        "language": "es-ES",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Como ____ y bebo ____ en el desayuno.",
+        "solution": "pan;café",
+        "hint": "Ambos son comunes en el desayuno.",
+        "options": [
+            "pan",
+            "café",
+            "pescado",
+            "autobús",
+            "empresa",
+            "hotel"
+        ]
+    },
+    {
+        "id": "103",
         "identifier": "pt-fr-011",
         "language": "fr-FR",
         "category": "GRAMMAR",
@@ -247,6 +1146,7 @@
         "difficulty": "BEGINNER",
         "sentence": "Je mange du ____ et je bois du ____ au petit-déjeuner.",
         "solution": "pain;café",
+        "hint": "Les deux sont courants au petit-déjeuner.",
         "options": [
             "pain",
             "café",
@@ -254,7 +1154,139 @@
             "bus",
             "entreprise",
             "hôtel"
-        ],
-        "hint": "Les deux sont courants au petit-déjeuner."
+        ]
+    },
+    {
+        "id": "104",
+        "identifier": "pt-fr-011",
+        "language": "cs-CZ",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "K snídani jím ____ a piju ____.",
+        "solution": "chléb;kávu",
+        "hint": "Obojí je běžné u snídaně.",
+        "options": [
+            "chléb",
+            "kávu",
+            "rybu",
+            "autobus",
+            "firmu",
+            "hotel"
+        ]
+    },
+    {
+        "id": "105",
+        "identifier": "pt-fr-011",
+        "language": "pt-BR",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Eu como ____ e bebo ____ no café da manhã.",
+        "solution": "pão;café",
+        "hint": "Ambos são comuns no café da manhã.",
+        "options": [
+            "pão",
+            "café",
+            "peixe",
+            "ônibus",
+            "empresa",
+            "hotel"
+        ]
+    },
+    {
+        "id": "106",
+        "identifier": "pt-fr-011",
+        "language": "id-ID",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Saya makan ____ dan minum ____ saat sarapan.",
+        "solution": "roti;kopi",
+        "hint": "Keduanya umum disajikan saat sarapan.",
+        "options": [
+            "roti",
+            "kopi",
+            "ikan",
+            "bus",
+            "perusahaan",
+            "hotel"
+        ]
+    },
+    {
+        "id": "107",
+        "identifier": "pt-fr-011",
+        "language": "de-DE",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Zum Frühstück esse ich ____ und trinke ____.",
+        "solution": "Brot;Kaffee",
+        "hint": "Beides ist beim Frühstück üblich.",
+        "options": [
+            "Brot",
+            "Kaffee",
+            "Fisch",
+            "Bus",
+            "Firma",
+            "Hotel"
+        ]
+    },
+    {
+        "id": "108",
+        "identifier": "pt-fr-011",
+        "language": "nl-NL",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "Ik eet ____ en drink ____ bij het ontbijt.",
+        "solution": "brood;koffie",
+        "hint": "Beide komen vaak voor bij het ontbijt.",
+        "options": [
+            "brood",
+            "koffie",
+            "vis",
+            "bus",
+            "bedrijf",
+            "hotel"
+        ]
+    },
+    {
+        "id": "109",
+        "identifier": "pt-fr-011",
+        "language": "it-IT",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "A colazione mangio ____ e bevo ____.",
+        "solution": "pane;caffè",
+        "hint": "Entrambi sono comuni a colazione.",
+        "options": [
+            "pane",
+            "caffè",
+            "pesce",
+            "autobus",
+            "azienda",
+            "hotel"
+        ]
+    },
+    {
+        "id": "110",
+        "identifier": "pt-fr-011",
+        "language": "ja-JP",
+        "category": "GRAMMAR",
+        "topic": "FOOD",
+        "difficulty": "BEGINNER",
+        "sentence": "朝食に____を食べて____を飲みます。",
+        "solution": "パン;コーヒー",
+        "hint": "どちらも朝食でよく見られます。",
+        "options": [
+            "パン",
+            "コーヒー",
+            "魚",
+            "バス",
+            "会社",
+            "ホテル"
+        ]
     }
 ]
