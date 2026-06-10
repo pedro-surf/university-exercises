@@ -1,0 +1,1 @@
+var e=[{id:`no-articles`,word:`Bahasa Indonesia tidak menggunakan artikel`}];export{e as default};

@@ -1,0 +1,1 @@
+var e=[{id:`wave`,word:`ola`},{id:`board`,word:`tabla`},{id:`ocean`,word:`océano`},{id:`beach`,word:`playa`},{id:`reef`,word:`arrecife`},{id:`barrel`,word:`tubo`},{id:`duck-dive`,word:`zambullida`},{id:`lineup`,word:`lineup`},{id:`tide`,word:`marea`},{id:`swell`,word:`oleaje`}];export{e as default};

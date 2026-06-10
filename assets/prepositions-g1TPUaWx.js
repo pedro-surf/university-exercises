@@ -1,0 +1,1 @@
+var e=[{id:`in`,word:`di`},{id:`on`,word:`di atas`},{id:`under`,word:`di bawah`},{id:`with`,word:`dengan`},{id:`without`,word:`tanpa`},{id:`before`,word:`sebelum`},{id:`after`,word:`setelah`},{id:`between`,word:`di antara`},{id:`near`,word:`dekat`},{id:`inside`,word:`di dalam`}];export{e as default};

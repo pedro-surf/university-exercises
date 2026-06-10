@@ -1,0 +1,1 @@
+var e=[{id:`big`,word:`besar`},{id:`small`,word:`kecil`},{id:`beautiful`,word:`indah`},{id:`ugly`,word:`jelek`},{id:`fast`,word:`cepat`},{id:`slow`,word:`lambat`},{id:`happy`,word:`senang`},{id:`sad`,word:`sedih`},{id:`hot`,word:`panas`},{id:`cold`,word:`dingin`}];export{e as default};

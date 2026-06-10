@@ -1,0 +1,1 @@
+var e=[{id:`happiness`,word:`kebahagiaan`},{id:`sadness`,word:`kesedihan`},{id:`anger`,word:`kemarahan`},{id:`fear`,word:`ketakutan`},{id:`love`,word:`cinta`},{id:`anxiety`,word:`kecemasan`},{id:`peace`,word:`kedamaian`},{id:`hope`,word:`harapan`},{id:`motivation`,word:`motivasi`},{id:`confidence`,word:`kepercayaan diri`}];export{e as default};

@@ -1,0 +1,1 @@
+var e=[{id:`happiness`,word:`felicidad`},{id:`sadness`,word:`tristeza`},{id:`anger`,word:`ira`},{id:`fear`,word:`miedo`},{id:`love`,word:`amor`},{id:`anxiety`,word:`ansiedad`},{id:`peace`,word:`paz`},{id:`hope`,word:`esperanza`},{id:`motivation`,word:`motivación`},{id:`confidence`,word:`confianza`}];export{e as default};

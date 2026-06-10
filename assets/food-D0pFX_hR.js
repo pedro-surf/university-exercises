@@ -1,0 +1,1 @@
+var e=[{id:`bread`,word:`roti`},{id:`water`,word:`air`},{id:`coffee`,word:`kopi`},{id:`rice`,word:`nasi`},{id:`beans`,word:`kacang`},{id:`cheese`,word:`keju`},{id:`fish`,word:`ikan`},{id:`fruit`,word:`buah`},{id:`milk`,word:`susu`},{id:`beer`,word:`bir`}];export{e as default};

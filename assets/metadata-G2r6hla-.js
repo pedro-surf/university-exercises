@@ -1,0 +1,1 @@
+var e=`id-ID`,t=`id-ID`,n=`id-ID`,r=`ltr`,i=`id-ID`,a=``,o=`2026-06-09T19:27:00-03:00`,s={code:e,name:t,nativeName:n,direction:`ltr`,voice:i,flag:``,createdAt:o};export{e as code,o as createdAt,s as default,r as direction,a as flag,t as name,n as nativeName,i as voice};
