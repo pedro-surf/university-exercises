@@ -30,11 +30,8 @@ for LANG in "${LANGUAGES[@]}"
 do
   echo "Creating structure for $LANG"
 
-  mkdir -p "$BASE_DIR/$LANG/lessons"
   mkdir -p "$BASE_DIR/$LANG/grammar"
   mkdir -p "$BASE_DIR/$LANG/vocabulary"
-  mkdir -p "$BASE_DIR/$LANG/audio/words"
-  mkdir -p "$BASE_DIR/$LANG/audio/sentences"
 
   cat > "$BASE_DIR/$LANG/metadata.json" <<EOF
 {
@@ -104,4 +101,3 @@ echo "Created:"
 echo "- language metadata"
 echo "- grammar files"
 echo "- vocabulary files"
-echo "- audio folders""

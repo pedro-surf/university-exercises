@@ -54,25 +54,25 @@ export const nextMap = {
 };
 
 export const originLanguageMap = {
-    'en-US': "Origin Language",
-    'pt-BR': "Idioma de Origem",
-    'es-ES': "Idioma de Origen",
-    'fr-FR': "Langue d'Origine",
-    'cs-CZ': "Původní jazyk",
-    'de-DE': "Ursprungssprache",
-    'it-IT': "Lingua di Origine",
-    'id-ID': "Bahasa Asal"
+    'en-US': "The language you speak fluently",
+    'pt-BR': "O idioma que você fala fluentemente",
+    'es-ES': "El idioma que hablas con fluidez",
+    'fr-FR': "La langue que vous parlez couramment",
+    'cs-CZ': "Jazyk, kterým mluvíte plynule",
+    'de-DE': "Die Sprache, die Sie fließend sprechen",
+    'it-IT': "La lingua che parli fluentemente",
+    'id-ID': "Bahasa yang Anda kuasai dengan lancar"
 };
 
 export const targetLanguageMap = {
-    'en-US': "Target Language",
-    'pt-BR': "Idioma Alvo",
-    'es-ES': "Idioma Objetivo",
-    'fr-FR': "Langue Cible",
-    'cs-CZ': "Cílový jazyk",
-    'de-DE': "Zielsprache",
-    'it-IT': "Lingua Target",
-    'id-ID': "Bahasa Target"
+    'en-US': "The language you want to learn",
+    'pt-BR': "O idioma que você quer aprender",
+    'es-ES': "El idioma que quieres aprender",
+    'fr-FR': "La langue que vous souhaitez apprendre",
+    'cs-CZ': "Jazyk, který se chcete naučit",
+    'de-DE': "Die Sprache, die Sie lernen möchten",
+    'it-IT': "La lingua que vuoi imparare",
+    'id-ID': "Bahasa yang ingin Anda pelajari"
 };
 
 export const whatWouldYouLikeToStudyTodayMap = {
@@ -162,4 +162,83 @@ export const hintMap = {
     'de-DE': "Hinweis",
     'it-IT': "Suggerimento",
     'id-ID': "Petunjuk"
+};
+
+// Onboarding
+
+export const whatShouldWeCallYouMap = {
+    'en-US': "What should we call you?",
+    'pt-BR': "Como devemos te chamar?",
+    'es-ES': "¿Cómo debedemos llamarte?",
+    'fr-FR': "Comment devrions-nous vous appeler ?",
+    'cs-CZ': "Jak vám máme říkat?",
+    'de-DE': "Wie sollen wir Sie nennen?",
+    'it-IT': "Come dovremmo chamarti?",
+    'id-ID': "Bagaimana kami harus memanggil Anda?"
+};
+
+export const yourNameMap = {
+    'en-US': "Your name",
+    'pt-BR': "Seu nome",
+    'es-ES': "Tu nombre",
+    'fr-FR': "Votre nom",
+    'cs-CZ': "Vaše jméno",
+    'de-DE': "Ihr Name",
+    'it-IT': "Il tuo nome",
+    'id-ID': "Nama Anda"
+};
+
+export const emailOptionalMap = {
+    'en-US': "What's your email? (optional)",
+    'pt-BR': "Qual é o seu e-mail? (opcional)",
+    'es-ES': "¿Cuál es tu correo? (opcional)",
+    'fr-FR': "Quel est votre e-mail ? (optionnel)",
+    'cs-CZ': "Jaký je váš e-mail? (nepovinné)",
+    'de-DE': "Wie lautet Ihre E-Mail? (optional)",
+    'it-IT': "Qual è la tua email? (opzionale)",
+    'id-ID': "Apa email Anda? (opsional)"
+};
+
+export const locationMap = {
+    'en-US': "Where are you located?",
+    'pt-BR': "Onde você está localizado?",
+    'es-ES': "¿Dónde te encuentras?",
+    'fr-FR': "Où vous situez-vous ?",
+    'cs-CZ': "Kde se nacházíte?",
+    'de-DE': "Wo befinden Sie sich?",
+    'it-IT': "Dove ti trovi?",
+    'id-ID': "Di mana lokasi Anda?"
+};
+
+export const chooseThemeMap = {
+    'en-US': "Choose your theme",
+    'pt-BR': "Escolha seu tema",
+    'es-ES': "Elige tu tema",
+    'fr-FR': "Choisissez votre thème",
+    'cs-CZ': "Vyberte si motiv",
+    'de-DE': "Wählen Sie Ihr Design",
+    'it-IT': "Scegli il tuo tema",
+    'id-ID': "Pilih tema Anda"
+};
+
+export const personalizeExperienceMap = {
+    'en-US': "Personalize your experience",
+    'pt-BR': "Personalize sua experiência",
+    'es-ES': "Personaliza tu experiencia",
+    'fr-FR': "Personnalisez votre expérience",
+    'cs-CZ': "Průvodce nastavením", // Mais natural em sistemas do que a tradução literal
+    'de-DE': "Personalisieren Sie Ihr Erlebnis",
+    'it-IT': "Personalizza la tua esperienza",
+    'id-ID': "Personalisasikan pengalaman Anda"
+};
+
+export const startLearningMap = {
+    'en-US': "Start learning",
+    'pt-BR': "Começar a aprender",
+    'es-ES': "Empezar a aprender",
+    'fr-FR': "Commencer à apprendre",
+    'cs-CZ': "Začít se učit",
+    'de-DE': "Jetzt lernen",
+    'it-IT': "Inizia a impararare",
+    'id-ID': "Mulai belajar"
 };

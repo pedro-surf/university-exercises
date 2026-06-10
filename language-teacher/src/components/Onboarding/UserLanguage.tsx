@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LANGUAGES } from "../../constants/languages";
+import { useAppContext } from "../../Context";
 
 
 type Props = {
@@ -11,6 +12,12 @@ export default function LanguageSelectionScreen({
 }: Props) {
   const [selectedIndex, setSelectedIndex] =
     React.useState(0);
+  const { setUserLanguage } = useAppContext();
+
+  useEffect(() => {
+    setUserLanguage(LANGUAGES[selectedIndex].code)
+  }, [selectedIndex])
+
 
   const selectedLanguage =
     LANGUAGES[selectedIndex];
@@ -55,12 +62,6 @@ export default function LanguageSelectionScreen({
 
   return (
     <div className="bg-black text-white px-8 py-16">
-      <div className="mb-14 text-center">
-        <p className="text-white/50 text-xl mt-6">
-          Use arrow keys ↑ ↓ or click
-        </p>
-      </div>
-
       <div className="space-y-3">
         {LANGUAGES.map(
           (language, index) => {
@@ -101,12 +102,6 @@ export default function LanguageSelectionScreen({
                     {language.name}
                   </div>
                 </div>
-
-                {isSelected && (
-                  <div className="text-sm uppercase tracking-[0.2em] font-bold">
-                    Selected
-                  </div>
-                )}
               </button>
             );
           }

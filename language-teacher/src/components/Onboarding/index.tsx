@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import LanguageInput from "../LanguageInput";
 import UserLanguage from "./UserLanguage";
 import { useAppContext } from "../../Context";
+import { emailOptionalMap, goBackMap, locationMap, originLanguageMap, startLearningMap, targetLanguageMap, whatShouldWeCallYouMap } from "../../constants/appTranslations";
 
 type ThemeMode = "light" | "dark" | string;
 
@@ -21,37 +22,37 @@ type Step = {
   component?: React.ComponentType<{ value: string; onChange: (val: string) => void }>;
 };
 
-const STEPS: Step[] = [
-  {
-    key: "name",
-    title: "What should we call you?",
-    placeholder: "Your name",
-  },
-  {
-    key: "email",
-    title: "What's your email?",
-    placeholder: "you@example.com",
-  },
-  {
-    key: "location",
-    title: "Where are you located?",
-    placeholder: "Location",
-  },
-  {
-    key: "spokenLanguage",
-    title: "What is your first language?",
-    component: UserLanguage,
-  },
-  {
-    key: "targetLanguage",
-    title: "What language do you want to learn?",
-    component: LanguageInput,
-  },
-] as const;
+
 
 export default function Onboarding() {
   const { theme, userName, setUserEmail, setUserLocation, setUserName, userLocation, userEmail, setTargetLanguage, setTheme, setUserLanguage, targetLanguage, userLanguage } = useAppContext();
-
+  const STEPS: Step[] = useMemo(() => [
+    {
+      key: "spokenLanguage",
+      title: originLanguageMap[userLanguage || "en-US"],
+      component: UserLanguage,
+    },
+    {
+      key: "name",
+      title: whatShouldWeCallYouMap[userLanguage || "en-US"],
+      placeholder: "Your name",
+    },
+    {
+      key: "email",
+      title: emailOptionalMap[userLanguage || "en-US"],
+      placeholder: "you@example.com",
+    },
+    {
+      key: "location",
+      title: locationMap[userLanguage || "en-US"],
+      placeholder: "Location",
+    },
+    {
+      key: "targetLanguage",
+      title: targetLanguageMap[userLanguage || "en-US"],
+      component: LanguageInput,
+    },
+  ], [userLanguage]);
   const [step, setStep] = React.useState(0);
 
   const [data, setData] = React.useState<OnboardingData>({
@@ -76,7 +77,7 @@ export default function Onboarding() {
     }
   }, [userName, userEmail, userLocation, userLanguage, targetLanguage]);
 
-  
+
 
   const currentStep = STEPS[step];
 
@@ -202,7 +203,7 @@ export default function Onboarding() {
                   disabled={step === 0}
                   className="px-6 py-4 rounded-2xl border border-gray-200 text-gray-700 disabled:opacity-30"
                 >
-                  Back
+                  {goBackMap[userLanguage || "en-US"]}
                 </button>
 
                 <button
@@ -263,7 +264,7 @@ export default function Onboarding() {
                 onClick={handleComplete}
                 className="w-full rounded-3xl bg-black text-white py-5 text-xl font-bold hover:opacity-90 transition-opacity"
               >
-                Start Learning
+                {startLearningMap[userLanguage || "en-US"]}
               </button>
             </div>
           )}

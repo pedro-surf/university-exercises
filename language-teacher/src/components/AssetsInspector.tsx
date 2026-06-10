@@ -8,7 +8,7 @@ type AssetItem = {
 
 export function AssetsInspector() {
   const { userLanguage, targetLanguage, origin, translations } = useAppContext();
-
+  console.log(JSON.stringify({ userLanguage, targetLanguage, origin, translations }))
   // Convert origin and translations into arrays of AssetItem
   const originAssets: AssetItem[] = Object.entries(origin).map(([id, word]) => ({
     id,

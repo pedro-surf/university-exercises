@@ -9,7 +9,7 @@ import ExercisesPage from "./components/Exercises";
 import AboutPage from "./components/About";
 import UserMetrics from "./components/UserMetrics";
 import UserMetricsV2 from "./components/UserMetricsV2";
-import { AssetsInspector } from "./components/AssetsInspector";
+import { AssetsInspector } from "./components/AssetsInspectorV2";
 
 export const router =
   createBrowserRouter([

@@ -16,7 +16,7 @@ export default function Menu() {
                     About
                 </button>
                 <div className="mb-14 text-center space-y-4">
-                    <div className="text-sm uppercase tracking-[0.25em] text-gray-500 font-semibold">
+                    <div onClick={() => navigate('/assets')} className="text-sm uppercase tracking-[0.25em] text-gray-500 font-semibold">
                         {welcomeMap[userLanguage]}
                     </div>
 

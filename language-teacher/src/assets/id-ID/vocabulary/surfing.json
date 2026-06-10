@@ -1,0 +1,12 @@
+[
+  { "id": "wave", "word": "ombak" },
+  { "id": "board", "word": "papan selancar" },
+  { "id": "ocean", "word": "samudra" },
+  { "id": "beach", "word": "pantai" },
+  { "id": "reef", "word": "karang" },
+  { "id": "barrel", "word": "tabung" },
+  { "id": "duck-dive", "word": "selam bebek" },
+  { "id": "lineup", "word": "lineup" },
+  { "id": "tide", "word": "pasang surut" },
+  { "id": "swell", "word": "ombak besar" }
+]

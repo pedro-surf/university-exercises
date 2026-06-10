@@ -1,0 +1,22 @@
+[
+  { "id": "to-be", "word": "adalah" },
+  { "id": "to-have", "word": "punya" },
+  { "id": "to-go", "word": "pergi" },
+  { "id": "to-eat", "word": "makan" },
+  { "id": "to-drink", "word": "minum" },
+  { "id": "to-sleep", "word": "tidur" },
+  { "id": "to-study", "word": "belajar" },
+  { "id": "to-work", "word": "bekerja" },
+  { "id": "to-speak", "word": "berbicara" },
+  { "id": "to-listen", "word": "mendengar" },
+  { "id": "to-see", "word": "melihat" },
+  { "id": "to-think", "word": "berpikir" },
+  { "id": "to-learn", "word": "belajar" },
+  { "id": "to-write", "word": "menulis" },
+  { "id": "to-read", "word": "membaca" },
+  { "id": "to-open", "word": "membuka" },
+  { "id": "to-close", "word": "menutup" },
+  { "id": "to-love", "word": "mencintai" },
+  { "id": "to-like", "word": "suka" },
+  { "id": "to-live", "word": "tinggal" }
+]

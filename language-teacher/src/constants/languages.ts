@@ -4,7 +4,13 @@ export const APP_SUPPORTED_LANGUAGES = {
   "fr-FR": "French",
   "cs-CZ": "Czech",
   "pt-BR": "Portuguese",
+  "id-ID": "Indonesian",
 }
+
+export type SupportedLanguages =
+  'en-US' |
+  'pt-BR' | 'es-ES' | 'fr-FR' | 'cs-CZ' |
+  'de-DE' | 'it-IT' | 'id-ID';
 
 export const LANGUAGES = [
   {
