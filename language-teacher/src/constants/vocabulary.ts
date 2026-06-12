@@ -23,7 +23,9 @@ export const foodMap = {
     'cs-CZ': 'Jídlo',
     'de-DE': 'Essen',
     'it-IT': 'Cibo',
-    'id-ID': 'Makanan'
+    'id-ID': 'Makanan',
+    'nl-NL': 'Voeding',
+    'ja-JP': '食べ物'
 }
 
 export const travelMap = {
@@ -34,7 +36,9 @@ export const travelMap = {
     'cs-CZ': 'Cestování',
     'de-DE': 'Reisen',
     'it-IT': 'Viaggio',
-    'id-ID': 'Perjalanan'
+    'id-ID': 'Perjalanan',
+    'nl-NL': 'Reizen',
+    'ja-JP': '旅行'
 };
 
 export const emotionsMap = {
@@ -45,7 +49,9 @@ export const emotionsMap = {
     'cs-CZ': 'Emoce',
     'de-DE': 'Emotionen',
     'it-IT': 'Emozioni',
-    'id-ID': 'Emosi'
+    'id-ID': 'Emosi',
+    'nl-NL': 'Emoties',
+    'ja-JP': '感情'
 };
 
 export const businessMap = {
@@ -56,7 +62,9 @@ export const businessMap = {
     'cs-CZ': 'Obchod',
     'de-DE': 'Geschäft',
     'it-IT': 'Affari',
-    'id-ID': 'Bisnis'
+    'id-ID': 'Bisnis',
+    'nl-NL': 'Zakelijk',
+    'ja-JP': 'ビジネス'
 };
 
 export const foodDescriptionMap = {
@@ -67,7 +75,9 @@ export const foodDescriptionMap = {
     'cs-CZ': 'Naučte se slovní zásobu jídla a restaurací.',
     'de-DE': 'Lernen Sie Lebensmittel- und Restaurantvokabular.',
     'it-IT': 'Impara il vocabolario del cibo e dei ristoranti.',
-    'id-ID': 'Pelajari kosakata makanan dan restoran.'
+    'id-ID': 'Pelajari kosakata makanan dan restoran.',
+    'nl-NL': 'Leer woordenschat over voeding en restaurants.',
+    'ja-JP': '食べ物やレストランに関する単語を学びます。'
 };
 
 export const travelDescriptionMap = {
@@ -79,6 +89,8 @@ export const travelDescriptionMap = {
     "de-DE": "Lernen Sie Reise- und Transportvokabular.",
     "it-IT": "Impara il vocabolario dei viaggi e dei trasporti.",
     "id-ID": "Pelajari kosakata perjalanan dan transportasi.",
+    "nl-NL": "Leer woordenschat over reizen en transport.",
+    "ja-JP": "旅行や交通機関に関する単語を学びます。"
 };
 
 export const emotionsDescriptionMap = {
@@ -90,6 +102,8 @@ export const emotionsDescriptionMap = {
     "de-DE": "Drücken Sie Gefühle und emotionale Zustände aus.",
     "it-IT": "Esprimi sentimenti e stati emotivi.",
     "id-ID": "Ekspresikan perasaan dan keadaan emosional.",
+    "nl-NL": "Druk gevoelens en emotionele toestanden uit.",
+    "ja-JP": "気持ちや感情の状態を表現しましょう。"
 };
 
 export const businessDescriptionMap = {
@@ -101,6 +115,8 @@ export const businessDescriptionMap = {
     "de-DE": "Berufs- und Arbeitsvokabular.",
     "it-IT": "Vocabolario professionale e del luogo di lavoro.",
     "id-ID": "Kosakata profesional dan lingkungan kerja.",
+    "nl-NL": "Professionele woordenschat en werkplekgerelateerde termen.",
+    "ja-JP": "ビジネスや職場に関する単語を学びます。"
 };
 
 export const surfingMap = {
@@ -109,6 +125,7 @@ export const surfingMap = {
     "es-ES": "Surfing",
     "fr-FR": "Surfing",
     "cs-CZ": "Surfing",
+    "nl-NL": "Surfing",
     "de-DE": "Surfing",
     "it-IT": "Surfing",
     "id-ID": "Surfing",
@@ -119,6 +136,7 @@ export const surfingDescriptionMap = {
     "pt-BR": "Palavras relacionadas ao oceano, surf e cultura de praia.",
     "es-ES": "Palabras relacionadas con el océano, el surf y la cultura de playa.",
     "fr-FR": "Mots liés à l'océan, au surf et à la culture de plage.",
+    "nl-NL": "Ocean, surfing, and beach culture words.",
     "cs-CZ": "Slova související s oceánem, surfováním a plážovou kulturou.",
     "de-DE": "Wörter rund um Ozean, Surfen und Strandkultur.",
     "it-IT": "Parole legate all'oceano, al surf e alla cultura della spiaggia.",

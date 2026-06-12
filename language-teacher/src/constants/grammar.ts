@@ -69,6 +69,16 @@ export const grammarMap = {
         prepositions: "präpositionen",
         possessives: "besitzanzeigende pronomen",
     },
+    ["nl-NL"]: {
+        pronouns: "voornaamwoorden",
+        adjectives: "bijvoeglijke naamwoorden",
+        articles: "lidwoorden",
+        adverbs: "bijwoorden",
+        conjunctions: "voegwoorden",
+        verbs: "werkwoorden",
+        prepositions: "voorzetsels",
+        possessives: "bezittelijke voornaamwoorden",
+    },
     ["it-IT"]: {
         pronouns: "pronomi",
         adjectives: "aggettivi",

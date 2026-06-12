@@ -9,7 +9,9 @@ export const grammarTitleMap = {
     "cs-CZ": "Gramatika",
     "de-DE": "Grammatik",
     "it-IT": "Grammatica",
-    "id-ID": "Tata Bahasa"
+    "id-ID": "Tata Bahasa",
+    "nl-NL": "Grammatica",
+    "ja-JP": "文法"
 };
 
 export const vocabularyTitleMap = {
@@ -20,7 +22,9 @@ export const vocabularyTitleMap = {
     "cs-CZ": "Slovní zásoba",
     "de-DE": "Wortschatz",
     "it-IT": "Vocabolario",
-    "id-ID": "Kosakata"
+    "id-ID": "Kosakata",
+    "nl-NL": "Woordenschat",
+    "ja-JP": "単語"
 };
 
 export const exercisesTitleMap = {
@@ -31,7 +35,9 @@ export const exercisesTitleMap = {
     "cs-CZ": "Cvičení",
     "de-DE": "Übungen",
     "it-IT": "Esercizi",
-    "id-ID": "Latihan"
+    "id-ID": "Latihan",
+    "nl-NL": "Oefeningen",
+    "ja-JP": "練習問題"
 };
 
 export const grammarDescriptionMap = {
@@ -42,7 +48,9 @@ export const grammarDescriptionMap = {
     "cs-CZ": "Naučte se strukturu vět, časování sloves, zájmena a základy jazyka.",
     "de-DE": "Lernen Sie Satzstruktur, Verbkonjugation, Pronomen und die Grundlagen der Sprache.",
     "it-IT": "Impara la struttura delle frasi, la coniugazione dei verbi, i pronomi e le basi della lingua.",
-    "id-ID": "Pelajari struktur kalimat, konjugasi kata kerja, kata ganti, dan dasar-dasar bahasa."
+    "id-ID": "Pelajari struktur kalimat, konjugasi kata kerja, kata ganti, dan dasar-dasar bahasa.",
+    "nl-NL": "Leer zinsbouw, werkwoordvervoeging, voornaamwoorden en de basis doelen van de taal.",
+    "ja-JP": "文章の構造、動詞の活用、代名詞、そして言語の基礎を学びます。"
 };
 
 export const vocabularyDescriptionMap = {
@@ -53,7 +61,9 @@ export const vocabularyDescriptionMap = {
     "cs-CZ": "Rozšiřte svou slovní zásobu o užitečná slova a kategorie ze skutečného světa.",
     "de-DE": "Erweitern Sie Ihren Wortschatz mit nützlichen Wörtern und realen Kategorien.",
     "it-IT": "Espandi il tuo vocabolario con parole utili e categorie del mondo reale.",
-    "id-ID": "Perluas kosakata Anda dengan kata-kata yang berguna dan kategori dunia nyata."
+    "id-ID": "Perluas kosakata Anda dengan kata-kata yang berguna dan kategori dunia nyata.",
+    "nl-NL": "Breid je woordenschat uit met nuttige woorden en alledaagse categorieën.",
+    "ja-JP": "実用的な単語や日常生活のカテゴリーで語彙力を広げましょう。"
 };
 
 export const exercisesDescriptionMap = {
@@ -64,7 +74,9 @@ export const exercisesDescriptionMap = {
     "cs-CZ": "Procvičujte aktivně s cvičeními na doplňování, poslech, výslovnost a párování.",
     "de-DE": "Üben Sie aktiv mit Lückentexten, Hörverständnis, Aussprache und Zuordnungsübungen.",
     "it-IT": "Pratica attivamente con esercizi di completamento, ascolto, pronuncia e abbinamento.",
-    "id-ID": "Berlatih secara aktif dengan latihan mengisi tempat kosong, mendengarkan, pengucapan, dan mencocokkan."
+    "id-ID": "Berlatih secara aktif dengan latihan mengisi tempat kosong, mendengarkan, pengucapan, dan mencocokkan.",
+    "nl-NL": "Oefen actief met invuloefeningen, luisteren, uitspraak en het combineren de juiste woorden.",
+    "ja-JP": "穴埋め問題、リスニング、発音、マッチングクイズなどで能動的に練習しましょう。"
 };
 
 export const APP_MENU_OPTIONS = [
@@ -75,7 +87,7 @@ export const APP_MENU_OPTIONS = [
         description:
             grammarDescriptionMap,
         items: grammarMap,
-        examples:[]
+        examples: []
     },
 
     {
