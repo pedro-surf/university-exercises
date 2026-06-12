@@ -1,0 +1,34 @@
+[
+  {
+    "id": "the",
+    "word": "その"
+  },
+  {
+    "id": "the-m",
+    "word": "その"
+  },
+  {
+    "id": "the-f",
+    "word": "その"
+  },
+  {
+    "id": "the-plural-m",
+    "word": "それらの"
+  },
+  {
+    "id": "the-plural-f",
+    "word": "それらの"
+  },
+  {
+    "id": "a",
+    "word": "一つの"
+  },
+  {
+    "id": "an",
+    "word": "一つの"
+  },
+  {
+    "id": "some",
+    "word": "いくつかの"
+  }
+]
