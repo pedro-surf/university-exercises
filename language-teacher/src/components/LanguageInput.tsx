@@ -33,7 +33,7 @@ const LanguageInput = ({ value, onChange }: Props) => {
         onChange={(e) => onChange(e.target.value)}
         className="border rounded-xl px-3 py-2 bg-gray-100 w-full"
       >
-        <option key="null" value={null}>Select...</option>
+        <option key="null" value={undefined}>Select...</option>
         {Object.keys(APP_SUPPORTED_LANGUAGES).map((lang) => (
           <option key={lang} value={lang}>
             {APP_SUPPORTED_LANGUAGES[lang]}

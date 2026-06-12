@@ -35,9 +35,11 @@ export const loadModule =
         }
     };
 
-export const loadTranslation = async (lang: string) => {
+export const loadTranslation = async (lang: string): Promise<Translation> => {
     try {
         const [
+            adverbs,
+            conjunctions,
             verbs,
             pronouns,
             possessives,
@@ -50,6 +52,8 @@ export const loadTranslation = async (lang: string) => {
             surfing,
             emotions,
         ] = await Promise.all([
+            loadModule(lang, "grammar/adverbs"),
+            loadModule(lang, "grammar/conjunctions"),
             loadModule(lang, "grammar/verbs"),
             loadModule(lang, "grammar/pronouns"),
             loadModule(lang, "grammar/possessives"),
@@ -63,6 +67,8 @@ export const loadTranslation = async (lang: string) => {
             loadModule(lang, "vocabulary/emotions"),
         ])
         return {
+            adverbs,
+            conjunctions,
             possessives,
             verbs,
             pronouns,

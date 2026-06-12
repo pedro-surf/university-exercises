@@ -1,4 +1,4 @@
-import { APP_SUPPORTED_LANGUAGES } from "./languages";
+import { APP_SUPPORTED_LANGUAGES, type SupportedLanguage } from "./languages";
 
 export type VocabularyCategory =
     | "food"
@@ -129,6 +129,7 @@ export const surfingMap = {
     "de-DE": "Surfing",
     "it-IT": "Surfing",
     "id-ID": "Surfing",
+    "ja-JP": "Surfing",
 };
 
 export const surfingDescriptionMap = {
@@ -185,15 +186,24 @@ export const menuItems: MenuItem[] = [
     },
 ];
 
-export const vocabularyMap = Object.keys(APP_SUPPORTED_LANGUAGES).reduce((acc, val) => {
+export interface LanguageVocabularies {
+    food: string;
+    emotions: string;
+    business: string;
+    travel: string;
+    surfing: string;
+  }
+
+export const vocabularyMap = (Object.keys(APP_SUPPORTED_LANGUAGES) as SupportedLanguage[]).reduce((acc, val) => {
     if (!acc[val]) {
         acc[val] = {
             food: foodMap[val],
             emotions: emotionsMap[val],
             business: businessMap[val],
-            traveling: travelMap[val],
+            travel: travelMap[val],
             surfing: surfingMap[val],
         }
     }
     return acc;
-}, {})
+},
+    {} as Record<SupportedLanguage, LanguageVocabularies>)

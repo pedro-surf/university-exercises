@@ -4,7 +4,7 @@ import { BLANK_WORD_SPACE } from "../constants/exercises";
 type Props = {
   sentence: string;
   userText: string;
-  solution?: string;
+  solution: string | null;
 };
 
 function normalize(word: string) {

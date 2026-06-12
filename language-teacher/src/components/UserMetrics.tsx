@@ -43,7 +43,7 @@ const exerciseResults = [
 const groupedResults = groupByLanguage(exerciseResults);
 
 const calculateMetrics = (groupedResults: unknown) => {
-  return Object.entries(groupedResults).map(([language, results]) => {
+  return Object.entries(groupedResults || []).map(([language, results]) => {
     const exercisesCompleted = results.length;
     const correctAnswers = results.filter((result) => result.isCorrect).length;
     const totalAnswers = results.length;

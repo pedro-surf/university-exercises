@@ -1,4 +1,16 @@
-export const APP_SUPPORTED_LANGUAGES = {
+export type SupportedLanguage =
+  | 'en-US'
+  | 'pt-BR' 
+  | 'es-ES' 
+  | 'fr-FR' 
+  | 'cs-CZ'
+  | 'de-DE' 
+  | 'nl-NL' 
+  | 'it-IT' 
+  | 'id-ID'
+  | 'ja-JP';
+
+export const APP_SUPPORTED_LANGUAGES: Record<SupportedLanguage, string> = {
   "en-US": "English",
   "es-ES": "Spanish",
   "fr-FR": "French",
@@ -9,13 +21,7 @@ export const APP_SUPPORTED_LANGUAGES = {
   "nl-NL": "Dutch",
   "it-IT": "Italian",
   "ja-JP": "Japanese",
-}
-
-export type SupportedLanguages =
-  'en-US' |
-  'pt-BR' | 'es-ES' | 'fr-FR' | 'cs-CZ' |
-  'de-DE' | 'nl-NL' | 'it-IT' | 'id-ID' |
-  'ja-JP';
+};
 
 export const LANGUAGES = [
   {

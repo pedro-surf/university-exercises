@@ -1,11 +1,6 @@
 import { useMemo, useState } from "react";
 import { useAppContext } from "../Context";
 
-type AssetItem = {
-  id: string;
-  word: string;
-};
-
 type AssetMap = Record<string, AssetItem[]>;
 
 export function AssetsInspector() {

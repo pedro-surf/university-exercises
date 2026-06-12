@@ -1,28 +1,36 @@
 import { useState } from "react";
 import { useAppContext } from "../Context";
+import { type VocabularyCategory } from "../constants/vocabulary";
 
-type AssetItem = {
-  id: string;
-  word: string;
-};
+
 
 export function AssetsInspector() {
-  const { userLanguage, targetLanguage, origin, translations } = useAppContext();
+  const { userLanguage, targetLanguage, origin: originAssets, translations } = useAppContext();
   console.log(JSON.stringify({ userLanguage, targetLanguage, origin, translations }))
   // Convert origin and translations into arrays of AssetItem
-  const originAssets: AssetItem[] = Object.entries(origin).map(([id, word]) => ({
-    id,
-    word,
-  }));
 
-  const targetAssets: AssetItem[] = Object.entries(translations).map(([id, word]) => ({
-    id,
-    word,
-  }));
+  // 1. Transforma o OBJETO de origem em um ARRAY plano de itens
+  const flatOriginAssets = (Object.entries(originAssets!) as [VocabularyCategory, AssetItem[] | null | undefined][])
+    .flatMap(([, items]) => {
+      if (!items) return [];
+      return items; // Retorna o array de AssetItem de cada categoria
+    });
 
+  // 2. Transforma o OBJETO de destino em um ARRAY plano de itens
+  const targetAssets = (Object.entries(translations!) as [VocabularyCategory, AssetItem[] | null | undefined][])
+    .flatMap(([, items]) => {
+      if (!items) return [];
+      return items.map((item) => ({
+        id: item.id,
+        word: item.word,
+      }));
+    });
+
+  // 3. Cria o Set com os IDs do destino
   const targetIds = new Set(targetAssets.map((item) => item.id));
 
-  const missingAssets = originAssets.filter((item) => !targetIds.has(item.id));
+  // 4. Agora sim! O filter roda no ARRAY plano que criamos no passo 1
+  const missingAssets = flatOriginAssets.filter((item) => !targetIds.has(item.id));
 
   // State to store user inputs for missing translations
   const [editedTranslations, setEditedTranslations] = useState<Record<string, string>>({});
@@ -77,7 +85,7 @@ export function AssetsInspector() {
               className="rounded-2xl border border-red-300 bg-red-50 p-5 flex items-center justify-between"
             >
               <div>
-                <div className="font-bold text-lg">{item.word}</div>
+                <div className="font-bold text-lg">{item!.word}</div>
                 <div className="text-sm text-gray-600">ID: {item.id}</div>
               </div>
 

@@ -19,9 +19,6 @@ type AppContextType = {
   userLocation?: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Translation = { [key: string]: any };
-
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -31,8 +28,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [userLanguage, setUserLanguage] = useState<string>("");
   const [targetLanguage, setTargetLanguage] = useState<string>("");
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [translations, setTranslations] = useState<Translation>({});
-  const [origin, setOrigin] = useState<Translation>({});
+  const [translations, setTranslations] = useState<Translation>({} as Translation);
+  const [origin, setOrigin] = useState<Translation>({} as Translation);
   const [userName, setUserName] = useState<string>("");
   const [userEmail, setUserEmail] = useState<string>("");
   const [userLocation, setUserLocation] = useState<string>("");
@@ -55,7 +52,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const loadOrigins = async () => {
       const payload = await loadTranslation(userLanguage);
-      setOrigin(payload);
+      if (payload)
+        setOrigin(payload);
     };
     if (userLanguage) {
       loadOrigins();
@@ -65,7 +63,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const loadTranslations = async () => {
       const payload = await loadTranslation(targetLanguage);
-      setTranslations(payload);
+      if (payload)
+        setTranslations(payload);
     };
     if (targetLanguage) {
       loadTranslations();

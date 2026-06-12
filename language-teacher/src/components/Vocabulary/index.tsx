@@ -11,13 +11,7 @@ import { capitalize } from "../../utils/capitalize";
 
 export default function VocabularyScreen() {
   const navigate = useNavigate();
-  const { userLanguage: originLanguage, targetLanguage, translations: {
-    food,
-    travel,
-    surfing,
-    emotions,
-    business,
-  }, origin } = useAppContext();
+  const { userLanguage: originLanguage, targetLanguage, translations: target, origin } = useAppContext();
   const [
     selectedCategory,
     setSelectedCategory,
@@ -28,22 +22,22 @@ export default function VocabularyScreen() {
   const getTranslationData = () => {
     switch (selectedCategory.id) {
       case "food":
-        return food;
+        return target?.food;
 
       case "travel":
-        return travel;
+        return target?.travel;
 
       case "emotions":
-        return emotions;
+        return target?.emotions;
 
       case "business":
-        return business;
+        return target?.business;
 
       case "surfing":
-        return surfing;
+        return target?.surfing;
 
       default:
-        return food;
+        return target?.food;
     }
   };
 
@@ -123,7 +117,7 @@ export default function VocabularyScreen() {
 
         <div className="md:mb-8 mb-2">
           <h2 className="text-4xl font-black">
-            {translations.title}
+            {capitalize(selectedCategory.title[originLanguage])}
           </h2>
 
           <p className="text-gray-600 text-lg mt-3">
@@ -134,8 +128,8 @@ export default function VocabularyScreen() {
         <TranslationTable
           targetTitle={selectedCategory.title[targetLanguage]}
           originTitle={selectedCategory.title[originLanguage]}
-           originPronouns={natives}
-          targetPronouns={translations}
+          originPronouns={natives!}
+          targetPronouns={translations!}
         />
       </div>
     </div>

@@ -262,7 +262,7 @@ export function FillTheBlank({
               {hintMap[userLanguage] || "Hint"}
             </div>
 
-            <div onClick={() => speakWord(target.hint, targetLanguage)}>{target.hint}</div>
+            <div onClick={() => speakWord(target.hint!, targetLanguage)}>{target.hint}</div>
           </div>
         )}
 

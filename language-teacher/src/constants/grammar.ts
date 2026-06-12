@@ -121,6 +121,16 @@ export const grammarMap = {
     },
 }
 
+export interface LanguageGrammar {
+    pronouns: string;
+    adjectives: string;
+    articles: string;
+    adverbs: string;
+    conjunctions: string;
+    verbs: string;
+    prepositions: string;
+    possessives: string;
+}
 
 export const menuItems: {
     id: GrammarCategory;
