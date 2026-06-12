@@ -1,0 +1,1 @@
+var e=[{id:`the`,word:`de/het`},{id:`the-m`,word:`de`},{id:`the-f`,word:`de`},{id:`the-plural-m`,word:`de`},{id:`the-plural-f`,word:`de`},{id:`a`,word:`een`},{id:`an`,word:`een`},{id:`some`,word:`sommige`}];export{e as default};
