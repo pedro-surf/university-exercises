@@ -1,0 +1,1 @@
+var e=`ja-JP`,t=`日本語`,n=`日本語`,r=`ltr`,i=`ja-JP`,a=`🇯🇵`,o=`2026-06-12T19:00:00-03:00`,s={code:e,name:t,nativeName:n,direction:`ltr`,voice:i,flag:a,createdAt:o};export{e as code,o as createdAt,s as default,r as direction,a as flag,t as name,n as nativeName,i as voice};

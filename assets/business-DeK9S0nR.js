@@ -1,0 +1,1 @@
+var e=[{id:`meeting`,word:`会議`},{id:`office`,word:`オフィス`},{id:`company`,word:`会社`},{id:`salary`,word:`給料`},{id:`manager`,word:`マネージャー`},{id:`project`,word:`プロジェクト`},{id:`contract`,word:`契約`},{id:`client`,word:`クライアント`},{id:`startup`,word:`スタートアップ`},{id:`interview`,word:`面接`}];export{e as default};

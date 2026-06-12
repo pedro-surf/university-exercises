@@ -1,0 +1,1 @@
+var e=[{id:`in`,word:`の中に`},{id:`on`,word:`の上に`},{id:`under`,word:`の下に`},{id:`with`,word:`と一緒に`},{id:`without`,word:`なしで`},{id:`before`,word:`の前に`},{id:`after`,word:`の後で`},{id:`between`,word:`の間に`},{id:`near`,word:`の近くに`},{id:`inside`,word:`内部に`}];export{e as default};

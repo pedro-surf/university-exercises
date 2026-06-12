@@ -1,0 +1,1 @@
+var e=[{id:`wave`,word:`波`},{id:`board`,word:`ボード`},{id:`ocean`,word:`海`},{id:`beach`,word:`ビーチ`},{id:`reef`,word:`リーフ`},{id:`barrel`,word:`バレル`},{id:`duck-dive`,word:`ダックダイブ`},{id:`lineup`,word:`ラインナップ`},{id:`tide`,word:`潮汐`},{id:`swell`,word:`うねり`}];export{e as default};

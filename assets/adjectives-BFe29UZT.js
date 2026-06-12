@@ -1,0 +1,1 @@
+var e=[{id:`big`,word:`大きい`},{id:`small`,word:`小さい`},{id:`beautiful`,word:`美しい`},{id:`ugly`,word:`醜い`},{id:`fast`,word:`速い`},{id:`slow`,word:`遅い`},{id:`happy`,word:`嬉しい`},{id:`sad`,word:`悲しい`},{id:`hot`,word:`熱い`},{id:`cold`,word:`寒い`}];export{e as default};

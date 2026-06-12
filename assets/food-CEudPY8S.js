@@ -1,0 +1,1 @@
+var e=[{id:`bread`,word:`パン`},{id:`water`,word:`水`},{id:`coffee`,word:`コーヒー`},{id:`rice`,word:`ご飯`},{id:`beans`,word:`豆`},{id:`cheese`,word:`チーズ`},{id:`fish`,word:`魚`},{id:`fruit`,word:`果物`},{id:`milk`,word:`牛乳`},{id:`beer`,word:`ビール`}];export{e as default};

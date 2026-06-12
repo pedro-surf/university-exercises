@@ -1,0 +1,1 @@
+var e=[{id:`i`,word:`io`},{id:`you`,word:`tu`},{id:`he`,word:`lui`},{id:`she`,word:`lei`},{id:`we`,word:`noi`},{id:`they`,word:`loro`},{id:`me`,word:`me`},{id:`my`,word:`mio`},{id:`your`,word:`tuo`},{id:`our`,word:`nostro`}];export{e as default};

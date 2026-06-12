@@ -1,0 +1,1 @@
+var e=[{id:`happiness`,word:`幸福`},{id:`sadness`,word:`悲しみ`},{id:`anger`,word:`怒り`},{id:`fear`,word:`恐怖`},{id:`love`,word:`愛`},{id:`anxiety`,word:`不安`},{id:`peace`,word:`平和`},{id:`hope`,word:`希望`},{id:`motivation`,word:`動機`},{id:`confidence`,word:`自信`}];export{e as default};
