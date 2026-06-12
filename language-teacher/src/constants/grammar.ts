@@ -1,8 +1,20 @@
-export const grammar = {
+export type GrammarCategory =
+    | "pronouns"
+    | "adjectives"
+    | "articles"
+    | "prepositions"
+    | "possessives"
+    | "adverbs"
+    | "verbs"
+    | "conjunctions";
+
+export const grammarMap = {
     ["en-US"]: {
         pronouns: "pronouns",
         adjectives: "adjectives",
         articles: "articles",
+        adverbs: "adverbs",
+        conjunctions: "conjunctions",
         verbs: "verbs",
         prepositions: "prepositions",
         possessives: "possessives",
@@ -11,6 +23,8 @@ export const grammar = {
         pronouns: "pronomes",
         adjectives: "adjetivos",
         articles: "artigos",
+        adverbs: "advérbios",
+        conjunctions: "conjunções",
         verbs: "verbos",
         prepositions: "preposições",
         possessives: "possessivos",
@@ -19,6 +33,8 @@ export const grammar = {
         pronouns: "pronombres",
         adjectives: "adjetivos",
         articles: "artículos",
+        adverbs: "adverbios",
+        conjunctions: "conjunciónes",
         verbs: "verbos",
         prepositions: "preposiciones",
         possessives: "posesivos",
@@ -27,6 +43,8 @@ export const grammar = {
         pronouns: "pronoms",
         adjectives: "adjectifs",
         articles: "articles",
+        adverbs: "adverbe",
+        conjunctions: "conjonctions",
         verbs: "verbes",
         prepositions: "prépositions",
         possessives: "possessifs",
@@ -35,6 +53,8 @@ export const grammar = {
         pronouns: "zájmena",
         adjectives: "přídavná jména",
         articles: "články",
+        adverbs: "příslovce",
+        conjunctions: "spojka",
         verbs: "slovesa",
         prepositions: "předložky",
         possessives: "přivlastňovací zájmena",
@@ -43,6 +63,8 @@ export const grammar = {
         pronouns: "pronomen",
         adjectives: "adjektive",
         articles: "artikel",
+        adverbs: "adverb",
+        conjunctions: "konjunktion",
         verbs: "verben",
         prepositions: "präpositionen",
         possessives: "besitzanzeigende pronomen",
@@ -51,6 +73,8 @@ export const grammar = {
         pronouns: "pronomi",
         adjectives: "aggettivi",
         articles: "articoli",
+        adverbs: "avverbio",
+        conjunctions: "congiunzione",
         verbs: "verbi",
         prepositions: "preposizioni",
         possessives: "possessivi",
@@ -59,6 +83,8 @@ export const grammar = {
         pronouns: "代名詞",
         adjectives: "形容詞",
         articles: "冠詞",
+        adverbs: "adverbs",
+        conjunctions: "conjunctions",
         verbs: "動詞",
         prepositions: "前置詞",
         possessives: "所有格",
@@ -67,6 +93,8 @@ export const grammar = {
         pronouns: "代词",
         adjectives: "形容词",
         articles: "冠词",
+        adverbs: "adverbs",
+        conjunctions: "conjunctions",
         verbs: "动词",
         prepositions: "介词",
         possessives: "所有格",
@@ -75,20 +103,14 @@ export const grammar = {
         pronouns: "kata ganti",
         adjectives: "kata sifat",
         articles: "artikel",
+        adverbs: "adverbia (Kata keterangan)",
+        conjunctions: "konjungsi (Kata hubung)",
         verbs: "kata kerja",
         prepositions: "preposisi",
         possessives: "kata ganti kepemilikan",
     },
 }
 
-
-export type GrammarCategory =
-    | "pronouns"
-    | "adjectives"
-    | "articles"
-    | "prepositions"
-    | "possessives"
-    | "verbs";
 
 export const menuItems: {
     id: GrammarCategory;
@@ -117,5 +139,16 @@ export const menuItems: {
             id: "prepositions",
             label: "Prepositions",
             emoji: "🧭",
+        },
+        {
+            id: "conjunctions",
+            label: "Conjunctions",
+            emoji: "📔",
+        },
+
+        {
+            id: "adverbs",
+            label: "Adverbs",
+            emoji: "🚀",
         },
     ];

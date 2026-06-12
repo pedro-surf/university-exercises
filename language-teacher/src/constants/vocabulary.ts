@@ -1,3 +1,4 @@
+import { APP_SUPPORTED_LANGUAGES } from "./languages";
 
 export type VocabularyCategory =
     | "food"
@@ -13,7 +14,6 @@ export type MenuItem = {
     title: { [key: string]: string };
     description: { [key: string]: string };
 };
-
 
 export const foodMap = {
     'en-US': 'Food',
@@ -166,3 +166,16 @@ export const menuItems: MenuItem[] = [
         description: surfingDescriptionMap,
     },
 ];
+
+export const vocabularyMap = Object.keys(APP_SUPPORTED_LANGUAGES).reduce((acc, val) => {
+    if (!acc[val]) {
+        acc[val] = {
+            food: foodMap[val],
+            emotions: emotionsMap[val],
+            business: businessMap[val],
+            traveling: travelMap[val],
+            surfing: surfingMap[val],
+        }
+    }
+    return acc;
+}, {})

@@ -1,6 +1,7 @@
-import { welcomeMap, whatWouldYouLikeToStudyTodayMap } from "../constants/appTranslations";
+import { startLearningMap, welcomeMap, whatWouldYouLikeToStudyTodayMap } from "../constants/appTranslations";
 import { APP_MENU_OPTIONS } from "../constants/menu";
 import { useAppContext } from "../Context";
+import { capitalize } from "../utils/capitalize";
 import ConfigDisplay from "./Config";
 import { useNavigate } from "react-router-dom";
 
@@ -34,37 +35,37 @@ export default function Menu() {
                             onClick={() =>
                                 navigate(option.id)
                             }
-                            className="group rounded-[36px] bg-white border border-gray-100 shadow-xl p-8 text-left hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+                            className="flex flex-col justify-start group rounded-[36px] bg-white border border-gray-100 shadow-xl p-8 text-left hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
                         >
                             <div className="text-5xl mb-6">
                                 {option.emoji}
                             </div>
 
-                            <div className="space-y-4">
+                            <div className="mb-6">
                                 <h2 className="text-3xl font-black">
                                     {option.title[userLanguage]}
                                 </h2>
 
-                                <p className="text-gray-600 leading-relaxed">
+                                <p className="text-gray-600 h-30 leading-relaxed">
                                     {option.description[userLanguage]}
                                 </p>
 
                                 <div className="pt-3 flex flex-wrap gap-2">
-                                    {option.examples.map(
-                                        (example) => (
+                                    {Object.values(option.items?.[userLanguage] || {}).map(
+                                        (item) => (
                                             <div
-                                                key={example}
+                                                key={item as string}
                                                 className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
                                             >
-                                                {example}
+                                                {capitalize(item as string)}
                                             </div>
                                         )
                                     )}
                                 </div>
                             </div>
 
-                            <div className="mt-10 flex items-center text-black font-semibold text-lg">
-                                Start learning
+                            <div className="mt-auto flex items-center text-black font-semibold">
+                                {startLearningMap[userLanguage || "en-US"]}
 
                                 <span className="ml-2 transition-transform group-hover:translate-x-1">
                                     →

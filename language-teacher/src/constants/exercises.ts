@@ -14,3 +14,5 @@ export type Exercise = {
     options?: string[];
 };
 
+export const BLANK_WORD_SPACE = "____"
+

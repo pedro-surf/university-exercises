@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { speakWord } from "../../utils/speakWord";
 import { useAppContext } from "../../Context";
-import { type Exercise } from "../../constants/exercises";
+import { type Exercise, BLANK_WORD_SPACE } from "../../constants/exercises";
 import { checkAnswerMap, correctAnswerMap, hintMap } from "../../constants/appTranslations";
 import { TextCorrectionHighlighter } from "../TextCorrectionHighlighter";
 import { correctMap, incorrectMap, translateMap } from "../../constants/appTranslations";
@@ -167,7 +167,7 @@ export function FillTheBlank({
 
   const renderFillBlanks = () => {
     const parts =
-      target.sentence.split("____");
+      target.sentence.split(BLANK_WORD_SPACE);
 
     return (
       <div className="text-3xl leading-relaxed text-center">
@@ -312,8 +312,9 @@ export function FillTheBlank({
                       {origin.sentence}
                     </div>
                   ) : <TextCorrectionHighlighter
-                    expectedText={target.sentence}
-                    userText={Object.values(answers).join(" ")}
+                    sentence={target.sentence}
+                    solution={target.solution}
+                    userText={Object.values(answers).join(";")}
                   />}
                 </div>
               )}

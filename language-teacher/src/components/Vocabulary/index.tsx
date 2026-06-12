@@ -80,7 +80,7 @@ export default function VocabularyScreen() {
       >
         {goBackMap[originLanguage]}
       </button>
-      <div className="max-w-7xl mx-auto p-6 md:p-10">
+      <div className="max-w-7xl mx-auto p-2 md:p-10">
         <div className="mb-10">
           <div className="text-sm uppercase tracking-[0.25em] text-gray-500 font-semibold mb-4">
             {vocabularyTitleMap[originLanguage]}
@@ -121,7 +121,7 @@ export default function VocabularyScreen() {
           })}
         </div>
 
-        <div className="mb-8">
+        <div className="md:mb-8 mb-2">
           <h2 className="text-4xl font-black">
             {translations.title}
           </h2>

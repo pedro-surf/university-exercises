@@ -30,12 +30,11 @@ export default function TranslationTable({
         ])
     );
 
-    const originLanguageLabel = LANGUAGES.find(l => l.code === originLanguage).name;
-    const targetLanguageLabel = LANGUAGES.find(l => l.code === targetLanguage).name;
-
+    const originLanguageLabel = LANGUAGES.find(l => l.code === originLanguage)?.name;
+    const targetLanguageLabel = LANGUAGES.find(l => l.code === targetLanguage)?.name;
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 p-6 md:p-10">
+        <div className="min-h-screen md:bg-gradient-to-br md:from-white to-gray-100 p-1 md:p-10">
             <div className="max-w-5xl mx-auto">
                 <h1 className="text-5xl font-black mb-5">
                     <span className="cursor-pointer" onClick={() => speakWord(targetTitle, targetLanguage)}>{capitalize(targetTitle)}</span> ({capitalize(originTitle)})

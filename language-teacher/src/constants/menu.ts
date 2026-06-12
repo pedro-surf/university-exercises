@@ -1,3 +1,6 @@
+import { grammarMap } from "./grammar";
+import { vocabularyMap } from "./vocabulary";
+
 export const grammarTitleMap = {
     "en-US": "Grammar",
     "pt-BR": "Gramática",
@@ -71,11 +74,8 @@ export const APP_MENU_OPTIONS = [
         emoji: "📚",
         description:
             grammarDescriptionMap,
-        examples: [
-            "Verb tenses",
-            "Pronouns",
-            "Sentence structure",
-        ],
+        items: grammarMap,
+        examples:[]
     },
 
     {
@@ -84,11 +84,8 @@ export const APP_MENU_OPTIONS = [
         emoji: "🧠",
         description:
             vocabularyDescriptionMap,
-        examples: [
-            "Travel",
-            "Food",
-            "Daily conversation",
-        ],
+        examples: [],
+        items: vocabularyMap,
     },
 
     {
@@ -97,10 +94,7 @@ export const APP_MENU_OPTIONS = [
         emoji: "✍️",
         description:
             exercisesDescriptionMap,
-        examples: [
-            "Listening",
-            "Pronunciation",
-            "Typing challenges",
-        ],
+        examples: [],
+        items: [],
     },
 ] as const;

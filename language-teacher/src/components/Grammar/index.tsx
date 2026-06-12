@@ -1,9 +1,11 @@
 import React from "react";
 import TranslationTable from "../TranslationTable";
 import { useAppContext } from "../../Context";
-import { grammar, menuItems, type GrammarCategory } from "../../constants/grammar";
+import { grammarMap, menuItems, type GrammarCategory } from "../../constants/grammar";
 import { useNavigate } from "react-router-dom";
 import { goBackMap } from "../../constants/appTranslations";
+import { grammarDescriptionMap, grammarTitleMap } from "../../constants/menu";
+import { capitalize } from "../../utils/capitalize";
 
 export default function GrammarScreen() {
     const navigate = useNavigate();
@@ -36,42 +38,42 @@ export default function GrammarScreen() {
         switch (selectedCategory) {
             case "pronouns":
                 return {
-                    title: grammar[targetLanguage].pronouns,
+                    title: grammarMap[targetLanguage].pronouns,
                     data: pronouns,
                 };
 
             case "adjectives":
                 return {
-                    title: grammar[targetLanguage].adjectives,
+                    title: grammarMap[targetLanguage].adjectives,
                     data: adjectives,
                 };
 
             case "articles":
                 return {
-                    title: grammar[targetLanguage].articles,
+                    title: grammarMap[targetLanguage].articles,
                     data: articles,
                 };
 
             case "prepositions":
                 return {
-                    title: grammar[targetLanguage].prepositions,
+                    title: grammarMap[targetLanguage].prepositions,
                     data: prepositions,
                 };
 
             case "possessives":
                 return {
-                    title: grammar[targetLanguage].possessives,
+                    title: grammarMap[targetLanguage].possessives,
                     data: possessives,
                 };
             case "verbs":
                 return {
-                    title: grammar[targetLanguage].verbs,
+                    title: grammarMap[targetLanguage].verbs,
                     data: verbs,
                 };
 
             default:
                 return {
-                    title: grammar[targetLanguage].pronouns,
+                    title: grammarMap[targetLanguage].pronouns,
                     data: pronouns,
                 };
         }
@@ -81,41 +83,41 @@ export default function GrammarScreen() {
         switch (selectedCategory) {
             case "pronouns":
                 return {
-                    title: grammar[originLanguage].pronouns,
+                    title: grammarMap[originLanguage].pronouns,
                     data: ogPronouns,
                 };
             case "adjectives":
                 return {
-                    title: grammar[originLanguage].adjectives,
+                    title: grammarMap[originLanguage].adjectives,
                     data: ogAdjectives,
                 };
 
             case "articles":
                 return {
-                    title: grammar[originLanguage].articles,
+                    title: grammarMap[originLanguage].articles,
                     data: ogArticles,
                 };
 
             case "prepositions":
                 return {
-                    title: grammar[originLanguage].prepositions,
+                    title: grammarMap[originLanguage].prepositions,
                     data: ogPrepositions,
                 };
 
             case "possessives":
                 return {
-                    title: grammar[originLanguage].possessives,
+                    title: grammarMap[originLanguage].possessives,
                     data: ogPossessives,
                 };
             case "verbs":
                 return {
-                    title: grammar[originLanguage].verbs,
+                    title: grammarMap[originLanguage].verbs,
                     data: ogVerbs,
                 };
 
             default:
                 return {
-                    title: grammar[originLanguage].pronouns,
+                    title: grammarMap[originLanguage].pronouns,
                     data: ogPronouns,
                 };
         }
@@ -132,14 +134,16 @@ export default function GrammarScreen() {
             >
                 {goBackMap[originLanguage]}
             </button>
-            <div className="max-w-7xl mx-auto p-6 md:p-10">
+            <div className="max-w-7xl mx-auto p-2 md:p-10">
                 <div className="mb-10">
                     <div className="text-sm uppercase tracking-[0.25em] text-gray-500 font-semibold mb-4">
-                        Grammar
+                        {grammarTitleMap[originLanguage]}
                     </div>
+                    <h1 className="text-6xl font-black tracking-tight">
+                        {grammarTitleMap[targetLanguage]}
+                    </h1>
                     <p className="text-sm w-full text-center text-gray-600 mt-5">
-                        Compare grammatical structures between languages and understand how
-                        meaning is constructed.
+                        {grammarDescriptionMap[originLanguage]}
                     </p>
                 </div>
 
@@ -151,14 +155,14 @@ export default function GrammarScreen() {
                             <button
                                 key={item.id}
                                 onClick={() => setSelectedCategory(item.id)}
-                                className={`rounded-2xl px-6 py-4 text-lg font-semibold transition-all ${isSelected
+                                className={`rounded-2xl px-4 py-4 text-lg font-semibold transition-all ${isSelected
                                     ? "bg-black text-white shadow-xl"
                                     : "bg-white text-gray-700 border border-gray-200 hover:border-gray-400"
                                     }`}
                             >
                                 <span className="mr-3">{item.emoji}</span>
 
-                                {item.label}
+                                {capitalize(grammarMap[originLanguage]?.[item.id] ?? item.label)}
                             </button>
                         );
                     })}

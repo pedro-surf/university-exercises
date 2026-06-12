@@ -34,6 +34,11 @@ export const LANGUAGES = [
     flag: "🇪🇸",
   },
   {
+    code: "id-ID",
+    name: "Indonesian",
+    flag: "id",
+  },
+  {
     code: "fr-FR",
     name: "Français",
     flag: "🇫🇷",
