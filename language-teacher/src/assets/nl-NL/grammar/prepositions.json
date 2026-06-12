@@ -1,0 +1,12 @@
+[
+  { "id": "in", "word": "in" },
+  { "id": "on", "word": "op" },
+  { "id": "under", "word": "onder" },
+  { "id": "with", "word": "met" },
+  { "id": "without", "word": "zonder" },
+  { "id": "before", "word": "voor" },
+  { "id": "after", "word": "na" },
+  { "id": "between", "word": "tussen" },
+  { "id": "near", "word": "dichtbij" },
+  { "id": "inside", "word": "binnen" }
+]

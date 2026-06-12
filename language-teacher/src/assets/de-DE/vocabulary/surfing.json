@@ -1,0 +1,12 @@
+[
+    { "id": "wave", "word": "Welle" },
+    { "id": "board", "word": "Surfbrett" },
+    { "id": "ocean", "word": "Ozean" },
+    { "id": "beach", "word": "Strand" },
+    { "id": "reef", "word": "Riff" },
+    { "id": "barrel", "word": "Tube" },
+    { "id": "duck-dive", "word": "Duck Dive" },
+    { "id": "lineup", "word": "Lineup" },
+    { "id": "tide", "word": "Gezeiten" },
+    { "id": "swell", "word": "Dünung" }
+  ]

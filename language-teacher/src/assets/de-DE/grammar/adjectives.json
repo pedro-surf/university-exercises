@@ -1,0 +1,12 @@
+[
+    { "id": "big", "word": "groß" },
+    { "id": "small", "word": "klein" },
+    { "id": "beautiful", "word": "schön" },
+    { "id": "ugly", "word": "hässlich" },
+    { "id": "fast", "word": "schnell" },
+    { "id": "slow", "word": "langsam" },
+    { "id": "happy", "word": "glücklich" },
+    { "id": "sad", "word": "traurig" },
+    { "id": "hot", "word": "heiß" },
+    { "id": "cold", "word": "kalt" }
+  ]

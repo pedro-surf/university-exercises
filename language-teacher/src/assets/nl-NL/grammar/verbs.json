@@ -1,0 +1,22 @@
+[
+  { "id": "to-be", "word": "zijn" },
+  { "id": "to-have", "word": "hebben" },
+  { "id": "to-go", "word": "gaan" },
+  { "id": "to-eat", "word": "eten" },
+  { "id": "to-drink", "word": "drinken" },
+  { "id": "to-sleep", "word": "slapen" },
+  { "id": "to-study", "word": "studeren" },
+  { "id": "to-work", "word": "werken" },
+  { "id": "to-speak", "word": "spreken" },
+  { "id": "to-listen", "word": "luisteren" },
+  { "id": "to-see", "word": "zien" },
+  { "id": "to-think", "word": "denken" },
+  { "id": "to-learn", "word": "leren" },
+  { "id": "to-write", "word": "schrijven" },
+  { "id": "to-read", "word": "lezen" },
+  { "id": "to-open", "word": "openen" },
+  { "id": "to-close", "word": "sluiten" },
+  { "id": "to-love", "word": "houden van" },
+  { "id": "to-like", "word": "leuk vinden" },
+  { "id": "to-live", "word": "wonen" }
+]

@@ -1,0 +1,12 @@
+[
+  { "id": "i", "word": "ik" },
+  { "id": "you", "word": "jij" },
+  { "id": "he", "word": "hij" },
+  { "id": "she", "word": "zij" },
+  { "id": "we", "word": "wij" },
+  { "id": "they", "word": "zij" },
+  { "id": "me", "word": "mij" },
+  { "id": "my", "word": "mijn" },
+  { "id": "your", "word": "jouw" },
+  { "id": "our", "word": "ons" }
+]
