@@ -10,6 +10,8 @@ interface GeneratedExercise {
     sentence: string;
     solution: string;
     hint: string;
+    topic: string;
+    difficulty: string;
 }
 
 export async function generateExercisesFromAI(
@@ -36,6 +38,7 @@ export async function generateExercisesFromAI(
     - In the 'sentence' property, either write a single word to be translated, or a sentence with one or more words replaced in underscores (____) to indicate fill in the blank.
     - In the 'solution' property, write "null" if 'sentence' is a single word to be translated, or the word(s) replaced in underscores in 'sentence', separated by commas.
     - In the 'hint' property, provide a hint, short contextual tip, grammatical explanation to assist the student.
+    - In the 'topic' property, pick a topic. FOOD,TRAVEL,FAMILY,SURFING,WEATHER,BUSINESS.
     `;
 
     const response = await openai.chat.completions.create({
@@ -61,9 +64,10 @@ export async function generateExercisesFromAI(
                                     identifier: { type: "string", description: "A short, unique identifier, e.g., EX-001" },
                                     sentence: { type: "string", description: "The sentence with the blank placeholder (___)" },
                                     solution: { type: "string", description: "The correct answer to fill the blank" },
-                                    hint: { type: "string", description: "Instructional tip or translation in the student's native language" }
+                                    hint: { type: "string", description: "Instructional tip or translation in the student's native language" },
+                                    topic: { type: "string", description: "The exercise topic" }
                                 },
-                                required: ["identifier", "language", "sentence", "solution", "hint"],
+                                required: ["identifier", "language", "sentence", "solution", "hint", "topic"],
                                 additionalProperties: false
                             }
                         }

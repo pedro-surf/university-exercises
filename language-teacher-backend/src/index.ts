@@ -1,5 +1,6 @@
 import express from "express";
-
+import dotenv from 'dotenv';
+dotenv.config();
 import healthRouter from "./routes/health";
 import exercisesRouter from "./routes/exercises";
 import usersRouter from "./routes/users";

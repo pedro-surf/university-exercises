@@ -3,6 +3,7 @@ import prisma from '../lib/prisma';
 import { generateExercisesFromAI } from '../services/OpenAIService';
 import { getUserScore } from '../services/ExerciseService';
 import { auth } from '../middleware/auth';
+import { Category, Difficulty, Language, Topic } from '../../generated/prisma/enums';
 
 // --- IN-MEMORY QUOTA CONFIGURATION ---
 // This lives in the RAM of your running Node process. 
@@ -22,9 +23,9 @@ router.get('/', auth, async (req: Request, res: Response): Promise<any> => {
 
     const exercises = await prisma.exercise.findMany({
       where: {
-        language: String(language),
-        category: String(category),
-        ...(difficulty && { difficulty: String(difficulty) })
+        language: language as Language,
+        category: category as Category,
+        ...(difficulty && { difficulty: difficulty as Difficulty })
       }
     });
 
@@ -83,7 +84,8 @@ router.post('/generate', auth, async (req: Request, res: Response): Promise<any>
             difficulty: difficulty,
             sentence: ex.sentence,
             solution: ex.solution,
-            hint: ex.hint
+            hint: ex.hint,
+            topic: ex.topic as Topic,
           }
         })
       )
