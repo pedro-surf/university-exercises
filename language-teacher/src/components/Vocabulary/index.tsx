@@ -128,8 +128,8 @@ export default function VocabularyScreen() {
         <TranslationTable
           targetTitle={selectedCategory.title[targetLanguage]}
           originTitle={selectedCategory.title[originLanguage]}
-          originPronouns={natives!}
-          targetPronouns={translations!}
+          originData={natives!}
+          targetData={translations!}
         />
       </div>
     </div>

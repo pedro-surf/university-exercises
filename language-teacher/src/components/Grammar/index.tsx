@@ -23,53 +23,53 @@ export default function GrammarScreen() {
         switch (selectedCategory) {
             case "pronouns":
                 return {
-                    title: grammarMap[targetLanguage].pronouns,
+                    title: grammarMap[targetLanguage]?.pronouns,
                     data: target?.pronouns,
                 };
             case "adverbs":
                 return {
-                    title: grammarMap[targetLanguage].adverbs,
+                    title: grammarMap[targetLanguage]?.adverbs,
                     data: target?.adverbs,
                 };
             case "conjunctions":
                 return {
-                    title: grammarMap[targetLanguage].conjunctions,
+                    title: grammarMap[targetLanguage]?.conjunctions,
                     data: target?.conjunctions,
                 };
 
 
             case "adjectives":
                 return {
-                    title: grammarMap[targetLanguage].adjectives,
+                    title: grammarMap[targetLanguage]?.adjectives,
                     data: target?.adjectives,
                 };
 
             case "articles":
                 return {
-                    title: grammarMap[targetLanguage].articles,
+                    title: grammarMap[targetLanguage]?.articles,
                     data: target?.articles,
                 };
 
             case "prepositions":
                 return {
-                    title: grammarMap[targetLanguage].prepositions,
+                    title: grammarMap[targetLanguage]?.prepositions,
                     data: target?.prepositions,
                 };
 
             case "possessives":
                 return {
-                    title: grammarMap[targetLanguage].possessives,
+                    title: grammarMap[targetLanguage]?.possessives,
                     data: target?.possessives,
                 };
             case "verbs":
                 return {
-                    title: grammarMap[targetLanguage].verbs,
+                    title: grammarMap[targetLanguage]?.verbs,
                     data: target?.verbs,
                 };
 
             default:
                 return {
-                    title: grammarMap[targetLanguage].pronouns,
+                    title: grammarMap[targetLanguage]?.pronouns,
                     data: target?.pronouns,
                 };
         }
@@ -79,41 +79,53 @@ export default function GrammarScreen() {
         switch (selectedCategory) {
             case "pronouns":
                 return {
-                    title: grammarMap[originLanguage].pronouns,
+                    title: grammarMap[originLanguage]?.pronouns,
                     data: origin?.pronouns,
                 };
             case "adjectives":
                 return {
-                    title: grammarMap[originLanguage].adjectives,
+                    title: grammarMap[originLanguage]?.adjectives,
                     data: origin?.adjectives,
                 };
 
             case "articles":
                 return {
-                    title: grammarMap[originLanguage].articles,
+                    title: grammarMap[originLanguage]?.articles,
                     data: origin?.articles,
                 };
 
             case "prepositions":
                 return {
-                    title: grammarMap[originLanguage].prepositions,
+                    title: grammarMap[originLanguage]?.prepositions,
                     data: origin?.prepositions,
                 };
 
             case "possessives":
                 return {
-                    title: grammarMap[originLanguage].possessives,
+                    title: grammarMap[originLanguage]?.possessives,
                     data: origin?.possessives,
                 };
             case "verbs":
                 return {
-                    title: grammarMap[originLanguage].verbs,
+                    title: grammarMap[originLanguage]?.verbs,
                     data: origin?.verbs,
+                };
+
+            case "adverbs":
+                return {
+                    title: grammarMap[originLanguage]?.adverbs,
+                    data: origin?.adverbs,
+                };
+
+            case "conjunctions":
+                return {
+                    title: grammarMap[originLanguage]?.conjunctions,
+                    data: origin?.conjunctions,
                 };
 
             default:
                 return {
-                    title: grammarMap[originLanguage].pronouns,
+                    title: grammarMap[originLanguage]?.pronouns,
                     data: origin?.pronouns,
                 };
         }
@@ -128,7 +140,7 @@ export default function GrammarScreen() {
             <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 onClick={() => navigate('/')}
             >
-                {goBackMap[originLanguage]}
+                {goBackMap[originLanguage] ?? "Go back"}
             </button>
             <div className="max-w-7xl mx-auto p-2 md:p-10">
                 <div className="mb-10">
@@ -167,8 +179,8 @@ export default function GrammarScreen() {
                 <TranslationTable
                     targetTitle={translations.title}
                     originTitle={natives.title}
-                    originPronouns={natives.data!}
-                    targetPronouns={translations.data!}
+                    originData={natives.data!}
+                    targetData={translations.data!}
                 />
             </div>
         </div>

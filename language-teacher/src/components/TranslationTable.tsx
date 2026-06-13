@@ -12,19 +12,19 @@ type TranslationTableProps = {
     originTitle?: string;
     targetTitle?: string;
 
-    originPronouns: PronounItem[];
-    targetPronouns: PronounItem[];
+    originData: PronounItem[];
+    targetData: PronounItem[];
 };
 
 export default function TranslationTable({
     originTitle = "Pronouns",
     targetTitle = "Pronouns",
-    originPronouns,
-    targetPronouns,
+    originData = [],
+    targetData = [],
 }: TranslationTableProps) {
     const { targetLanguage, userLanguage: originLanguage } = useAppContext();
     const targetMap = new Map(
-        targetPronouns.map((item) => [
+        targetData.map((item) => [
             item.id,
             item.word,
         ])
@@ -46,12 +46,12 @@ export default function TranslationTable({
                         </div>
 
                         <div className="p-6 text-2xl font-bold">
-                            {targetLanguageLabel}
+                            {targetLanguageLabel ?? "Target Language"}
                         </div>
                     </div>
 
                     <div>
-                        {originPronouns.map(
+                        {originData.map(
                             (originPronoun, index) => {
                                 const targetWord =
                                     targetMap.get(
@@ -62,7 +62,7 @@ export default function TranslationTable({
                                     <div
                                         key={originPronoun.id}
                                         className={`grid grid-cols-2 ${index !==
-                                            originPronouns.length - 1
+                                            originData.length - 1
                                             ? "border-b border-gray-100"
                                             : ""
                                             }`}
