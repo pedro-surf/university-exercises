@@ -12,6 +12,11 @@ enum Language {
   ES
   FR
   DE
+  PT
+  CZ
+  NL
+  IT
+  ID
 }
 
 enum Category {

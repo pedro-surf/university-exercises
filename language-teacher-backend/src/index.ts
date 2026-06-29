@@ -13,4 +13,5 @@ app.use("/health", healthRouter);
 app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
+console.log("Backend started!");
