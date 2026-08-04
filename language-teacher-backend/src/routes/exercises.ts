@@ -135,4 +135,39 @@ router.post(
   },
 );
 
+router.post('/submit', auth, async (req: Request, res: Response): Promise<any> => {
+  try {
+    await prisma.exerciseResult.create({
+      data: req.body,
+    });
+    return res.status(201).json({ message: "Exercise result submitted successfully." });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error while submitting exercise." });
+  }
+});
+
+router.post('/', auth, async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { identifier, language, category, difficulty, sentence, solution, hint, topic } = req.body;
+    await prisma.exercise.create({
+      data: {
+        identifier,
+        language,
+        category,
+        difficulty,
+        sentence,
+        solution,
+        hint,
+        topic,
+      },
+    });
+    return res.status(201).json({ message: "Exercise created successfully." });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error while creating exercise." });
+  }
+}
+);
+
 export default router;

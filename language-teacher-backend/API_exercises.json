@@ -1,0 +1,61 @@
+[
+  {
+    "language": "EN",
+    "identifier": "EX-001",
+    "sentence": "I want to eat some ___ for lunch.",
+    "solution": "pizza",
+    "hint": "Think of a popular Italian dish that is often enjoyed during meals.",
+    "category": "VOCABULARY",
+    "difficulty": "BEGINNER",
+    "topic": "FOOD"
+  },
+  {
+    "language": "EN",
+    "identifier": "EX-002",
+    "sentence": "My best friend lives in ___ city.",
+    "solution": "New York",
+    "hint": "This city is known for its iconic skyline and is located on the East Coast of the U.S.",
+    "category": "VOCABULARY",
+    "difficulty": "BEGINNER",
+    "topic": "TRAVEL"
+  },
+  {
+    "language": "EN",
+    "identifier": "EX-003",
+    "sentence": "My sister loves to play with her ___ at home.",
+    "solution": "cat,dog",
+    "hint": "This is a common pet that can be a loyal companion.",
+    "category": "VOCABULARY",
+    "difficulty": "BEGINNER",
+    "topic": "FAMILY"
+  },
+  {
+    "language": "PT",
+    "identifier": "EX-001",
+    "sentence": "Eu quero comer ___ no almoço.",
+    "solution": "pizza",
+    "hint": "Pense em um prato italiano popular que muitas pessoas gostam.",
+    "category": "VOCABULARY",
+    "difficulty": "BEGINNER",
+    "topic": "FOOD"
+  },
+  {
+    "language": "PT",
+    "identifier": "EX-002",
+    "sentence": "Minha melhor amiga mora na ___ cidade.",
+    "solution": "Nova York",
+    "hint": "Esta cidade é famosa por seu horizonte icônico e fica na costa leste dos EUA.",
+    "category": "VOCABULARY",
+    "difficulty": "BEGINNER",
+    "topic": "TRAVEL"
+  },
+  {
+    "language": "PT",
+    "identifier": "EX-003",
+    "sentence": "Minha irmã adora brincar com seu ___ em casa.",
+    "solution": "gato,cachorro",
+    "category": "VOCABULARY",
+    "difficulty": "BEGINNER",
+    "hint": "Este é um animal de estimação comum que pode ser um companheiro leal"
+  }
+]

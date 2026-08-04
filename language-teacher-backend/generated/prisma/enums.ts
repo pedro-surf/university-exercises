@@ -13,7 +13,12 @@ export const Language = {
   EN: 'EN',
   ES: 'ES',
   FR: 'FR',
-  DE: 'DE'
+  DE: 'DE',
+  PT: 'PT',
+  CZ: 'CZ',
+  NL: 'NL',
+  IT: 'IT',
+  ID: 'ID'
 } as const
 
 export type Language = (typeof Language)[keyof typeof Language]
@@ -42,7 +47,9 @@ export const Topic = {
   FOOD: 'FOOD',
   TRAVEL: 'TRAVEL',
   FAMILY: 'FAMILY',
-  SURFING: 'SURFING'
+  SURFING: 'SURFING',
+  WEATHER: 'WEATHER',
+  BUSINESS: 'BUSINESS'
 } as const
 
 export type Topic = (typeof Topic)[keyof typeof Topic]

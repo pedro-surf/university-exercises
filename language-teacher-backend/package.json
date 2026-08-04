@@ -10,7 +10,8 @@
     "start": "node dist/index.js",
     "generate": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
-    "create:db": "npx prisma migrate dev --name init"
+    "create:db": "npx prisma migrate dev --name init",
+    "seed": "npx prisma db seed"
   },
   "author": "pedro-surf",
   "license": "ISC",

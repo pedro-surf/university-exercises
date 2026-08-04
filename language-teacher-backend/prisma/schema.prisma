@@ -17,6 +17,7 @@ enum Language {
   NL
   IT
   ID
+  JA
 }
 
 enum Category {
@@ -32,7 +33,6 @@ enum Difficulty {
   ADVANCED
 }
 
-
 enum Topic {
   FOOD
   TRAVEL
@@ -40,6 +40,34 @@ enum Topic {
   SURFING
   WEATHER
   BUSINESS
+  EMOTIONS
+}
+
+/// Subcategories that mirror the JSON asset folders
+/// (vocabulary/* and grammar/*).
+enum AssetCategory {
+  // vocabulary
+  FOOD
+  TRAVEL
+  EMOTIONS
+  BUSINESS
+  SURFING
+  // grammar
+  PRONOUNS
+  ADJECTIVES
+  ARTICLES
+  ADVERBS
+  CONJUNCTIONS
+  VERBS
+  PREPOSITIONS
+  POSSESSIVES
+}
+
+/// How `Asset.icon` should be rendered by the client.
+enum IconType {
+  EMOJI
+  FONT_AWESOME
+  REACT_ICONS
 }
 
 model User {
@@ -49,9 +77,52 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  results ExerciseResult[]
+  results              ExerciseResult[]
+  assetTranslations    AssetTranslation[]
 
   @@map("users")
+}
+
+/// Canonical concept shared across languages (e.g. "bread", "to-be").
+/// Icons live here so every translation of a word shares the same visual.
+model Asset {
+  id          String        @id @default(uuid())
+  /// Stable key matching the current JSON `id` field.
+  identifier  String
+  /// VOCABULARY or GRAMMAR (LISTENING/READING unused for word assets).
+  type        Category
+  category    AssetCategory
+  /// Emoji (🍞) or icon library key (e.g. "fa-bread-slice", "FaBreadSlice").
+  icon        String?
+  iconType    IconType?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  translations AssetTranslation[]
+
+  @@unique([identifier, category])
+  @@index([type, category])
+  @@map("assets")
+}
+
+/// Per-language word for an asset. Teachers upsert rows here for missing translations.
+model AssetTranslation {
+  id          String   @id @default(uuid())
+  assetId     String
+  language    Language
+  word        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  /// Teacher (or admin) who last wrote this translation.
+  updatedById String?
+
+  asset     Asset  @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  updatedBy User?  @relation(fields: [updatedById], references: [id], onDelete: SetNull)
+
+  @@unique([assetId, language])
+  @@index([language])
+  @@index([updatedById])
+  @@map("asset_translations")
 }
 
 model Exercise {
