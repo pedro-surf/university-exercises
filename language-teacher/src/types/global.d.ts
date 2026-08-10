@@ -38,6 +38,9 @@ type Translation = Record<TranslationCategory, AssetItem[] | null | undefined> |
   interface AssetItem {
     id: string;
     word: string;
+    icon?: string;
+    iconType?: 'EMOJI' | 'FONT_AWESOME' | 'REACT_ICONS';
+    approved?: boolean;
   };
 
 }

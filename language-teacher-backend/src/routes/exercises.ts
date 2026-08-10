@@ -28,11 +28,14 @@ router.get("/", auth, async (req: Request, res: Response): Promise<any> => {
         .json({ error: "Missing required parameters: language and category" });
     }
 
+    const includePending = req.query.includePending === "true";
+
     const exercises = await prisma.exercise.findMany({
       where: {
         language: language as Language,
         category: category as Category,
         ...(difficulty && { difficulty: difficulty as Difficulty }),
+        ...(!includePending && { approved: true }),
       },
     });
 
@@ -149,7 +152,18 @@ router.post('/submit', auth, async (req: Request, res: Response): Promise<any> =
 
 router.post('/', auth, async (req: Request, res: Response): Promise<any> => {
   try {
-    const { identifier, language, category, difficulty, sentence, solution, hint, topic } = req.body;
+    const {
+      identifier,
+      language,
+      category,
+      difficulty,
+      sentence,
+      solution,
+      hint,
+      topic,
+      userId,
+      approved = false,
+    } = req.body;
     await prisma.exercise.create({
       data: {
         identifier,
@@ -160,6 +174,8 @@ router.post('/', auth, async (req: Request, res: Response): Promise<any> => {
         solution,
         hint,
         topic,
+        approved: Boolean(approved),
+        updatedById: userId || null,
       },
     });
     return res.status(201).json({ message: "Exercise created successfully." });

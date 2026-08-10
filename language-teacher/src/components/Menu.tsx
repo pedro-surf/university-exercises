@@ -13,9 +13,17 @@ export default function Menu() {
         <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 flex items-center justify-center p-6">
             <div className="w-full max-w-6xl">
                 <ConfigDisplay />
-                <button onClick={() => navigate('/about')} className="absolute top-4 right-4 text-sm text-gray-500 hover:text-gray-700 transition-colors">
-                    About
-                </button>
+                <div className="absolute top-4 right-4 flex gap-4 text-sm text-gray-500">
+                    <button onClick={() => navigate('/assets')} className="hover:text-gray-700 transition-colors">
+                        Teacher
+                    </button>
+                    <button onClick={() => navigate('/admin')} className="hover:text-gray-700 transition-colors">
+                        Admin
+                    </button>
+                    <button onClick={() => navigate('/about')} className="hover:text-gray-700 transition-colors">
+                        About
+                    </button>
+                </div>
                 <div className="mb-14 text-center space-y-4">
                     <div onClick={() => navigate('/assets')} className="text-sm uppercase tracking-[0.25em] text-gray-500 font-semibold">
                         {welcomeMap[userLanguage]}

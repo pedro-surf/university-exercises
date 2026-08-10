@@ -79,6 +79,7 @@ model User {
 
   results              ExerciseResult[]
   assetTranslations    AssetTranslation[]
+  exercises            Exercise[]
 
   @@map("users")
 }
@@ -111,6 +112,8 @@ model AssetTranslation {
   assetId     String
   language    Language
   word        String
+  /// Seeded/admin content starts approved; teacher submissions flip this to false.
+  approved    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   /// Teacher (or admin) who last wrote this translation.
@@ -121,27 +124,35 @@ model AssetTranslation {
 
   @@unique([assetId, language])
   @@index([language])
+  @@index([approved])
   @@index([updatedById])
   @@map("asset_translations")
 }
 
 model Exercise {
-  id         String     @id @default(uuid())
-  identifier String
-  language   Language
-  category   Category
-  topic      Topic
-  difficulty Difficulty
-  sentence   String
-  solution   String
-  hint       String
+  id          String     @id @default(uuid())
+  identifier  String
+  language    Language
+  category    Category
+  topic       Topic
+  difficulty  Difficulty
+  sentence    String
+  solution    String
+  hint        String
+  /// Seeded/admin content starts approved; teacher submissions flip this to false.
+  approved    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now()) @updatedAt
+  updatedById String?
 
-  createdAt  DateTime @default(now())
+  results   ExerciseResult[]
+  updatedBy User?            @relation(fields: [updatedById], references: [id], onDelete: SetNull)
 
-  results ExerciseResult[]
-
+  @@unique([identifier, language])
   @@index([identifier])
   @@index([language])
+  @@index([approved])
+  @@index([updatedById])
 
   @@map("exercises")
 }

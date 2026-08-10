@@ -228,9 +228,11 @@ async function main() {
             assetId: saved.id,
             language,
             word,
+            approved: true,
           },
           update: {
             word,
+            approved: true,
           },
         });
         translationCount += 1;
