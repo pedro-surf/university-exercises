@@ -70,18 +70,67 @@ enum IconType {
   REACT_ICONS
 }
 
+enum ContributionKind {
+  TRANSLATION
+  EXERCISE
+  ICON
+}
+
+/// Immutable audit trail for teacher submissions and admin decisions.
+enum ContributionAction {
+  SUBMITTED
+  UPDATED
+  APPROVED
+  REJECTED
+}
+
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
   name      String?
+  location  String?
+  bio       String?
+  /// When false, only the owner (via viewerId) can see profile details.
+  isPublic  Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  results              ExerciseResult[]
-  assetTranslations    AssetTranslation[]
-  exercises            Exercise[]
+  results                   ExerciseResult[]
+  assetTranslations         AssetTranslation[]
+  exercises                 Exercise[]
+  contributionsAsActor      ContributionLog[]  @relation("ContributionActor")
+  contributionsAsContributor ContributionLog[] @relation("ContributionContributor")
 
   @@map("users")
+}
+
+/// Keeps a durable snapshot of teacher work even after rejects delete live rows.
+model ContributionLog {
+  id            String             @id @default(uuid())
+  kind          ContributionKind
+  action        ContributionAction
+  /// User who performed this action (teacher submit or admin decide).
+  actorId       String?
+  /// Original teacher/contributor credited for the content.
+  contributorId String?
+  /// Live row id when still available.
+  targetId      String?
+  identifier    String
+  language      Language?
+  category      String?
+  /// Full content snapshot (word, sentence, icon, etc.).
+  payload       Json
+  note          String?
+  createdAt     DateTime           @default(now())
+
+  actor       User? @relation("ContributionActor", fields: [actorId], references: [id], onDelete: SetNull)
+  contributor User? @relation("ContributionContributor", fields: [contributorId], references: [id], onDelete: SetNull)
+
+  @@index([actorId])
+  @@index([contributorId])
+  @@index([kind, action])
+  @@index([createdAt])
+  @@map("contribution_logs")
 }
 
 /// Canonical concept shared across languages (e.g. "bread", "to-be").

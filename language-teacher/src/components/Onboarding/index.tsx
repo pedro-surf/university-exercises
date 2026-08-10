@@ -3,6 +3,7 @@ import LanguageInput from "../LanguageInput";
 import UserLanguage from "./UserLanguage";
 import { useAppContext } from "../../Context";
 import { emailOptionalMap, goBackMap, locationMap, originLanguageMap, startLearningMap, targetLanguageMap, whatShouldWeCallYouMap } from "../../constants/appTranslations";
+import { upsertUser } from "../../utils/api";
 
 type ThemeMode = "light" | "dark" | string;
 
@@ -25,7 +26,22 @@ type Step = {
 
 
 export default function Onboarding() {
-  const { theme, userName, setUserEmail, setUserLocation, setUserName, userLocation, userEmail, setTargetLanguage, setTheme, setUserLanguage, targetLanguage, userLanguage } = useAppContext();
+  const {
+    theme,
+    userName,
+    setUserEmail,
+    setUserLocation,
+    setUserName,
+    userLocation,
+    userEmail,
+    setTargetLanguage,
+    setTheme,
+    setUserLanguage,
+    targetLanguage,
+    userLanguage,
+    setUserId,
+    isPublic,
+  } = useAppContext();
   const STEPS: Step[] = useMemo(() => [
     {
       key: "spokenLanguage",
@@ -122,7 +138,7 @@ export default function Onboarding() {
     }
   };
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     if (!data.targetLanguage) {
       alert("Select a target language!");
       setStep(4);
@@ -141,6 +157,22 @@ export default function Onboarding() {
     setUserName(data.name);
     setUserEmail(data.email);
     setUserLocation(data.location);
+
+    if (data.email?.trim()) {
+      try {
+        const user = await upsertUser({
+          email: data.email,
+          name: data.name,
+          location: data.location,
+          isPublic,
+        });
+        setUserId(user.id);
+      } catch (error) {
+        console.error("Failed to upsert user profile", error);
+        alert("Could not sync your profile with the server. You can retry from Profile.");
+      }
+    }
+
     const hasConfigured = !!userLanguage && !!userName && !!targetLanguage;
     if (!hasConfigured) {
       setStep(0);

@@ -17,22 +17,93 @@ type AppContextType = {
   userEmail?: string;
   setUserLocation: (location: string) => void;
   userLocation?: string;
+  userId?: string;
+  setUserId: (id: string) => void;
+  isPublic: boolean;
+  setIsPublic: (value: boolean) => void;
+  userBio: string;
+  setUserBio: (bio: string) => void;
 };
+
+const STORAGE_KEY = "language-teacher-user";
+
+type StoredUser = {
+  userId?: string;
+  userName?: string;
+  userEmail?: string;
+  userLocation?: string;
+  userLanguage?: string;
+  targetLanguage?: string;
+  isPublic?: boolean;
+  userBio?: string;
+  theme?: string;
+};
+
+function readStoredUser(): StoredUser {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as StoredUser) : {};
+  } catch {
+    return {};
+  }
+}
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<"light" | "dark" | string>("light");
-  const [userLanguage, setUserLanguage] = useState<string>("");
-  const [targetLanguage, setTargetLanguage] = useState<string>("");
+  const stored = readStoredUser();
+
+  const [theme, setTheme] = useState<"light" | "dark" | string>(
+    stored.theme || "light"
+  );
+  const [userLanguage, setUserLanguage] = useState<string>(
+    stored.userLanguage || ""
+  );
+  const [targetLanguage, setTargetLanguage] = useState<string>(
+    stored.targetLanguage || ""
+  );
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [translations, setTranslations] = useState<Translation>({} as Translation);
+  const [translations, setTranslations] = useState<Translation>(
+    {} as Translation
+  );
   const [origin, setOrigin] = useState<Translation>({} as Translation);
-  const [userName, setUserName] = useState<string>("");
-  const [userEmail, setUserEmail] = useState<string>("");
-  const [userLocation, setUserLocation] = useState<string>("");
+  const [userName, setUserName] = useState<string>(stored.userName || "");
+  const [userEmail, setUserEmail] = useState<string>(stored.userEmail || "");
+  const [userLocation, setUserLocation] = useState<string>(
+    stored.userLocation || ""
+  );
+  const [userId, setUserId] = useState<string>(stored.userId || "");
+  const [isPublic, setIsPublic] = useState<boolean>(
+    Boolean(stored.isPublic)
+  );
+  const [userBio, setUserBio] = useState<string>(stored.userBio || "");
+
+  useEffect(() => {
+    const payload: StoredUser = {
+      userId,
+      userName,
+      userEmail,
+      userLocation,
+      userLanguage,
+      targetLanguage,
+      isPublic,
+      userBio,
+      theme,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  }, [
+    userId,
+    userName,
+    userEmail,
+    userLocation,
+    userLanguage,
+    targetLanguage,
+    isPublic,
+    userBio,
+    theme,
+  ]);
 
   useEffect(() => {
     const fetchVoices = () => {
@@ -40,20 +111,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setVoices(availableVoices);
     };
 
-    // Fetch voices and handle onvoiceschanged
     fetchVoices();
     speechSynthesis.onvoiceschanged = fetchVoices;
 
     return () => {
-      speechSynthesis.onvoiceschanged = null; // Cleanup
+      speechSynthesis.onvoiceschanged = null;
     };
   }, []);
 
   useEffect(() => {
     const loadOrigins = async () => {
       const payload = await loadTranslation(userLanguage);
-      if (payload)
-        setOrigin(payload);
+      if (payload) setOrigin(payload);
     };
     if (userLanguage) {
       loadOrigins();
@@ -63,8 +132,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const loadTranslations = async () => {
       const payload = await loadTranslation(targetLanguage);
-      if (payload)
-        setTranslations(payload);
+      if (payload) setTranslations(payload);
     };
     if (targetLanguage) {
       loadTranslations();
@@ -89,6 +157,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setUserLocation,
         userEmail,
         setUserEmail,
+        userId,
+        setUserId,
+        isPublic,
+        setIsPublic,
+        userBio,
+        setUserBio,
       }}
     >
       {children}

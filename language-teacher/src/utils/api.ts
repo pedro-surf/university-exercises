@@ -111,13 +111,89 @@ export async function fetchAssets(params: {
 
 export async function updateAssetIcon(
   assetId: string,
-  body: { icon: string | null; iconType: IconType | null }
+  body: { icon: string | null; iconType: IconType | null; userId?: string }
 ) {
   const { data } = await axios.patch<{
     message: string;
     data: AssetListItem;
   }>(`/assets/${assetId}/icon`, body);
   return data;
+}
+
+export type UserProfile = {
+  id: string;
+  name: string | null;
+  email?: string;
+  location: string | null;
+  bio: string | null;
+  isPublic: boolean;
+  createdAt: string;
+  stats: {
+    submitted: number;
+    approved: number;
+    rejected: number;
+    icons: number;
+  };
+  recent: Array<{
+    id: string;
+    kind: string;
+    action: string;
+    identifier: string;
+    language: string | null;
+    category: string | null;
+    payload: Record<string, unknown>;
+    createdAt: string;
+    actor?: { id: string; name: string | null } | null;
+    contributor?: { id: string; name: string | null } | null;
+  }>;
+};
+
+export async function upsertUser(body: {
+  email: string;
+  name?: string;
+  location?: string;
+  bio?: string;
+  isPublic?: boolean;
+}) {
+  const { data } = await axios.post<{ data: {
+    id: string;
+    email: string;
+    name: string | null;
+    location: string | null;
+    bio: string | null;
+    isPublic: boolean;
+  } }>("/users", body);
+  return data.data;
+}
+
+export async function fetchUserProfile(userId: string, viewerId?: string) {
+  const { data } = await axios.get<{
+    private: boolean;
+    isOwner?: boolean;
+    message?: string;
+    data: UserProfile | { id: string; name: string | null; isPublic: false };
+  }>(`/users/${userId}/profile`, {
+    params: viewerId ? { viewerId } : undefined,
+    validateStatus: (status) => status < 500,
+  });
+  return data;
+}
+
+export async function updateUserProfile(
+  userId: string,
+  body: {
+    viewerId: string;
+    name?: string;
+    location?: string;
+    bio?: string;
+    isPublic?: boolean;
+  }
+) {
+  const { data } = await axios.patch<{ data: UserProfile }>(
+    `/users/${userId}`,
+    body
+  );
+  return data.data;
 }
 
 export async function fetchMissingExercises(params: {
@@ -161,6 +237,7 @@ export async function decideApproval(body: {
   kind: "translation" | "exercise";
   id: string;
   approved: boolean;
+  reviewerId?: string;
 }) {
   const { data } = await axios.post("/approvals/decide", body);
   return data;

@@ -14,6 +14,9 @@ export default function Menu() {
             <div className="w-full max-w-6xl">
                 <ConfigDisplay />
                 <div className="absolute top-4 right-4 flex gap-4 text-sm text-gray-500">
+                    <button onClick={() => navigate('/profile')} className="hover:text-gray-700 transition-colors">
+                        Profile
+                    </button>
                     <button onClick={() => navigate('/assets')} className="hover:text-gray-700 transition-colors">
                         Teacher
                     </button>

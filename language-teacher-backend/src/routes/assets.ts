@@ -7,6 +7,7 @@ import {
   parseLanguage,
 } from "../lib/mappers";
 import type { IconType } from "../../generated/prisma/client";
+import { logContribution, logContributions } from "../lib/contributionLog";
 
 const router = Router();
 
@@ -262,6 +263,24 @@ router.put("/translations", auth, async (req: Request, res: Response): Promise<a
       saved.push(translation);
     }
 
+    await logContributions(
+      saved.map((translation) => ({
+        kind: "TRANSLATION" as const,
+        action: "SUBMITTED" as const,
+        actorId: userId || null,
+        contributorId: userId || null,
+        targetId: translation.id,
+        identifier: translation.asset.identifier,
+        language: translation.language,
+        category: translation.asset.category,
+        payload: {
+          word: translation.word,
+          assetId: translation.assetId,
+          type: translation.asset.type,
+        },
+      }))
+    );
+
     return res.json({
       message: "Translations saved for review",
       count: saved.length,
@@ -317,6 +336,25 @@ router.patch("/:id/icon", auth, async (req: Request, res: Response): Promise<any
       data: {
         icon: icon || null,
         iconType: icon ? iconType ?? null : null,
+      },
+    });
+
+    const userId =
+      typeof req.body.userId === "string" ? req.body.userId : null;
+
+    await logContribution({
+      kind: "ICON",
+      action: "UPDATED",
+      actorId: userId,
+      contributorId: userId,
+      targetId: data.id,
+      identifier: data.identifier,
+      category: data.category,
+      payload: {
+        icon: data.icon,
+        iconType: data.iconType,
+        previousIcon: existing.icon,
+        previousIconType: existing.iconType,
       },
     });
 

@@ -3,6 +3,7 @@ import prisma from "../lib/prisma";
 import { auth } from "../middleware/auth";
 import { parseCategory, parseLanguage } from "../lib/mappers";
 import type { Difficulty, Topic } from "../../generated/prisma/client";
+import { logContributions } from "../lib/contributionLog";
 
 const router = Router();
 
@@ -174,6 +175,26 @@ router.put(
 
         saved.push(exercise);
       }
+
+      await logContributions(
+        saved.map((exercise) => ({
+          kind: "EXERCISE" as const,
+          action: "SUBMITTED" as const,
+          actorId: userId || null,
+          contributorId: userId || null,
+          targetId: exercise.id,
+          identifier: exercise.identifier,
+          language: exercise.language,
+          category: exercise.category,
+          payload: {
+            sentence: exercise.sentence,
+            solution: exercise.solution,
+            hint: exercise.hint,
+            topic: exercise.topic,
+            difficulty: exercise.difficulty,
+          },
+        }))
+      );
 
       return res.json({
         message: "Exercises saved for review",

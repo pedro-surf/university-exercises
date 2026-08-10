@@ -7,9 +7,11 @@ import {
   type PendingTranslation,
 } from "../utils/api";
 import { BACKEND_TO_LANGUAGE } from "../utils/languageCodes";
+import { useAppContext } from "../Context";
 
 export default function AdminApprovals() {
   const navigate = useNavigate();
+  const { userId } = useAppContext();
   const [translations, setTranslations] = useState<PendingTranslation[]>([]);
   const [exercises, setExercises] = useState<PendingExercise[]>([]);
   const [loading, setLoading] = useState(false);
@@ -43,7 +45,12 @@ export default function AdminApprovals() {
     setBusyId(id);
     setError(null);
     try {
-      await decideApproval({ kind, id, approved });
+      await decideApproval({
+        kind,
+        id,
+        approved,
+        reviewerId: userId || undefined,
+      });
       await load();
     } catch (err) {
       console.error(err);

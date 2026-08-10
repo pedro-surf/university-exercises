@@ -11,6 +11,7 @@ import UserMetrics from "./components/UserMetrics";
 import UserMetricsV2 from "./components/UserMetricsV2";
 import { AssetsInspector } from "./components/AssetsInspector";
 import AdminApprovals from "./components/AdminApprovals";
+import UserProfilePage from "./components/UserProfile";
 
 export const router =
   createBrowserRouter([
@@ -43,6 +44,14 @@ export const router =
     {
       path: "/admin",
       element: <AdminApprovals />,
+    },
+    {
+      path: "/profile",
+      element: <UserProfilePage />,
+    },
+    {
+      path: "/profile/:id",
+      element: <UserProfilePage />,
     },
     {
       path: "/metrics",

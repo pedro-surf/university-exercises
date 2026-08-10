@@ -28,7 +28,7 @@ type ExerciseDraft = {
 
 export function AssetsInspector() {
   const navigate = useNavigate();
-  const { userLanguage, targetLanguage } = useAppContext();
+  const { userLanguage, targetLanguage, userId } = useAppContext();
 
   const [kind, setKind] = useState<ContentKind>("vocabulary");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -163,7 +163,10 @@ export function AssetsInspector() {
     setSaving(true);
     setError(null);
     try {
-      const result = await saveAssetTranslations({ items });
+      const result = await saveAssetTranslations({
+        userId: userId || undefined,
+        items,
+      });
       setMessage(`${result.count} translation(s) saved for admin review.`);
       await load();
     } catch (err) {
@@ -199,7 +202,10 @@ export function AssetsInspector() {
     setSaving(true);
     setError(null);
     try {
-      const result = await saveExerciseTranslations({ items });
+      const result = await saveExerciseTranslations({
+        userId: userId || undefined,
+        items,
+      });
       setMessage(`${result.count} exercise(s) saved for admin review.`);
       await load();
     } catch (err) {
@@ -220,6 +226,7 @@ export function AssetsInspector() {
       const result = await updateAssetIcon(assetId, {
         icon: selection.icon,
         iconType: selection.iconType,
+        userId: userId || undefined,
       });
       setIconAssets((prev) =>
         prev.map((item) =>
