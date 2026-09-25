@@ -12,6 +12,7 @@ import UserMetricsV2 from "./components/UserMetricsV2";
 import { AssetsInspector } from "./components/AssetsInspector";
 import AdminApprovals from "./components/AdminApprovals";
 import UserProfilePage from "./components/UserProfile";
+import HomeworkPage from "./components/HomeworkPage";
 
 export const router =
   createBrowserRouter([
@@ -60,5 +61,9 @@ export const router =
     {
       path: "/dashboard",
       element: <UserMetricsV2 />,
+    },
+    {
+      path: "/homework",
+      element: <HomeworkPage />,
     },
   ], { basename: '/university-exercises' });
