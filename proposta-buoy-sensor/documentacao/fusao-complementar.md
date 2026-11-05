@@ -1,4 +1,4 @@
-Cópia de `packages/firmware/buoy-sensor-v1/components/fusion/FUSION.md` no firmware em `../tcc`.
+Cópia de [FUSION.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/components/fusion/FUSION.md).
 
 # Sensor fusion (MPU-9250)
 

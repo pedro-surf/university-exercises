@@ -6,9 +6,7 @@
 
 - Pedro Silveira
 
-Versão para impressão: [proposta-buoy-sensor.pdf](proposta-buoy-sensor.pdf).
-
-O código é público em [pedro-surf/tcc](https://github.com/pedro-surf/tcc). O texto abaixo descreve o firmware em `../tcc`, pacote [packages/firmware/buoy-sensor-v1](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1). Esta pasta não copia o código: aponta para o repositório e reúne a documentação, o esquemático e a figura de arquitetura.
+O código é público em [https://github.com/pedro-surf/tcc](https://github.com/pedro-surf/tcc), no pacote [buoy-sensor-v1](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1). Esta pasta reúne a documentação e o esquemático e aponta para esse repositório.
 
 ## 1. Introdução
 
@@ -22,7 +20,7 @@ Esta proposta cobre o firmware desse nó, o pacote `buoy-sensor-v1`. O restante 
 
 Na água o telefone não vai na prancha, e a rede da praia não é um caminho estável. O nó precisa amostrar movimento, posição e ambiente, guardar a sessão no cartão e publicar o que a rede alcançar.
 
-O firmware em `../tcc` já faz o bring-up completo dessa coleta. O `app_main` sobe o relógio, o I2C, a IMU e o barômetro no módulo GY-91, a fusão complementar, o GPS NEO-6M na UART2, o microSD e o cliente MQTT. A malha de amostragem é de 10 Hz. Cada amostra pode ir para um CSV de sessão e para o broker. O que ainda não fecha o sistema é a ingestão dessas amostras em linhas de `Session` e `Sample` no backend, e a troca do broker público de bancada por um broker próprio.
+O [firmware](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1) já faz o bring-up completo dessa coleta. O `app_main` sobe o relógio, o I2C, a IMU e o barômetro no módulo GY-91, a fusão complementar, o GPS NEO-6M na UART2, o microSD e o cliente MQTT. A malha de amostragem é de 10 Hz. Cada amostra pode ir para um CSV de sessão e para o broker. O que ainda não fecha o sistema é a ingestão dessas amostras em linhas de `Session` e `Sample` no backend, e a troca do broker público de bancada por um broker próprio.
 
 ### Justificativa
 
@@ -30,7 +28,7 @@ O nó já produz a série que o restante do trabalho consome: aceleração e gir
 
 ### Objetivo geral
 
-Consolidar o firmware do nó sensor para que uma sessão de surfe seja adquirida a 10 Hz, gravada no microSD, publicada por MQTT e ingerida na plataforma publicada em [pedro-surf/tcc](https://github.com/pedro-surf/tcc).
+Consolidar o firmware do nó sensor para que uma sessão de surfe seja adquirida a 10 Hz, gravada no microSD, publicada por MQTT e ingerida na plataforma publicada em [https://github.com/pedro-surf/tcc](https://github.com/pedro-surf/tcc).
 
 ### Objetivos específicos
 
@@ -82,7 +80,7 @@ Unidades no cabeçalho: g, dps, µT, rad, Pa, °C, graus no fix de GPS e metros.
 
 O nó é um ESP32 DevKit em ESP-IDF e FreeRTOS. Os sensores de movimento e de ambiente estão no mesmo módulo GY-91: MPU9250, AK8963 e BMP280 no mesmo I2C. O NEO-6M entra pela UART2. O microSD entra por SPI. A energia de campo é o shield 18650, com 5 V no VIN e no VCC do GPS, e 3,3 V do próprio ESP32 para o GY-91 e para o cartão.
 
-O esquemático de ligações do firmware, com GPS, é o da figura abaixo. A tabela de pinos e a lista de nets estão em [documentacao/esquematico.md](documentacao/esquematico.md). O uso do NEO-6M, incluindo NMEA, checksum e a tarefa em segundo plano, está em [documentacao/gps-neo-6m.md](documentacao/gps-neo-6m.md).
+O esquemático de ligações do firmware, com GPS, é o da figura abaixo. A tabela de pinos e a lista de nets estão em [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md). O uso do NEO-6M, incluindo NMEA, checksum e a tarefa em segundo plano, está em [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md).
 
 ![Esquemático de ligações do buoy-sensor-v1, com NEO-6M](figuras/esquematico-buoy-sensor-v1.png)
 
@@ -99,7 +97,7 @@ Em volta do firmware, a plataforma recebe a sessão pelo MQTT e pelo CSV. A API 
 
 ![Arquitetura do sistema de surfe](figuras/arquitetura-sistema-surfe.png)
 
-| Parte | No firmware em `../tcc` | O que a proposta ainda fecha |
+| Parte | No firmware | O que a proposta ainda fecha |
 | --- | --- | --- |
 | I2C, IMU, mag, BMP280 | ligados no `app_main`, 10 Hz | manter e medir no ar livre |
 | Fusão complementar | `ENABLE_FUSION` 1 | conferir roll e pitch em repouso |
@@ -108,13 +106,13 @@ Em volta do firmware, a plataforma recebe a sessão pelo MQTT e pelo CSV. A API 
 | Relógio | SNTP ou `TIME` no console | `t0_unix_ms` coerente com o UTC |
 | MQTT | broker público de bancada | ingerir em `Sample`; broker próprio para sessão real |
 
-A versão sem GPS do mesmo desenho está em [figuras/esquematico-buoy-sensor-v1-sem-gps.png](figuras/esquematico-buoy-sensor-v1-sem-gps.png).
+A versão sem GPS do mesmo desenho está em [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic.png](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic.png).
 
 ### 3.2. Tecnologias e Ferramentas
 
 - Hardware. ESP32 DevKit, porque o firmware já está em ESP-IDF e o rádio cabe no mesmo chip. GY-91, porque MPU9250 e BMP280 já compartilham SDA e SCL na placa. NEO-6M em UART, 9600 baud, 1 Hz, que basta para a rota. microSD em SPI. Shield 18650 como alimentação de campo ilustrada no esquemático.
 - Linguagem. C no firmware (`i2c_bus`, `mpu9250`, `bmp280`, `sensor`, `gps`, `storage`, `wifi`, `clock`, `fusion`). O backend do monorepo é TypeScript. Esta proposta não reescreve a API.
-- Plataforma. ESP-IDF e FreeRTOS. Os interruptores de build estão em `main/config.h`: `ENABLE_SD`, `ENABLE_MQTT`, `ENABLE_MAG`, `ENABLE_FUSION` e `ENABLE_GPS`.
+- Plataforma. ESP-IDF e FreeRTOS. Os interruptores de build estão em [main/config.h](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/main/config.h): `ENABLE_SD`, `ENABLE_MQTT`, `ENABLE_MAG`, `ENABLE_FUSION` e `ENABLE_GPS`.
 - Comunicação. I2C, SPI e NMEA no nó. MQTT no broker de bancada. A aplicação web assina o fluxo ao vivo por SSE a partir do backend. Sem HTTP de amostra no caminho crítico: o desenho publicado é MQTT mais CSV.
 - Dados. CSV no cartão, com o esquema da seção 2.1. PostgreSQL, Prisma e o modelo `Sample` na API. Magnetômetro, pressão, temperatura e orientação que não cabem em `Sample` seguem o mapeamento do README do firmware para `Sensor.data`.
 - Ferramentas. `idf.py` para build, flash e monitor. Git e o repositório público. `mosquitto_sub` ou o cliente web da EMQX para ver o tópico. Docker para o Postgres local.
@@ -127,7 +125,7 @@ A escolha permanece no que esse firmware já compila. Trocar de IMU, de GPS ou d
 2. Tecnologias. ESP32, GY-91, NEO-6M, microSD e MQTT estão escolhidos no código.
 3. Arquitetura. O esquemático v2 e a figura de sistema desta pasta são o desenho de referência.
 4. Hardware. Montar o shield 18650 no VIN, o GY-91 no I2C em 3,3 V, o cartão no SPI e o NEO-6M com VCC em 5 V e TX/RX cruzados.
-5. Firmware. O bring-up descrito acima já está em `../tcc`. O trabalho de código que resta no próprio README é a ingestão no backend e a limpeza dos arquivos de exemplo de Wi-Fi.
+5. Firmware. O bring-up descrito acima já está no [pacote buoy-sensor-v1](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1). O trabalho de código que resta no [README do firmware](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/README.md) é a ingestão no backend e a limpeza dos arquivos de exemplo de Wi-Fi.
 6. Integração. Assinar o tópico, ou importar o CSV, e criar `Session` e `Sample`. Manter g e dps como o arquivo já grava.
 7. Testes. Executar o plano da seção 3.4 na bancada e ao ar livre.
 8. Documentação. As cópias desta pasta acompanham o firmware. Se pinos ou o esquema do CSV mudarem, atualizam-se o README do pacote e estas cópias juntos.
@@ -159,12 +157,12 @@ O bring-up está aceito quando o monitor mostra os três identificadores, uma li
 
 Já disponíveis:
 
-- Firmware em `../tcc` com GPS, cartão, MQTT, magnetômetro e fusão, e o devcontainer do pacote.
+- [Firmware buoy-sensor-v1](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1) com GPS, cartão, MQTT, magnetômetro e fusão, e o devcontainer do pacote.
 - ESP-IDF, FreeRTOS e `idf.py`, sem custo de licença.
 - Esquemático, nota do NEO-6M e nota de fusão, copiados nesta pasta.
 - API com Prisma, GraphQL e Postgres via Docker, mais a aplicação web.
 - Broker público de bancada, sem conta, para o bring-up.
-- Repositório [pedro-surf/tcc](https://github.com/pedro-surf/tcc).
+- Repositório [https://github.com/pedro-surf/tcc](https://github.com/pedro-surf/tcc).
 
 Na montagem de campo, como o esquemático já lista:
 
@@ -189,27 +187,24 @@ Ferramenta de software não entra no custo. A limitação operacional é o mar: 
 
 ## 4. Considerações Finais
 
-A proposta descreve o nó que o firmware em `../tcc` já é: ESP32, GY-91, NEO-6M, microSD e MQTT, a 10 Hz, com a posição encaixada na amostra sem segurar a malha inercial. O esquemático e a nota de uso do GPS estão copiados nesta pasta e batem com `main/config.h`.
+Com isso a sessão de surfe fica registrada no cartão e consultável na plataforma, que é o resultado que esta proposta se compromete a mostrar. O mesmo registro pode ser reaproveitado em estudos futuros de esportes aquáticos em geral.
 
-O que falta para o objetivo não é outro driver. É ingerir o CSV ou o tópico em `Sample`, medir o fix ao ar livre e tirar a sessão real do broker público. Com isso a sessão de surfe fica registrada no cartão e consultável na plataforma, que é o resultado que esta proposta se compromete a mostrar.
+## Documentos
 
-## Documentos desta pasta
+Cópias locais acompanham esta pasta. Os endereços abaixo são os arquivos no repositório.
 
-- [documentacao/firmware-buoy-sensor-v1.md](documentacao/firmware-buoy-sensor-v1.md), README do firmware.
-- [documentacao/gps-neo-6m.md](documentacao/gps-neo-6m.md), uso do NEO-6M.
-- [documentacao/esquematico.md](documentacao/esquematico.md), esquemático de ligações e lista de nets.
-- [documentacao/fusao-complementar.md](documentacao/fusao-complementar.md), filtro complementar.
-- [documentacao/notas-de-hardware-e-sessao.md](documentacao/notas-de-hardware-e-sessao.md), notas antigas de hardware. Pinos e taxa atuais estão no esquemático.
-- [documentacao/classificador-de-movimento.md](documentacao/classificador-de-movimento.md), README do classificador.
-- [figuras/esquematico-buoy-sensor-v1.png](figuras/esquematico-buoy-sensor-v1.png)
-- [figuras/esquematico-buoy-sensor-v1-sem-gps.png](figuras/esquematico-buoy-sensor-v1-sem-gps.png)
-- [figuras/arquitetura-sistema-surfe.png](figuras/arquitetura-sistema-surfe.png)
-- [proposta-buoy-sensor.pdf](proposta-buoy-sensor.pdf)
-
-Links públicos:
-
-- [Monorepo](https://github.com/pedro-surf/tcc)
-- [Firmware buoy-sensor-v1](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1)
-- [API](https://github.com/pedro-surf/tcc/tree/main/packages/backend)
-- [Classificador](https://github.com/pedro-surf/tcc/blob/main/packages/ai-classifier/README.md)
-- [Previsão](https://github.com/pedro-surf/tcc/tree/main/packages/ai-forecast)
+- [https://github.com/pedro-surf/tcc](https://github.com/pedro-surf/tcc)
+- [https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/README.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/README.md)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic-v2.png](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic-v2.png)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic.png](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic.png)
+- [https://github.com/pedro-surf/tcc/blob/main/Arquitetura%20de%20sistema%20para%20surfe.png](https://github.com/pedro-surf/tcc/blob/main/Arquitetura%20de%20sistema%20para%20surfe.png)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/components/fusion/FUSION.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/components/fusion/FUSION.md)
+- [https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1/components/gps](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1/components/gps)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/main/config.h](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/main/config.h)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/web/README.md](https://github.com/pedro-surf/tcc/blob/main/packages/web/README.md)
+- [https://github.com/pedro-surf/tcc/tree/main/packages/backend](https://github.com/pedro-surf/tcc/tree/main/packages/backend)
+- [https://github.com/pedro-surf/tcc/blob/main/packages/ai-classifier/README.md](https://github.com/pedro-surf/tcc/blob/main/packages/ai-classifier/README.md)
+- [https://github.com/pedro-surf/tcc/tree/main/packages/ai-forecast](https://github.com/pedro-surf/tcc/tree/main/packages/ai-forecast)

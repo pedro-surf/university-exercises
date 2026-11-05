@@ -1,4 +1,4 @@
-Cópia de `packages/firmware/buoy-sensor-v1/README.md` no firmware em `../tcc`.
+Cópia de [README.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/README.md).
 
 # buoy-sensor-v1 (MVP)
 
@@ -12,16 +12,16 @@ ESP32 firmware for buoy IMU + barometer bring-up with SD CSV logging.
 | SPI (SD) | MOSI=23, MISO=19, SCLK=18, CS=5 |
 | UART2 (NEO-6M) | RX=16, TX=17 (`ENABLE_GPS` in `main/config.h`) |
 
-Full build handoff schematic (pin tables + diagram): [esquematico.md](esquematico.md) / [esquematico-buoy-sensor-v1.png](../figuras/esquematico-buoy-sensor-v1.png)
+Full build handoff schematic (pin tables + diagram): [SCHEMATIC.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md) / [buoy-sensor-v1-schematic-v2.png](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic-v2.png)
 
-Component notes: NEO-6M bring-up in [gps-neo-6m.md](gps-neo-6m.md).
+Component notes: NEO-6M bring-up in [docs/neo-6m.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md).
 
 ## What this build does
 
 1. Init I2C master
 2. Init MPU9250 (accel + gyro + optional AK8963 mag)
 3. Init BMP280 (compensated Pa / °C)
-4. Complementary fusion → roll / pitch (yaw = gyro integrate); see [fusao-complementar.md](fusao-complementar.md)
+4. Complementary fusion → roll / pitch (yaw = gyro integrate); see [FUSION.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/components/fusion/FUSION.md)
 5. Mount SD over SPI and append samples to a CSV session file (optional)
 6. Connect Wi-Fi and publish samples over MQTT (EMQX public broker)
 7. Optional NEO-6M on UART2 — cache last GGA fix onto each IMU sample (`ENABLE_GPS`)

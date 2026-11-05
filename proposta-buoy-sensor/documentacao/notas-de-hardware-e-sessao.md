@@ -1,6 +1,6 @@
 # Notas de hardware, GPS e sessão
 
-Trecho antigo copiado de [packages/web/README.md](https://github.com/pedro-surf/tcc/blob/main/packages/web/README.md). O firmware atual em `../tcc` substitui parte destas notas: a sessão roda a 10 Hz, o NEO-6M está na UART2 (GPIO16/GPIO17, VCC em 5 V) e o envio é MQTT, não um rádio desligado durante o surfe. Pinos, alimentação e GPS valem o que está em [esquematico.md](esquematico.md) e [gps-neo-6m.md](gps-neo-6m.md).
+Trecho antigo copiado de [packages/web/README.md](https://github.com/pedro-surf/tcc/blob/main/packages/web/README.md). O firmware em [buoy-sensor-v1](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1) substitui parte destas notas: a sessão roda a 10 Hz, o NEO-6M está na UART2 (GPIO16/GPIO17, VCC em 5 V) e o envio é MQTT, não um rádio desligado durante o surfe. Pinos, alimentação e GPS valem o que está no [esquemático](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md) e na [nota do NEO-6M](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md).
 
 O preâmbulo do template Vite foi omitido. O texto abaixo é o das notas originais.
 

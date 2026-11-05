@@ -7,10 +7,10 @@
 **Storage:** microSD over SPI  
 **Firmware:** `packages/firmware/buoy-sensor-v1`
 
-Cópia de `packages/firmware/buoy-sensor-v1/SCHEMATIC.md` no firmware em `../tcc`.
+Cópia de [SCHEMATIC.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md).
 
-Visual overview (v2, with GPS): [esquematico-buoy-sensor-v1.png](../figuras/esquematico-buoy-sensor-v1.png)  
-v1 (no GPS): [esquematico-buoy-sensor-v1-sem-gps.png](../figuras/esquematico-buoy-sensor-v1-sem-gps.png)
+Visual overview (v2, with GPS): [buoy-sensor-v1-schematic-v2.png](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic-v2.png)  
+v1 (no GPS): [buoy-sensor-v1-schematic.png](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/buoy-sensor-v1-schematic.png)
 
 ---
 
@@ -169,7 +169,7 @@ Card format: **FAT32**. Firmware writes:
 
 ### 4) NEO-6M GPS — UART2
 
-Bring-up notes and NMEA snippets: [gps-neo-6m.md](gps-neo-6m.md). Pins also in `main/config.h` (`GPS_UART_RX_PIN` / `GPS_UART_TX_PIN`). Set `ENABLE_GPS=0` to skip UART and the gps task.
+Bring-up notes and NMEA snippets: [docs/neo-6m.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md). Pins also in `main/config.h` (`GPS_UART_RX_PIN` / `GPS_UART_TX_PIN`). Set `ENABLE_GPS=0` to skip UART and the gps task.
 
 | NEO-6M pin | Connect to | Notes |
 |------------|------------|-------|

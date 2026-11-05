@@ -1,6 +1,6 @@
 # u-blox NEO-6M — GPS with ESP32
 
-Cópia de `packages/firmware/buoy-sensor-v1/docs/neo-6m.md` no firmware em `../tcc`. O esquemático local está em [esquematico.md](esquematico.md). O driver é `components/gps/` (`ENABLE_GPS`, pinos e baud em `main/config.h`).
+Cópia de [docs/neo-6m.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/docs/neo-6m.md). O esquemático está em [SCHEMATIC.md](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/SCHEMATIC.md). O driver é [components/gps/](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1/components/gps) (`ENABLE_GPS`, pinos e baud em [main/config.h](https://github.com/pedro-surf/tcc/blob/main/packages/firmware/buoy-sensor-v1/main/config.h)).
 
 UART GNSS module. Default output is **NMEA 0183 at 9600 baud, 1 Hz**. The chip is 3.3 V; most cheap breakouts include an LDO so **VCC is 5 V** and TX/RX stay 3.3 V (ESP32-safe).
 
@@ -91,7 +91,7 @@ Example: `2832.1604,S` → `-(28 + 32.1604/60)` = **-28.5360°**.
 
 ## ESP-IDF snippets
 
-ESP-IDF `driver/uart.h`, same style as this firmware. Production code is `components/gps/` in `../tcc`. The blocks below are the same ideas, kept here for bring-up.
+ESP-IDF `driver/uart.h`, same style as this firmware. Production code is [components/gps/](https://github.com/pedro-surf/tcc/tree/main/packages/firmware/buoy-sensor-v1/components/gps). The blocks below are the same ideas, kept here for bring-up.
 
 ### 1) UART2 init
 
